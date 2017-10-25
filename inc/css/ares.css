@@ -1,0 +1,273 @@
+/*
+    Document   : Ares Stylesheet
+    Created on : Oct. 24, 2017
+    Author     : Bilal
+*/
+
+body {
+    background-color: rgb(245,245,245);
+}
+
+body.admin-bar header {
+    top: 32px;
+}
+
+@media (max-width:782px) {
+    body.admin-bar header.site-header {
+        top: 46px;
+    }
+}
+
+a {
+    text-decoration: none !important;
+}
+
+header.site-header{
+    width: 100%;
+    position: fixed;
+    top: 0;
+}
+
+/* --- Toolbar --- */
+
+#site-toolbar{
+    background: #ffffff;
+    color: rgb(208, 208, 208);
+    height: 40px;
+    border-bottom: 1px solid #F0F0F0;
+    overflow: hidden;
+}
+
+    /* --- Social --- */
+
+    #site-toolbar .social-bar {
+        height: 40px;
+    }
+
+    #site-toolbar .social-bar a {
+        transition: .3s all ease-in-out;
+        -moz-transition: .3s all ease-in-out;
+        -webkit-transition: .3s all ease-in-out;
+        width: 25px;
+        height: 25px;
+        margin: 7px 5px;
+        font-size: 12px;
+        display: inline-block;
+        text-align: center;
+        line-height: 27px;
+        border: 1px solid #e0e0e0;
+        border-radius: 50%;
+        background: #D8D8D8;
+        color: #fff;
+    }
+
+    @media (max-width:767px) {
+        #site-toolbar .social-bar {
+            width: 100%;
+            text-align: center;
+        }
+        #site-toolbar .social-bar a {
+            margin: 7px 2px;
+        }
+    }
+
+/* --- Branding & Menu Bar --- */
+
+#site-branding {
+    min-height: 80px;
+    background: rgb(255, 255, 255);
+    border-bottom: 1px solid rgb(240, 240, 240);
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;      /* TWEENER - IE 10 */
+    display: -webkit-flex;     /* NEW - Chrome */
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+}
+
+#site-branding div.branding {
+   width: 25%;
+}
+
+#site-branding div.navigation {
+   width: 75%;
+}
+
+#site-branding .site-title {
+    margin: 0;
+    padding-top: .15em;
+    font-size: 29px;
+}
+
+#site-branding div#primary-menu {
+    float: right;
+}
+
+#site-branding ul#primary-menu ul.sub-menu {
+    background-color: #fff;
+    opacity: 0;
+    transition: .3s all ease-in-out;
+    -moz-transition: .3s all ease-in-out;
+    -webkit-transition: .3s all ease-in-out;
+}
+
+#site-branding ul#primary-menu li:hover ul.sub-menu {
+    opacity: 1;
+}
+
+@media (max-width:599px) {
+    #site-branding {
+        height: 80px;
+    }
+    div#content {
+        margin-top: 120px !important;
+    }
+}
+
+/* --- Mobile Menu Toggle --- */
+#tasty-mobile-toggle{
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+/*#site-toolbar .contact-bar a{
+    height: 30px;
+    margin: 7px 5px;
+    display: inline-block;
+    text-align: center;
+    line-height: 30px;
+    transition: 0.2s all ease;
+    -webkit-transition: 0.2s all ease;
+    -moz-transition: 0.2s all ease;
+}
+#site-toolbar .contact-bar a:hover{
+
+}
+#site-toolbar .contact-bar a .fa{
+    margin-right: 5px;
+}
+#site-toolbar .contact-bar a span{
+    color: #666;
+}
+
+
+
+#site-toolbar .row .contact-bar{
+    text-align: right;
+    height: 40px;
+    line-height: 40px;
+}*/
+
+
+
+/* --- Site Branding --- */
+
+
+
+
+
+#site-branding .row .col-xs-3{
+    overflow: hidden;
+}
+
+#site-branding .search-bar{
+    text-align: right;
+}
+#site-branding .search-bar .search-form{
+    margin-top: 20px;
+    line-height: 20px;
+
+}
+#site-branding .search-bar .search-field{
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0;
+    outline-color: #fff;
+    transition: 0.2s all ease-in-out;
+    -moz-transition: 0.2s all ease-in-out;
+    -webkit-transition: 0.2s all ease-in-out;
+}
+#site-branding .search-bar .search-field:focus{
+    padding-right: 20px;
+    color: #222;
+}
+
+/* --- Site Navigation --- */
+
+#site-navigation.main-navigation > .row{
+    overflow: visible;
+}
+
+#site-navigation.main-navigation li a {
+    transition: .2s all ease-in-out;
+    -moz-transition: .2s all ease-in-out;
+    -webkit-transition: .2s all ease-in-out;
+    font-size: 14px;
+    padding: 0 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #000;
+}
+.main-navigation ul ul li{
+    line-height: initial;
+    /*height: 30px;*/
+    line-height: 30px;
+}
+
+/*-- Social --*/
+/*#site-toolbar .row .social-bar a.icon-twitter{
+    color: #00abdc;
+    border-color: #00abdc;
+}
+#site-toolbar .row .social-bar a.icon-twitter:hover{
+    box-shadow: 0 0 2px #00abdc;
+    -moz-box-shadow: 0 0 2px #00abdc;
+    -webkit-box-shadow: 0 0 2px #00abdc;
+}
+#site-toolbar .row .social-bar a.icon-facebook{
+    color: #3b5998;
+    border-color: #3b5998;
+
+}
+#site-toolbar .row .social-bar a.icon-facebook:hover{
+    box-shadow: 0 0 2px #3b5998;
+    -moz-box-shadow: 0 0 2px #3b5998;
+    -webkit-box-shadow: 0 0 2px #3b5998;
+}
+#site-toolbar .row .social-bar a.icon-linkedin{
+    color: #007bb6;
+    border-color: #007bb6;
+
+}
+#site-toolbar .row .social-bar a.icon-linkedin:hover{
+    box-shadow: 0 0 2px #007bb6;
+    -moz-box-shadow: 0 0 2px #007bb6;
+    -webkit-box-shadow: 0 0 2px #007bb6;
+}
+#site-toolbar .row .social-bar a.icon-gplus{
+    color: #dd4b39;
+    border-color: #dd4b39;
+
+}
+#site-toolbar .row .social-bar a.icon-gplus:hover{
+    box-shadow: 0 0 2px #dd4b39;
+    -moz-box-shadow: 0 0 2px #dd4b39;
+    -webkit-box-shadow: 0 0 2px #dd4b39;
+}*/
+
+/*-- Header --*/
+.site-description{
+    font-size: 14px;
+    display: none;
+}
