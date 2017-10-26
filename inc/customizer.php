@@ -85,3 +85,15 @@ function ares_sanitize_show_hide( $input ) {
     }
 
 }
+
+function ares_sanitize_icon( $input ) {
+
+    $valid_keys = ares_icons();
+
+    if ( array_key_exists( $input, $valid_keys ) ) {
+        return $input;
+    } else {
+        return '';
+    }
+
+}

@@ -33,8 +33,52 @@ get_header(); ?>
             </div>
 
         <?php endif; ?>
+        
+        <?php if ( get_theme_mod( 'ares_cta_trio_bool', 'show' ) == 'show' ) : ?>
+            <?php do_action( 'ares_cta_trio' ); ?>
+        <?php endif; ?>
+        
+        <?php if( is_active_sidebar('sidebar-banner') ) : ?>
+            <?php // echo ares_banner(); ?>
+        <?php endif; ?>
+        
+        <?php if(is_active_sidebar('sidebar-homepage-widget')) :?>
+            <?php // echo ares_homepage_widget(); ?>
+        <?php endif; ?>
+        
+        <?php if ( get_theme_mod( 'ares_frontpage_content_bool', 'show' ) == 'show' ) : ?> 
+        
+            <div class="container">
 
+                <div class="frontpage row">
+
+                    <?php while ( have_posts() ) : the_post(); ?>
+
+                        <?php
+
+                        if ( 'posts' == get_option( 'show_on_front' ) ) {
+                            get_template_part('template-parts/content', 'posts');
+                        } else {
+                            get_template_part('template-parts/content', 'page');
+                        }                
+
+                        // If comments are open or we have at least one comment, load up the comment template
+                        if (comments_open() || '0' != get_comments_number()) :
+                            comments_template();
+                        endif;
+
+                        ?>
+
+                    <?php endwhile; // end of the loop.   ?>
+
+                </div>
+
+            </div>
+
+        <?php endif; ?>
+        
     </main>
+    
 </div>
 
 <?php get_footer();

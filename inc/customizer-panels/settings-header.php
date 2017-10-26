@@ -18,6 +18,23 @@ $wp_customize->add_section( 'ares_toolbar_section', array(
     'panel'                 => 'ares_header_panel'
 ) );
 
+    // Show / Hide the Toolbar?
+    $wp_customize->add_setting( 'ares_headerbar_bool', array(
+        'default'               => 'show',
+        'transport'             => 'refresh',
+        'sanitize_callback'     => 'ares_sanitize_show_hide',
+        'type'                  => 'option'
+    ) );
+    $wp_customize->add_control( 'ares_headerbar_bool', array(
+        'label'   => __( 'Show or hide the Toolbar section?', 'zeal' ),
+        'section' => 'ares_toolbar_section',
+        'type'    => 'radio',
+        'choices'    => array(
+            'show'  => __( 'Show', 'ares' ),
+            'hide'  => __( 'Hide', 'ares' ),
+        )
+    ));
+
     // Facebook URL
     $wp_customize->add_setting( 'ares_facebook_url', array(
         'default'               => '',

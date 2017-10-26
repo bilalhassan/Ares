@@ -22,7 +22,7 @@
 
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class(); ?> style="background-image: url(<?php echo esc_url( get_template_directory_uri() . '/inc/images/crossword.png' ); ?>);">
 
 	<div id="page" class="site">
 
