@@ -89,6 +89,7 @@
 
                     <nav id="menu" role="navigation">
 
+						<img id="mobile-menu-close" src="<?php echo esc_url( get_template_directory_uri() . '/inc/images/close-mobile.png' ); ?>" alt="<?php _e( 'Close Menu', 'ares' ); ?>">
 
                         <?php wp_nav_menu( array(
                              'theme_location' => 'primary',
