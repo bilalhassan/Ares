@@ -23,6 +23,7 @@ function ares_scripts() {
 
     wp_enqueue_script( 'jquery-easing', get_template_directory_uri() . '/inc/js/jquery.easing.1.3.js', array('jquery'), ARES_VERSION, true );
     wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/inc/js/bootstrap.min.js', array('jquery'), ARES_VERSION, true );
+	wp_enqueue_script( 'bigSlide', get_template_directory_uri() . '/inc/js/bigSlide.min.js', array('jquery'), ARES_VERSION, true );
     wp_enqueue_script( 'camera-js', get_template_directory_uri() . '/inc/js/camera.min.js', array('jquery'), ARES_VERSION, true );
     wp_enqueue_script( 'wow', get_template_directory_uri() . '/inc/js/wow.min.js', array('jquery'), ARES_VERSION, true );
     wp_enqueue_script( 'ares-main-script', get_template_directory_uri() . '/inc/js/ares.js', array('jquery', 'jquery-masonry'), ARES_VERSION, true );
@@ -43,15 +44,27 @@ add_action( 'wp_enqueue_scripts', 'ares_scripts' );
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
 function ares_widgets_init() {
+
 	register_sidebar( array(
 		'name'          => esc_html__( 'Sidebar', 'ares' ),
-		'id'            => 'sidebar-1',
+		'id'            => 'sidebar',
 		'description'   => esc_html__( 'Add widgets here.', 'ares' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
+
+	register_sidebar( array(
+		'name'          => esc_html__( 'Toolbar', 'ares' ),
+		'id'            => 'toolbar',
+		'description'   => esc_html__( 'Add widgets here (Only one-line Text / Custom Menu recommended).', 'ares' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+
 }
 add_action( 'widgets_init', 'ares_widgets_init' );
 
@@ -135,10 +148,6 @@ function ares_custom_css() { ?>
             margin-top: <?php echo esc_attr( get_theme_mod( 'ares_branding_bar_height', '80' ) + 40 ); ?>px;
         }
 
-        ul#primary-menu > li > a {
-            line-height: <?php echo intval( get_theme_mod( 'ares_branding_bar_height', 80 ) ); ?>px;
-        }
-        
     </style>
 
 <?php }
@@ -184,11 +193,11 @@ function ares_render_toolbar() { ?>
 
     <div id="site-toolbar">
 
-        <div class="container-fluid">
+        <div class="container">
 
             <div class="row">
 
-                <div class="col-xs-6 social-bar">
+                <div class="col-xs-<?php echo is_active_sidebar( 'toolbar' ) ? '6' : '12'; ?> social-bar">
 
                     <?php if ( get_theme_mod( 'ares_facebook_url', '' ) ) : ?>
                         <a href="<?php echo esc_url( get_theme_mod( 'ares_facebook_url', '' ) ); ?>" target="_blank" class="icon-facebook animated fadeInDown">
@@ -228,11 +237,15 @@ function ares_render_toolbar() { ?>
 
                 </div>
 
-                <div class="col-xs-6 contact-bar">
+				<?php if ( is_active_sidebar( 'toolbar' ) ) : ?>
 
-                    <?php echo get_sidebar( 'header-right' ); ?>
+	                <div class="col-xs-6 contact-bar">
 
-                </div>
+	                    <?php echo dynamic_sidebar( 'toolbar' ); ?>
+
+	                </div>
+
+				<?php endif; ?>
 
             </div>
 
@@ -242,6 +255,74 @@ function ares_render_toolbar() { ?>
 
 <?php }
 add_action( 'ares_toolbar', 'ares_render_toolbar' );
+
+/**
+ * Render the slider on the frontpage.
+ */
+function ares_render_slider() { ?>
+
+	<?php if ( get_theme_mod( 'ares_slide1_image',  get_template_directory_uri() . '/inc/images/ares_demo.jpg' ) ||
+		get_theme_mod( 'ares_slide2_image',  get_template_directory_uri() . '/inc/images/ares_demo.jpg' ) ||
+		get_theme_mod( 'ares_slide3_image',  get_template_directory_uri() . '/inc/images/ares_demo.jpg' ) ) : ?>
+
+	    <div class="sc-slider-wrapper">
+
+			<div class="fluid_container">
+
+				<div class="camera_wrap" id="ares_slider_wrap">
+
+					<?php if ( get_theme_mod( 'ares_slide1_image',  get_template_directory_uri() . '/inc/images/ares_demo.jpg' ) ) : ?>
+
+	                    <div data-thumb="<?php echo esc_attr( get_theme_mod( 'ares_slide1_image', get_template_directory_uri() . '/inc/images/ares_demo.jpg' ) ); ?>" data-src="<?php echo esc_attr( get_theme_mod( 'ares_slide1_image', get_template_directory_uri() . '/inc/images/ares_demo.jpg' ) ); ?>">
+
+	                        <div class="camera_caption fadeFromBottom">
+	                            <span>
+									<?php echo esc_attr( get_theme_mod( 'ares_slide1_text', __( 'Ares: Responsive Multi-purpose WordPress Theme', 'ares' ) ) ); ?>
+								</span>
+	                        </div>
+
+	                    </div>
+
+	                <?php endif; ?>
+
+					<?php if ( get_theme_mod( 'ares_slide2_image',  get_template_directory_uri() . '/inc/images/ares_demo.jpg' ) ) : ?>
+
+						<div data-thumb="<?php echo esc_attr( get_theme_mod( 'ares_slide2_image', get_template_directory_uri() . '/inc/images/ares_demo.jpg' ) ); ?>" data-src="<?php echo esc_attr( get_theme_mod( 'ares_slide2_image', get_template_directory_uri() . '/inc/images/ares_demo.jpg' ) ); ?>">
+
+							<div class="camera_caption fadeFromBottom">
+								<span>
+									<?php echo esc_attr( get_theme_mod( 'ares_slide2_text', __( 'Ares: Responsive Multi-purpose WordPress Theme', 'ares' ) ) ); ?>
+								</span>
+							</div>
+
+						</div>
+
+					<?php endif; ?>
+
+					<?php if ( get_theme_mod( 'ares_slide3_image',  get_template_directory_uri() . '/inc/images/ares_demo.jpg' ) ) : ?>
+
+						<div data-thumb="<?php echo esc_attr( get_theme_mod( 'ares_slide3_image', get_template_directory_uri() . '/inc/images/ares_demo.jpg' ) ); ?>" data-src="<?php echo esc_attr( get_theme_mod( 'ares_slide3_image', get_template_directory_uri() . '/inc/images/ares_demo.jpg' ) ); ?>">
+
+							<div class="camera_caption fadeFromBottom">
+								<span>
+									<?php echo esc_attr( get_theme_mod( 'ares_slide3_text', __( 'Ares: Responsive Multi-purpose WordPress Theme', 'ares' ) ) ); ?>
+								</span>
+							</div>
+
+						</div>
+
+					<?php endif; ?>
+
+		        </div><!-- #camera_wrap_1 -->
+
+	        </div>
+
+		</div>
+
+	<?php endif; ?>
+
+<?php }
+add_action( 'ares_slider', 'ares_render_slider' );
 
 /**
  * Returns all available fonts as an array

@@ -34,20 +34,9 @@
 
 			<?php endif; ?>
 
-			<div id="site-branding">
+			<div id="site-branding" class="container">
 
 				<div class="branding">
-
-                    <div id="tasty-mobile-toggle">
-
-                        <i class="fa fa-bars"></i>
-
-						<?php wp_nav_menu( array(
-							'theme_location' => 'primary',
-							'menu_id'        => 'mobile-menu',
-						) ); ?>
-
-                    </div>
 
 					<?php if ( function_exists( 'has_custom_logo' ) && has_custom_logo() ) : ?>
 
@@ -87,6 +76,26 @@
 						) ); ?>
 
                     </nav><!-- #site-navigation -->
+
+                </div>
+
+				<div class="mobile-trigger-wrap">
+					<span id="mobile-menu-trigger"><span class="fa fa-bars"></span></span>
+				</div>
+
+				<div id="mobile-overlay"></div>
+
+				<div id="mobile-menu-wrap">
+
+                    <nav id="menu" role="navigation">
+
+
+                        <?php wp_nav_menu( array(
+                             'theme_location' => 'primary',
+                             'menu_id'        => 'mobile-menu',
+                         ) ); ?>
+
+                    </nav>
 
                 </div>
 
