@@ -73,7 +73,7 @@ for ( $ctr = 1; $ctr < 4; $ctr++ ) :
         $wp_customize->add_control( 'ares[ares_slide' . $ctr . '_text]', array(
             'type'                  => 'text',
             'section'               => 'ares_slide_' . $ctr . '_section',
-            'label'                 => __( 'Text Caption', 'juno' ),
+            'label'                 => __( 'Text Caption', 'ares' ),
         ) );
 
 endfor;

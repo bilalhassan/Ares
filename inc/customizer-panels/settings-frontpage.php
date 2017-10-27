@@ -45,7 +45,7 @@ $wp_customize->add_panel( 'ares_frontpage_panel', array(
         $wp_customize->add_control( 'ares[ares_cta_heading]', array(
             'type'                  => 'text',
             'section'               => 'ares_cta_header_section',
-            'label'                 => __( 'Main Heading', 'juno' ),
+            'label'                 => __( 'Main Heading', 'ares' ),
         ) );
         
         // Secondary Heading 
@@ -58,7 +58,7 @@ $wp_customize->add_panel( 'ares_frontpage_panel', array(
         $wp_customize->add_control( 'ares[ares_cta_subheading]', array(
             'type'                  => 'text',
             'section'               => 'ares_cta_header_section',
-            'label'                 => __( 'Secondary Heading', 'juno' ),
+            'label'                 => __( 'Secondary Heading', 'ares' ),
         ) );
     
     // ---------------------------------------------
@@ -95,7 +95,7 @@ $wp_customize->add_panel( 'ares_frontpage_panel', array(
             'type'                  => 'option'
         ));
         $wp_customize->add_control( 'ares[ares_cta1_icon]', array(
-            'label' => __('CTA 1 - Icon', 'athena'),
+            'label' => __('CTA 1 - Icon', 'ares'),
             'section' => 'ares_cta_trio_section',
             'type' => 'select',
             'choices' => ares_icons()
@@ -111,7 +111,7 @@ $wp_customize->add_panel( 'ares_frontpage_panel', array(
         $wp_customize->add_control( 'ares[ares_cta1_title]', array(
             'type'                  => 'text',
             'section'               => 'ares_cta_trio_section',
-            'label'                 => __( 'CTA 1 - Title', 'juno' ),
+            'label'                 => __( 'CTA 1 - Title', 'ares' ),
         ) );
         
         // CTA 1 - Tagline
@@ -124,7 +124,7 @@ $wp_customize->add_panel( 'ares_frontpage_panel', array(
         $wp_customize->add_control( 'ares[ares_cta1_text]', array(
             'type'                  => 'text',
             'section'               => 'ares_cta_trio_section',
-            'label'                 => __( 'CTA 1 - Tagline', 'juno' ),
+            'label'                 => __( 'CTA 1 - Tagline', 'ares' ),
         ) );
         
         // CTA 1 - URL
@@ -137,7 +137,7 @@ $wp_customize->add_panel( 'ares_frontpage_panel', array(
         $wp_customize->add_control( 'ares[ares_cta1_url]', array(
             'type'                  => 'text',
             'section'               => 'ares_cta_trio_section',
-            'label'                 => __( 'CTA 1 - Link/URL', 'juno' ),
+            'label'                 => __( 'CTA 1 - Link/URL', 'ares' ),
         ) );
 
         // CTA 1 - Link Text
@@ -150,7 +150,7 @@ $wp_customize->add_panel( 'ares_frontpage_panel', array(
         $wp_customize->add_control( 'ares[ares_cta1_button_text]', array(
             'type'                  => 'text',
             'section'               => 'ares_cta_trio_section',
-            'label'                 => __( 'CTA 1 - Link Text', 'juno' ),
+            'label'                 => __( 'CTA 1 - Link Text', 'ares' ),
         ) );
     
         // CTA 2 - Icon
@@ -161,7 +161,7 @@ $wp_customize->add_panel( 'ares_frontpage_panel', array(
             'type'                  => 'option'
         ));
         $wp_customize->add_control( 'ares[ares_cta2_icon]', array(
-            'label' => __('CTA 2 - Icon', 'athena'),
+            'label' => __('CTA 2 - Icon', 'ares'),
             'section' => 'ares_cta_trio_section',
             'type' => 'select',
             'choices' => ares_icons()
@@ -177,7 +177,7 @@ $wp_customize->add_panel( 'ares_frontpage_panel', array(
         $wp_customize->add_control( 'ares[ares_cta2_title]', array(
             'type'                  => 'text',
             'section'               => 'ares_cta_trio_section',
-            'label'                 => __( 'CTA 2 - Title', 'juno' ),
+            'label'                 => __( 'CTA 2 - Title', 'ares' ),
         ) );
         
         // CTA 2 - Tagline
@@ -190,7 +190,7 @@ $wp_customize->add_panel( 'ares_frontpage_panel', array(
         $wp_customize->add_control( 'ares[ares_cta2_text]', array(
             'type'                  => 'text',
             'section'               => 'ares_cta_trio_section',
-            'label'                 => __( 'CTA 2 - Tagline', 'juno' ),
+            'label'                 => __( 'CTA 2 - Tagline', 'ares' ),
         ) );
         
         // CTA 2 - URL
@@ -203,7 +203,7 @@ $wp_customize->add_panel( 'ares_frontpage_panel', array(
         $wp_customize->add_control( 'ares[ares_cta2_url]', array(
             'type'                  => 'text',
             'section'               => 'ares_cta_trio_section',
-            'label'                 => __( 'CTA 2 - Link/URL', 'juno' ),
+            'label'                 => __( 'CTA 2 - Link/URL', 'ares' ),
         ) );
 
         // CTA 2 - Link Text
@@ -216,7 +216,7 @@ $wp_customize->add_panel( 'ares_frontpage_panel', array(
         $wp_customize->add_control( 'ares[ares_cta2_button_text]', array(
             'type'                  => 'text',
             'section'               => 'ares_cta_trio_section',
-            'label'                 => __( 'CTA 2 - Link Text', 'juno' ),
+            'label'                 => __( 'CTA 2 - Link Text', 'ares' ),
         ) );
     
         // CTA 3 - Icon
@@ -227,7 +227,7 @@ $wp_customize->add_panel( 'ares_frontpage_panel', array(
             'type'                  => 'option'
         ));
         $wp_customize->add_control( 'ares[ares_cta3_icon]', array(
-            'label' => __('CTA 3 - Icon', 'athena'),
+            'label' => __('CTA 3 - Icon', 'ares'),
             'section' => 'ares_cta_trio_section',
             'type' => 'select',
             'choices' => ares_icons()
@@ -243,7 +243,7 @@ $wp_customize->add_panel( 'ares_frontpage_panel', array(
         $wp_customize->add_control( 'ares[ares_cta3_title]', array(
             'type'                  => 'text',
             'section'               => 'ares_cta_trio_section',
-            'label'                 => __( 'CTA 3 - Title', 'juno' ),
+            'label'                 => __( 'CTA 3 - Title', 'ares' ),
         ) );
         
         // CTA 3 - Tagline
@@ -256,7 +256,7 @@ $wp_customize->add_panel( 'ares_frontpage_panel', array(
         $wp_customize->add_control( 'ares[ares_cta3_text]', array(
             'type'                  => 'text',
             'section'               => 'ares_cta_trio_section',
-            'label'                 => __( 'CTA 3 - Tagline', 'juno' ),
+            'label'                 => __( 'CTA 3 - Tagline', 'ares' ),
         ) );
         
         // CTA 3 - URL
@@ -269,7 +269,7 @@ $wp_customize->add_panel( 'ares_frontpage_panel', array(
         $wp_customize->add_control( 'ares[ares_cta3_url]', array(
             'type'                  => 'text',
             'section'               => 'ares_cta_trio_section',
-            'label'                 => __( 'CTA 3 - Link/URL', 'juno' ),
+            'label'                 => __( 'CTA 3 - Link/URL', 'ares' ),
         ) );
 
         // CTA 3 - Link Text
@@ -282,7 +282,7 @@ $wp_customize->add_panel( 'ares_frontpage_panel', array(
         $wp_customize->add_control( 'ares[ares_cta3_button_text]', array(
             'type'                  => 'text',
             'section'               => 'ares_cta_trio_section',
-            'label'                 => __( 'CTA 3 - Link Text', 'juno' ),
+            'label'                 => __( 'CTA 3 - Link Text', 'ares' ),
         ) );
     
     // ---------------------------------------------
@@ -308,5 +308,22 @@ $wp_customize->add_panel( 'ares_frontpage_panel', array(
             'choices'    => array(
                 'yes'   => __( 'Show', 'ares' ),
                 'no'    => __( 'Hide', 'ares' ),
+            )
+        ));
+
+        // Include Right Sidebar on Static Frontpage?
+        $wp_customize->add_setting( 'ares[ares_homepage_sidebar]', array(
+            'default'               => 'sidebar-off',
+            'transport'             => 'refresh',
+            'sanitize_callback'     => 'ares_sanitize_sidebar_off_on',
+            'type'                  => 'option'
+        ) );
+        $wp_customize->add_control( 'ares[ares_homepage_sidebar]', array(
+            'label'   => __( 'Include the right sidebar on the static front page?', 'ares' ),
+            'section' => 'ares_frontpage_content_section',
+            'type'    => 'radio',
+            'choices'    => array(
+                'sidebar-off'   => __( 'No Sidebar', 'ares' ),
+                'sidebar-on'    => __( 'Right Sidebar', 'ares' ),
             )
         ));

@@ -45,7 +45,7 @@ $wp_customize->add_section( 'ares_toolbar_section', array(
     $wp_customize->add_control( 'ares[ares_facebook_url]', array(
         'type'                  => 'text',
         'section'               => 'ares_toolbar_section',
-        'label'                 => __( 'Facebook URL', 'juno' ),
+        'label'                 => __( 'Facebook URL', 'ares' ),
     ) );
 
     // Twitter URL
@@ -58,7 +58,7 @@ $wp_customize->add_section( 'ares_toolbar_section', array(
     $wp_customize->add_control( 'ares[ares_twitter_url]', array(
         'type'                  => 'text',
         'section'               => 'ares_toolbar_section',
-        'label'                 => __( 'Twitter URL', 'juno' ),
+        'label'                 => __( 'Twitter URL', 'ares' ),
     ) );
 
     // LinkedIn URL
@@ -71,7 +71,7 @@ $wp_customize->add_section( 'ares_toolbar_section', array(
     $wp_customize->add_control( 'ares[ares_linkedin_url]', array(
         'type'                  => 'text',
         'section'               => 'ares_toolbar_section',
-        'label'                 => __( 'LinkedIn URL', 'juno' ),
+        'label'                 => __( 'LinkedIn URL', 'ares' ),
     ) );
 
     // Google+ URL
@@ -84,7 +84,7 @@ $wp_customize->add_section( 'ares_toolbar_section', array(
     $wp_customize->add_control( 'ares[ares_gplus_url]', array(
         'type'                  => 'text',
         'section'               => 'ares_toolbar_section',
-        'label'                 => __( 'Google+ URL', 'juno' ),
+        'label'                 => __( 'Google+ URL', 'ares' ),
     ) );
 
     // Instagram URL
@@ -97,7 +97,7 @@ $wp_customize->add_section( 'ares_toolbar_section', array(
     $wp_customize->add_control( 'ares[ares_instagram_url]', array(
         'type'                  => 'text',
         'section'               => 'ares_toolbar_section',
-        'label'                 => __( 'Instagram URL', 'juno' ),
+        'label'                 => __( 'Instagram URL', 'ares' ),
     ) );
 
     // YouTube URL
@@ -110,7 +110,7 @@ $wp_customize->add_section( 'ares_toolbar_section', array(
     $wp_customize->add_control( 'ares[ares_youtube_url]', array(
         'type'                  => 'text',
         'section'               => 'ares_toolbar_section',
-        'label'                 => __( 'YouTube URL', 'juno' ),
+        'label'                 => __( 'YouTube URL', 'ares' ),
     ) );
 
 // ---------------------------------------------
@@ -176,7 +176,7 @@ $wp_customize->add_section( 'ares_footer_section', array(
     $wp_customize->add_control( 'ares[ares_footer_cta_text]', array(
         'type'                  => 'text',
         'section'               => 'ares_footer_section',
-        'label'                 => __( 'CTA - Text', 'juno' ),
+        'label'                 => __( 'CTA - Text', 'ares' ),
     ) );
     
     // Footer CTA Text
@@ -189,7 +189,7 @@ $wp_customize->add_section( 'ares_footer_section', array(
     $wp_customize->add_control( 'ares[ares_footer_button_text]', array(
         'type'                  => 'text',
         'section'               => 'ares_footer_section',
-        'label'                 => __( 'CTA - Button Label', 'juno' ),
+        'label'                 => __( 'CTA - Button Label', 'ares' ),
     ) );
     
     // Footer CTA Button Text
@@ -202,7 +202,7 @@ $wp_customize->add_section( 'ares_footer_section', array(
     $wp_customize->add_control( 'ares[ares_footer_button_text]', array(
         'type'                  => 'text',
         'section'               => 'ares_footer_section',
-        'label'                 => __( 'CTA - Button Label', 'juno' ),
+        'label'                 => __( 'CTA - Button Label', 'ares' ),
     ) );
     
     // Footer CTA Button URL
@@ -215,7 +215,7 @@ $wp_customize->add_section( 'ares_footer_section', array(
     $wp_customize->add_control( 'ares[ares_footer_button_url]', array(
         'type'                  => 'text',
         'section'               => 'ares_footer_section',
-        'label'                 => __( 'CTA - Button URL', 'juno' ),
+        'label'                 => __( 'CTA - Button URL', 'ares' ),
     ) );
 
     // Footer Widget Area Columns
@@ -226,7 +226,8 @@ $wp_customize->add_section( 'ares_footer_section', array(
         'type'                  => 'option'
     ) );
     $wp_customize->add_control( 'ares[ares_footer_columns]', array(
-        'label'   => __( 'Footer Widget Area - Columns', 'juno' ),
+        'label'   => __( 'Footer Widget Area - Columns', 'ares' ),
+        'label'   => __( 'Save changes and reload to preview column changes', 'ares' ),
         'section' => 'ares_footer_section',
         'type'    => 'radio',
         'choices'    => array(
@@ -247,6 +248,6 @@ $wp_customize->add_section( 'ares_footer_section', array(
     $wp_customize->add_control( 'ares[ares_footer_text]', array(
         'type'                  => 'text',
         'section'               => 'ares_footer_section',
-        'label'                 => __( 'Copyright Area Text', 'juno' ),
+        'label'                 => __( 'Copyright Area Text', 'ares' ),
     ) );
     

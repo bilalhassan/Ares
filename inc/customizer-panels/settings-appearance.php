@@ -13,7 +13,7 @@ $wp_customize->add_panel( 'ares_appearance_panel', array(
 // Colors Section
 // ---------------------------------------------
 $wp_customize->add_section( 'ares_colors_section', array(
-    'title'                 => __( 'Colors', 'ares'),
+    'title'                 => __( 'Skin Color', 'ares'),
     'description'           => __( 'Customize the colors of your site', 'ares' ),
     'panel'                 => 'ares_appearance_panel'
 ) );
@@ -26,7 +26,7 @@ $wp_customize->add_section( 'ares_colors_section', array(
         'type'                  => 'option'
     ) );
     $wp_customize->add_control( 'ares[ares_theme_color]', array(
-        'label'   => __( 'Select the theme color', 'ares' ),
+        'label'   => __( 'Select the theme skin color', 'ares' ),
         'section' => 'ares_colors_section',
         'type'    => 'radio',
         'choices'    => array(

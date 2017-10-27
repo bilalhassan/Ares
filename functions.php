@@ -65,12 +65,6 @@ if ( ! function_exists( 'ares_setup' ) ) :
                 'caption',
         ) );
 
-        // Set up the WordPress core custom background feature.
-        add_theme_support( 'custom-background', apply_filters( 'ares_custom_background_args', array(
-                'default-color' => 'ffffff',
-                'default-image' => '',
-        ) ) );
-
         // Add theme support for selective refresh for widgets.
         add_theme_support( 'customize-selective-refresh-widgets' );
 
@@ -108,11 +102,6 @@ function ares_content_width() {
     $GLOBALS['content_width'] = apply_filters( 'ares_content_width', 1170 );
 }
 add_action( 'after_setup_theme', 'ares_content_width', 0 );
-
-/**
- * Implement the Custom Header feature.
- */
-require get_template_directory() . '/inc/custom-header.php';
 
 /**
  * Functions which enhance the theme by hooking into WordPress.
@@ -160,7 +149,7 @@ function ares_get_options() {
         'ares_theme_color'              => 'aqua',                          
         'ares_theme_background_pattern' => 'crossword',                     
         'ares_font_size'                => 14,                              // No CSTMZR YET
-        'ares_font_family'              => 'Josefin Sans, sans-serif',      // No CSTMZR YET
+        'ares_font_family'              => 'Josefin Sans, sans-serif',      
         'ares_frontpage_content_bool'   => 'yes',
         
         'ares_slider_bool'              => 'yes',
@@ -190,9 +179,9 @@ function ares_get_options() {
         'ares_cta3_url'                 => '',
         'ares_cta3_button_text'         => __( 'Click Here', 'ares' ),
         
-        'ares_homepage_sidebar'         => 'sidebar-off',                     // No CSTMZR YET
-        'ares_blog_layout'              => 'col2r',                           // No CSTMZR YET
-        'ares_blog_featured'            => 'on',                              // No CSTMZR YET
+        'ares_homepage_sidebar'         => 'sidebar-off',                     
+        'ares_blog_layout'              => 'col2r',                           
+        'ares_blog_featured'            => 'on',                              
         'ares_single_layout'            => 'col2r',                           // No CSTMZR YET - TEMPLATES
         'ares_single_featured'          => 'on',                              // No CSTMZR YET
         'ares_single_date'              => 'on',                              // No CSTMZR YET

@@ -6,7 +6,7 @@
  */
 ?>
 
-<div class="item-post <?php echo has_post_thumbnail() ? '' : 'text-center'; ?>">
+<div class="item-post <?php echo has_post_thumbnail() ? '' : 'text-left'; ?>">
     
     <?php if ( has_post_thumbnail() ) : ?>
     
@@ -27,7 +27,7 @@
         <div class="post-content">
             <?php echo wp_trim_words( $post->post_content, 50); ?>
         </div>
-        <div class="<?php echo has_post_thumbnail() ? 'text-right' : 'text-center'; ?>">
+        <div class="text-right">
             <a class="button button-primary" href="<?php the_permalink(); ?>">Read More</a>
         </div>                        
     </div>

@@ -30,7 +30,7 @@ a {
 }
 
 a.button-primary {
-    color: #ffffff;
+    color: #fff !important;
 }
 
 header.site-header{
@@ -507,6 +507,10 @@ div#post-slider-cta .secondary-heading {
 
 .site-footer {
     margin-top: 30px;
+}
+
+.site-footer.no-top-margin {
+    margin-top: 0;
 }
 
 div#footer-callout h3 {

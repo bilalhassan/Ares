@@ -21,6 +21,9 @@ function ares_customize_register( $wp_customize ) {
     // Slider
     require_once( 'customizer-panels/settings-slider.php' );
 
+    // Blog
+    require_once( 'customizer-panels/settings-blog.php' );
+    
     // Appearance
     require_once( 'customizer-panels/settings-appearance.php' );
 
@@ -74,11 +77,56 @@ function ares_sanitize_integer( $input ) {
     return intval( $input );
 }
 
+function ares_sanitize_col_sidebar( $input ) {
+
+    $valid_keys = array(
+        'col1'      => __( 'No Sidebar', 'ares' ),
+        'col2r'     => __( 'Right Sidebar', 'ares' ),
+    );
+
+    if ( array_key_exists( $input, $valid_keys ) ) {
+        return $input;
+    } else {
+        return '';
+    }
+
+}
+
+function ares_sanitize_sidebar_off_on( $input ) {
+
+    $valid_keys = array(
+        'sidebar-off'   => __( 'No Sidebar', 'ares' ),
+        'sidebar-on'    => __( 'Right Sidebar', 'ares' ),
+    );
+
+    if ( array_key_exists( $input, $valid_keys ) ) {
+        return $input;
+    } else {
+        return '';
+    }
+
+}
+
 function ares_sanitize_show_hide( $input ) {
 
     $valid_keys = array(
         'yes'   => __( 'Show', 'ares' ),
         'no'    => __( 'Hide', 'ares' ),
+    );
+
+    if ( array_key_exists( $input, $valid_keys ) ) {
+        return $input;
+    } else {
+        return '';
+    }
+
+}
+
+function ares_sanitize_on_off( $input ) {
+
+    $valid_keys = array(
+        'on'    => __( 'Show', 'ares' ),
+        'off'   => __( 'Hide', 'ares' ),
     );
 
     if ( array_key_exists( $input, $valid_keys ) ) {

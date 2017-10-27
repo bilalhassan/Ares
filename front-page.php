@@ -5,6 +5,7 @@
  *
  */
 $ares_options = ares_get_options();
+
 get_header(); ?>
 
 <div id="primary" class="content-area">
@@ -39,11 +40,11 @@ get_header(); ?>
             <?php do_action( 'ares_cta_trio' ); ?>
         <?php endif; ?>
         
-        <?php if( is_active_sidebar('sidebar-banner') ) : ?>
+        <?php if( is_active_sidebar('sidebar-banner' ) ) : ?>
             <?php // echo ares_banner(); ?>
         <?php endif; ?>
         
-        <?php if(is_active_sidebar('sidebar-homepage-widget')) :?>
+        <?php if( is_active_sidebar('sidebar-homepage-widget' ) ) :?>
             <?php // echo ares_homepage_widget(); ?>
         <?php endif; ?>
         
@@ -60,7 +61,7 @@ get_header(); ?>
                         if ( 'posts' == get_option( 'show_on_front' ) ) {
                             get_template_part('template-parts/content', 'posts');
                         } else {
-                            get_template_part('template-parts/content', 'page');
+                            get_template_part('template-parts/content', 'home');
                         }                
 
                         // If comments are open or we have at least one comment, load up the comment template

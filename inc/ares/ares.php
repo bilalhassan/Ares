@@ -22,7 +22,6 @@ function ares_scripts() {
     wp_enqueue_style( 'camera', get_template_directory_uri() . '/inc/css/camera.css', array(), ARES_VERSION );
     wp_enqueue_style( 'ares-old-style', get_template_directory_uri() . '/inc/css/old_ares.css', array(), ARES_VERSION );
     wp_enqueue_style( 'ares-main-style', get_template_directory_uri() . '/inc/css/ares.css', array(), ARES_VERSION );
-//    wp_enqueue_style( 'ares-color-template', get_template_directory_uri() . '/inc/css/temps/' . esc_attr( $ares_options['ares_theme_color'] ) . '.css', array(), ARES_VERSION );
 
     wp_enqueue_script( 'jquery-easing', get_template_directory_uri() . '/inc/js/jquery.easing.1.3.js', array('jquery'), ARES_VERSION, true );
     wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/inc/js/bootstrap.min.js', array('jquery'), ARES_VERSION, true );
@@ -622,7 +621,7 @@ function ares_render_footer() {
     
     <i class="scroll-top fa fa-chevron-up"></i>
     
-    <footer id="colophon" class="site-footer " role="contentinfo">
+    <footer id="colophon" class="site-footer <?php echo $ares_options['ares_frontpage_content_bool'] == 'no' ? 'no-top-margin' : ''; ?>" role="contentinfo">
         
         <?php if( $ares_options['ares_footer_cta'] == 'yes' ) : ?>
     
