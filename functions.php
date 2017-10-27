@@ -89,7 +89,7 @@ if ( ! function_exists( 'ares_setup' ) ) :
         if( ! get_option( 'ares' ) ) :
             
             add_option( 'ares', ares_get_options() );
-            
+           
         endif;
         
     }
@@ -150,20 +150,20 @@ function ares_get_options() {
     
     return get_option( 'ares', array(
         
-        'ares_headerbar_bool'           => 'show',
+        'ares_headerbar_bool'           => 'yes',                          
         'ares_facebook_url'             => '',
         'ares_twitter_url'              => '',
         'ares_linkedin_url'             => '',
         'ares_gplus_url'                => '',
         'ares_instagram_url'            => '',
         'ares_youtube_url'              => '',
-        'ares_theme_color'              => 'aqua',                          // No CSTMZR YET
-        'ares_theme_background_pattern' => 'crossword',                     // No CSTMZR YET
+        'ares_theme_color'              => 'aqua',                          
+        'ares_theme_background_pattern' => 'crossword',                     
         'ares_font_size'                => 14,                              // No CSTMZR YET
         'ares_font_family'              => 'Josefin Sans, sans-serif',      // No CSTMZR YET
-        'ares_frontpage_content_bool'   => 'show',
+        'ares_frontpage_content_bool'   => 'yes',
         
-        'ares_slider_bool'              => 'show',
+        'ares_slider_bool'              => 'yes',
         'ares_slide1_image'             => get_template_directory_uri() . '/inc/images/ares_demo.jpg',
         'ares_slide1_text'              => __( 'Ares: Responsive Multi-purpose WordPress Theme', 'ares' ),
         'ares_slide2_image'             => get_template_directory_uri() . '/inc/images/ares_demo.jpg',
@@ -171,7 +171,7 @@ function ares_get_options() {
         'ares_slide3_image'             => get_template_directory_uri() . '/inc/images/ares_demo.jpg',
         'ares_slide3_text'              => __( 'Ares: Responsive Multi-purpose WordPress Theme', 'ares' ),
         
-        'ares_cta_bool'                 => 'show',
+        'ares_cta_bool'                 => 'yes',
         'ares_cta_header_one'           => __( 'Modern design with a responsive layout', 'ares' ),
         'ares_cta_header_two'           => __( 'User-friendly & Easily Customizable', 'ares' ),
         'ares_cta1_title'               => __( 'Theme Options', 'ares' ),
@@ -190,22 +190,22 @@ function ares_get_options() {
         'ares_cta3_url'                 => '',
         'ares_cta3_button_text'         => __( 'Click Here', 'ares' ),
         
-        'ares_homepage_sidebar'         => '',                              // No CSTMZR YET
-        'ares_blog_layout'              => '',                              // No CSTMZR YET
-        'ares_blog_featured'            => '',                              // No CSTMZR YET
-        'ares_single_layout'            => '',                              // No CSTMZR YET
-        'ares_single_featured'          => '',                              // No CSTMZR YET
-        'ares_single_date'              => '',                              // No CSTMZR YET
-        'ares_single_author'            => '',                              // No CSTMZR YET
+        'ares_homepage_sidebar'         => 'sidebar-off',                     // No CSTMZR YET
+        'ares_blog_layout'              => 'col2r',                           // No CSTMZR YET
+        'ares_blog_featured'            => 'on',                              // No CSTMZR YET
+        'ares_single_layout'            => 'col2r',                           // No CSTMZR YET - TEMPLATES
+        'ares_single_featured'          => 'on',                              // No CSTMZR YET
+        'ares_single_date'              => 'on',                              // No CSTMZR YET
+        'ares_single_author'            => 'on',                              // No CSTMZR YET
 
-        'ares_footer_cta'               => 'show',
+        'ares_footer_cta'               => 'yes',                          
         'ares_footer_cta_text'          => __( 'GET A NO RISK, FREE CONSULTATION TODAY', 'ares' ),
         'ares_footer_button_text'       => __( 'CONTACT US', 'ares' ),
         'ares_footer_button_url'        => '',
         'ares_footer_columns'           => 'col-md-4',
         'ares_footer_text'              => __( '&#169; 2015 Your company name', 'ares' ),
     
-        'ares_post_slider_cta_bool'     => 'show',
+        'ares_post_slider_cta_bool'     => 'yes',
         'ares_branding_bar_height'      => 80
         
     ) );

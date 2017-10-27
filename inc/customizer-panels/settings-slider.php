@@ -20,18 +20,18 @@ $wp_customize->add_section( 'ares_slider_settings_section', array(
 
     // Show / Hide Slider?
     $wp_customize->add_setting( 'ares[ares_slider_bool]', array(
-        'default'               => 'show',
+        'default'               => 'yes',
         'transport'             => 'refresh',
         'sanitize_callback'     => 'ares_sanitize_show_hide',
         'type'                  => 'option'
     ) );
     $wp_customize->add_control( 'ares[ares_slider_bool]', array(
-        'label'   => __( 'Show or hide the Slider?', 'zeal' ),
+        'label'   => __( 'Show or hide the Slider?', 'ares' ),
         'section' => 'ares_slider_settings_section',
         'type'    => 'radio',
         'choices'    => array(
-            'show'  => __( 'Show', 'ares' ),
-            'hide'  => __( 'Hide', 'ares' ),
+            'yes'   => __( 'Show', 'ares' ),
+            'no'    => __( 'Hide', 'ares' ),
         )
     ));
 

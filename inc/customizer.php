@@ -12,8 +12,8 @@
  */
 function ares_customize_register( $wp_customize ) {
 
-	// Header
-    require_once( 'customizer-panels/settings-header.php' );
+    // Header
+    require_once( 'customizer-panels/settings-header-footer.php' );
 
     // Frontpage
     require_once( 'customizer-panels/settings-frontpage.php' );
@@ -21,20 +21,23 @@ function ares_customize_register( $wp_customize ) {
     // Slider
     require_once( 'customizer-panels/settings-slider.php' );
 
-	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
-	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
-	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
+    // Appearance
+    require_once( 'customizer-panels/settings-appearance.php' );
 
-	if ( isset( $wp_customize->selective_refresh ) ) {
-		$wp_customize->selective_refresh->add_partial( 'blogname', array(
-			'selector'        => '.site-title a',
-			'render_callback' => 'ares_customize_partial_blogname',
-		) );
-		$wp_customize->selective_refresh->add_partial( 'blogdescription', array(
-			'selector'        => '.site-description',
-			'render_callback' => 'ares_customize_partial_blogdescription',
-		) );
-	}
+    $wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
+    $wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
+    $wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
+
+    if ( isset( $wp_customize->selective_refresh ) ) {
+        $wp_customize->selective_refresh->add_partial( 'blogname', array(
+            'selector'        => '.site-title a',
+            'render_callback' => 'ares_customize_partial_blogname',
+        ) );
+        $wp_customize->selective_refresh->add_partial( 'blogdescription', array(
+            'selector'        => '.site-description',
+            'render_callback' => 'ares_customize_partial_blogdescription',
+        ) );
+    }
 }
 add_action( 'customize_register', 'ares_customize_register' );
 
@@ -74,8 +77,8 @@ function ares_sanitize_integer( $input ) {
 function ares_sanitize_show_hide( $input ) {
 
     $valid_keys = array(
-        'show'  => __( 'Show', 'ares' ),
-        'hide'  => __( 'Hide', 'ares' ),
+        'yes'   => __( 'Show', 'ares' ),
+        'no'    => __( 'Hide', 'ares' ),
     );
 
     if ( array_key_exists( $input, $valid_keys ) ) {

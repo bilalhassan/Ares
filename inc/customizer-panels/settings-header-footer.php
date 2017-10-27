@@ -4,7 +4,7 @@
 // Header - Customizer Panel
 // ---------------------------------------------
 $wp_customize->add_panel( 'ares_header_panel', array(
-    'title'                 => __( 'Header', 'ares' ),
+    'title'                 => __( 'Header & Footer', 'ares' ),
     'description'           => __( 'Customize the appearance of your Header', 'ares' ),
     'priority'              => 10
 ) );
@@ -20,18 +20,18 @@ $wp_customize->add_section( 'ares_toolbar_section', array(
 
     // Show / Hide the Toolbar?
     $wp_customize->add_setting( 'ares[ares_headerbar_bool]', array(
-        'default'               => 'show',
+        'default'               => 'yes',
         'transport'             => 'refresh',
         'sanitize_callback'     => 'ares_sanitize_show_hide',
         'type'                  => 'option'
     ) );
     $wp_customize->add_control( 'ares[ares_headerbar_bool]', array(
-        'label'   => __( 'Show or hide the Toolbar section?', 'zeal' ),
+        'label'   => __( 'Show or hide the Toolbar section?', 'ares' ),
         'section' => 'ares_toolbar_section',
         'type'    => 'radio',
         'choices'    => array(
-            'show'  => __( 'Show', 'ares' ),
-            'hide'  => __( 'Hide', 'ares' ),
+            'yes'   => __( 'Show', 'ares' ),
+            'no'    => __( 'Hide', 'ares' ),
         )
     ));
 
@@ -139,3 +139,114 @@ $wp_customize->add_section( 'ares_header_height_section', array(
             'max' => 400,
             'step' => 1,
     ) ) );
+
+// ---------------------------------------------
+// Footer Section
+// ---------------------------------------------
+$wp_customize->add_section( 'ares_footer_section', array(
+    'title'                 => __( 'Footer', 'ares'),
+    'description'           => __( 'Customize the Footer', 'ares' ),
+    'panel'                 => 'ares_header_panel'
+) );
+
+    // Show / Hide the Footer CTA?
+    $wp_customize->add_setting( 'ares[ares_footer_cta]', array(
+        'default'               => 'yes',
+        'transport'             => 'refresh',
+        'sanitize_callback'     => 'ares_sanitize_show_hide',
+        'type'                  => 'option'
+    ) );
+    $wp_customize->add_control( 'ares[ares_footer_cta]', array(
+        'label'   => __( 'Show or hide the Footer CTA section?', 'ares' ),
+        'section' => 'ares_footer_section',
+        'type'    => 'radio',
+        'choices'    => array(
+            'yes'   => __( 'Show', 'ares' ),
+            'no'    => __( 'Hide', 'ares' ),
+        )
+    ));
+    
+    // Footer CTA Text
+    $wp_customize->add_setting( 'ares[ares_footer_cta_text]', array(
+        'default'               => __( 'GET A NO RISK, FREE CONSULTATION TODAY', 'ares' ),
+        'transport'             => 'refresh',
+        'sanitize_callback'     => 'sanitize_text_field',
+        'type'                  => 'option'
+    ) );
+    $wp_customize->add_control( 'ares[ares_footer_cta_text]', array(
+        'type'                  => 'text',
+        'section'               => 'ares_footer_section',
+        'label'                 => __( 'CTA - Text', 'juno' ),
+    ) );
+    
+    // Footer CTA Text
+    $wp_customize->add_setting( 'ares[ares_footer_button_text]', array(
+        'default'               => __( 'CONTACT US', 'ares' ),
+        'transport'             => 'refresh',
+        'sanitize_callback'     => 'sanitize_text_field',
+        'type'                  => 'option'
+    ) );
+    $wp_customize->add_control( 'ares[ares_footer_button_text]', array(
+        'type'                  => 'text',
+        'section'               => 'ares_footer_section',
+        'label'                 => __( 'CTA - Button Label', 'juno' ),
+    ) );
+    
+    // Footer CTA Button Text
+    $wp_customize->add_setting( 'ares[ares_footer_button_text]', array(
+        'default'               => __( 'CONTACT US', 'ares' ),
+        'transport'             => 'refresh',
+        'sanitize_callback'     => 'sanitize_text_field',
+        'type'                  => 'option'
+    ) );
+    $wp_customize->add_control( 'ares[ares_footer_button_text]', array(
+        'type'                  => 'text',
+        'section'               => 'ares_footer_section',
+        'label'                 => __( 'CTA - Button Label', 'juno' ),
+    ) );
+    
+    // Footer CTA Button URL
+    $wp_customize->add_setting( 'ares[ares_footer_button_url]', array(
+        'default'               => '',
+        'transport'             => 'refresh',
+        'sanitize_callback'     => 'esc_url_raw',
+        'type'                  => 'option'
+    ) );
+    $wp_customize->add_control( 'ares[ares_footer_button_url]', array(
+        'type'                  => 'text',
+        'section'               => 'ares_footer_section',
+        'label'                 => __( 'CTA - Button URL', 'juno' ),
+    ) );
+
+    // Footer Widget Area Columns
+    $wp_customize->add_setting( 'ares[ares_footer_columns]', array(
+        'default'               => 'col-md-4',
+        'transport'             => 'refresh',
+        'sanitize_callback'     => 'sanitize_text_field',
+        'type'                  => 'option'
+    ) );
+    $wp_customize->add_control( 'ares[ares_footer_columns]', array(
+        'label'   => __( 'Footer Widget Area - Columns', 'juno' ),
+        'section' => 'ares_footer_section',
+        'type'    => 'radio',
+        'choices'    => array(
+            'col-md-12'     => __( 'One', 'ares' ),
+            'col-md-6'      => __( 'Two', 'ares' ),
+            'col-md-4'      => __( 'Three', 'ares' ),
+            'col-md-3'      => __( 'Four', 'ares' ),
+        )
+    ));
+    
+    // Footer Copyright Text
+    $wp_customize->add_setting( 'ares[ares_footer_text]', array(
+        'default'               => __( '&#169; 2015 Your company name', 'ares' ),
+        'transport'             => 'refresh',
+        'sanitize_callback'     => 'sanitize_text_field',
+        'type'                  => 'option'
+    ) );
+    $wp_customize->add_control( 'ares[ares_footer_text]', array(
+        'type'                  => 'text',
+        'section'               => 'ares_footer_section',
+        'label'                 => __( 'Copyright Area Text', 'juno' ),
+    ) );
+    

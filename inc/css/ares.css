@@ -29,6 +29,10 @@ a {
     padding-top: 3px;
 }
 
+a.button-primary {
+    color: #ffffff;
+}
+
 header.site-header{
     width: 100%;
     position: fixed;
@@ -516,4 +520,11 @@ div#footer-callout h3 {
 
 .site-footer .footer-boxes #secondary {
     padding: 50px 0;
+}
+
+/* --- Team Members --- */ 
+.smartcat_team_member:hover img{
+    -webkit-filter: grayscale(0%);
+    -moz-filter: grayscale(0%);
+    filter: grayscale(0%);
 }

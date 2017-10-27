@@ -24,86 +24,86 @@ $ares_options = ares_get_options();
 
 </head>
 
-<body <?php body_class(); ?> style="background-image: url(<?php echo esc_url( get_template_directory_uri() . '/inc/images/crossword.png' ); ?>);">
+<body <?php body_class(); ?> style="background-image: url(<?php echo esc_url( get_template_directory_uri() . '/inc/images/' . esc_attr( $ares_options['ares_theme_background_pattern'] ) . '.png' ); ?>);">
 
-	<div id="page" class="site">
+    <div id="page" class="site">
 
-		<header id="masthead" class="site-header" role="banner">
+        <header id="masthead" class="site-header" role="banner">
 
-			<?php if ( $ares_options['ares_headerbar_bool'] == 'show' ) : ?>
+            <?php if ( $ares_options['ares_headerbar_bool'] == 'yes' ) : ?>
 
-                            <?php do_action( 'ares_toolbar' ); ?>
+                <?php do_action( 'ares_toolbar' ); ?>
 
-			<?php endif; ?>
+            <?php endif; ?>
 
-			<div id="site-branding" class="container">
+            <div id="site-branding" class="container">
 
-				<div class="branding">
+                <div class="branding">
 
-					<?php if ( function_exists( 'has_custom_logo' ) && has_custom_logo() ) : ?>
+                    <?php if ( function_exists( 'has_custom_logo' ) && has_custom_logo() ) : ?>
 
                         <?php the_custom_logo(); ?>
 
-					<?php else : ?>
+                    <?php else : ?>
 
-						<?php if ( get_bloginfo( 'name' ) ) : ?>
+                        <?php if ( get_bloginfo( 'name' ) ) : ?>
 
-							<h2 class="site-title">
-								<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-	                                <?php bloginfo( 'name' );?>
-	                            </a>
-	                        </h2>
+                            <h2 class="site-title">
+                                <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+                                    <?php bloginfo( 'name' );?>
+                                </a>
+                            </h2>
 
-						<?php endif; ?>
+                        <?php endif; ?>
 
-						<?php if ( get_bloginfo( 'description' ) ) : ?>
+                        <?php if ( get_bloginfo( 'description' ) ) : ?>
 
-							<h5 class="site-description">
-								<?php bloginfo( 'description' ); ?>
-							</h5>
+                            <h5 class="site-description">
+                                <?php bloginfo( 'description' ); ?>
+                            </h5>
 
-						<?php endif; ?>
+                        <?php endif; ?>
 
                     <?php endif; ?>
 
-				</div>
+                </div>
 
                 <div class="navigation">
 
                     <nav id="site-navigation" class="main-navigation" role="navigation">
 
                         <?php wp_nav_menu( array(
-							'theme_location' => 'primary',
-							'menu_id'        => 'primary-menu',
-						) ); ?>
+                            'theme_location' => 'primary',
+                            'menu_id'        => 'primary-menu',
+                        ) ); ?>
 
                     </nav><!-- #site-navigation -->
 
                 </div>
 
-				<div class="mobile-trigger-wrap">
-					<span id="mobile-menu-trigger"><span class="fa fa-bars"></span></span>
-				</div>
+                <div class="mobile-trigger-wrap">
+                    <span id="mobile-menu-trigger"><span class="fa fa-bars"></span></span>
+                </div>
 
-				<div id="mobile-overlay"></div>
+                <div id="mobile-overlay"></div>
 
-				<div id="mobile-menu-wrap">
+                <div id="mobile-menu-wrap">
 
                     <nav id="menu" role="navigation">
 
-						<img id="mobile-menu-close" src="<?php echo esc_url( get_template_directory_uri() . '/inc/images/close-mobile.png' ); ?>" alt="<?php _e( 'Close Menu', 'ares' ); ?>">
+                        <img id="mobile-menu-close" src="<?php echo esc_url( get_template_directory_uri() . '/inc/images/close-mobile.png' ); ?>" alt="<?php _e( 'Close Menu', 'ares' ); ?>">
 
                         <?php wp_nav_menu( array(
                              'theme_location' => 'primary',
                              'menu_id'        => 'mobile-menu',
-                         ) ); ?>
+                        ) ); ?>
 
                     </nav>
 
                 </div>
 
-			</div>
+            </div>
 
-		</header><!-- #masthead -->
+        </header><!-- #masthead -->
 
-		<div id="content" class="site-content">
+        <div id="content" class="site-content">

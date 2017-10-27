@@ -20,18 +20,18 @@ $wp_customize->add_panel( 'ares_frontpage_panel', array(
 
         // Show / Hide the CTA Header?
         $wp_customize->add_setting( 'ares[ares_post_slider_cta_bool]', array(
-            'default'               => 'show',
+            'default'               => 'yes',
             'transport'             => 'refresh',
             'sanitize_callback'     => 'ares_sanitize_show_hide',
             'type'                  => 'option'
         ) );
         $wp_customize->add_control( 'ares[ares_post_slider_cta_bool]', array(
-            'label'   => __( 'Show or hide the CTA banner below the Slider?', 'zeal' ),
+            'label'   => __( 'Show or hide the CTA banner below the Slider?', 'ares' ),
             'section' => 'ares_cta_header_section',
             'type'    => 'radio',
             'choices'    => array(
-                'show'  => __( 'Show', 'ares' ),
-                'hide'  => __( 'Hide', 'ares' ),
+                'yes'   => __( 'Show', 'ares' ),
+                'no'    => __( 'Hide', 'ares' ),
             )
         ));
     
@@ -72,18 +72,18 @@ $wp_customize->add_panel( 'ares_frontpage_panel', array(
 
         // Show / Hide the CTA Trio Section?
         $wp_customize->add_setting( 'ares[ares_cta_bool]', array(
-            'default'               => 'show',
+            'default'               => 'yes',
             'transport'             => 'refresh',
             'sanitize_callback'     => 'ares_sanitize_show_hide',
             'type'                  => 'option'
         ) );
         $wp_customize->add_control( 'ares[ares_cta_bool]', array(
-            'label'   => __( 'Show or hide the CTA Trio section?', 'zeal' ),
+            'label'   => __( 'Show or hide the CTA Trio section?', 'ares' ),
             'section' => 'ares_cta_trio_section',
             'type'    => 'radio',
             'choices'    => array(
-                'show'  => __( 'Show', 'ares' ),
-                'hide'  => __( 'Hide', 'ares' ),
+                'yes'   => __( 'Show', 'ares' ),
+                'no'    => __( 'Hide', 'ares' ),
             )
         ));
     
@@ -296,17 +296,17 @@ $wp_customize->add_panel( 'ares_frontpage_panel', array(
     
         // Show / Hide the Homepage Content?
         $wp_customize->add_setting( 'ares[ares_frontpage_content_bool]', array(
-            'default'               => 'show',
+            'default'               => 'yes',
             'transport'             => 'refresh',
             'sanitize_callback'     => 'ares_sanitize_show_hide',
             'type'                  => 'option'
         ) );
         $wp_customize->add_control( 'ares[ares_frontpage_content_bool]', array(
-            'label'   => __( 'Show or hide the homepage content?', 'zeal' ),
+            'label'   => __( 'Show or hide the homepage content?', 'ares' ),
             'section' => 'ares_frontpage_content_section',
             'type'    => 'radio',
             'choices'    => array(
-                'show'  => __( 'Show', 'ares' ),
-                'hide'  => __( 'Hide', 'ares' ),
+                'yes'   => __( 'Show', 'ares' ),
+                'no'    => __( 'Hide', 'ares' ),
             )
         ));
