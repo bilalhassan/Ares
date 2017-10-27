@@ -19,12 +19,13 @@ $wp_customize->add_section( 'ares_slider_settings_section', array(
 ) );
 
     // Show / Hide Slider?
-    $wp_customize->add_setting( 'ares_slider_bool', array(
+    $wp_customize->add_setting( 'ares[ares_slider_bool]', array(
         'default'               => 'show',
         'transport'             => 'refresh',
-        'sanitize_callback'     => 'ares_sanitize_show_hide'
+        'sanitize_callback'     => 'ares_sanitize_show_hide',
+        'type'                  => 'option'
     ) );
-    $wp_customize->add_control( 'ares_slider_bool', array(
+    $wp_customize->add_control( 'ares[ares_slider_bool]', array(
         'label'   => __( 'Show or hide the Slider?', 'zeal' ),
         'section' => 'ares_slider_settings_section',
         'type'    => 'radio',
@@ -49,25 +50,27 @@ for ( $ctr = 1; $ctr < 4; $ctr++ ) :
     ) );
 
         // Slide - Image
-        $wp_customize->add_setting( 'ares_slide' . $ctr . '_image', array(
+        $wp_customize->add_setting( 'ares[ares_slide' . $ctr . '_image]', array(
             'default'               => get_template_directory_uri() . '/inc/images/ares_demo.jpg',
             'transport'             => 'refresh',
             'sanitize_callback'     => 'esc_url_raw',
+            'type'                  => 'option'
         ) );
-        $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'ares_slide' . $ctr . '_image', array(
+        $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'ares[ares_slide' . $ctr . '_image]', array(
             'mime_type'             => 'image',
-            'settings'              => 'ares_slide' . $ctr . '_image',
+            'settings'              => 'ares[ares_slide' . $ctr . '_image]',
             'section'               => 'ares_slide_' . $ctr . '_section',
             'label'                 => __( 'Slide Image', 'ares' ),
         ) ) );
 
         // Slide - Caption Text
-        $wp_customize->add_setting( 'ares_slide' . $ctr . '_text', array(
+        $wp_customize->add_setting( 'ares[ares_slide' . $ctr . '_text]', array(
             'default'               => __( 'Ares: Responsive Multi-purpose WordPress Theme', 'ares' ),
             'transport'             => 'refresh',
             'sanitize_callback'     => 'sanitize_text_field',
+            'type'                  => 'option'
         ) );
-        $wp_customize->add_control( 'ares_slide' . $ctr . '_text', array(
+        $wp_customize->add_control( 'ares[ares_slide' . $ctr . '_text]', array(
             'type'                  => 'text',
             'section'               => 'ares_slide_' . $ctr . '_section',
             'label'                 => __( 'Text Caption', 'juno' ),

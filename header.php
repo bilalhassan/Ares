@@ -9,6 +9,8 @@
  * @package Ares
  */
 
+$ares_options = ares_get_options();
+
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
@@ -28,9 +30,9 @@
 
 		<header id="masthead" class="site-header" role="banner">
 
-			<?php if ( get_theme_mod( 'ares_toolbar_bool', 'show' ) == 'show' ) : ?>
+			<?php if ( $ares_options['ares_headerbar_bool'] == 'show' ) : ?>
 
-				<?php do_action( 'ares_toolbar' ); ?>
+                            <?php do_action( 'ares_toolbar' ); ?>
 
 			<?php endif; ?>
 

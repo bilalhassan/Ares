@@ -9,10 +9,11 @@ function ares_scripts() {
 
     // Load Fonts from array
     $fonts = ares_fonts();
-
+    $ares_options = ares_get_options();
+    
     // Primary Font Enqueue
-    if( array_key_exists ( get_theme_mod( 'ares_font_primary', 'Josefin Sans, sans-serif'), $fonts ) ) :
-        wp_enqueue_style('google-font-primary', '//fonts.googleapis.com/css?family=' . esc_attr( $fonts[ get_theme_mod( 'ares_font_primary', 'Josefin Sans, sans-serif' ) ] ), array(), ARES_VERSION );
+    if( array_key_exists ( $ares_options['ares_font_family'], $fonts ) ) :
+        wp_enqueue_style('google-font-primary', '//fonts.googleapis.com/css?family=' . esc_attr( $fonts[ $ares_options['ares_font_family'] ] ), array(), ARES_VERSION );
     endif;
 
     wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/inc/css/bootstrap.min.css', array(), ARES_VERSION );
@@ -47,6 +48,8 @@ add_action( 'wp_enqueue_scripts', 'ares_scripts' );
  */
 function ares_widgets_init() {
 
+    $ares_options = ares_get_options();
+    
     register_sidebar(array(
         'name' => __('Header Right (Toolbar)', 'ares'),
         'id' => 'sidebar-header-right',
@@ -91,7 +94,7 @@ function ares_widgets_init() {
         'name' => __('Footer', 'ares'),
         'id' => 'sidebar-footer',
         'description' => '',
-        'before_widget' => '<aside id="%1$s" class="' . esc_attr( get_theme_mod( 'ares_footer_columns', 'col-md-4' ) ) . ' widget %2$s">',
+        'before_widget' => '<aside id="%1$s" class="' . esc_attr( $ares_options['ares_footer_columns'] ) . ' widget %2$s">',
         'after_widget' => '</aside>',
         'before_title' => '<h2 class="widget-title">',
         'after_title' => '</h2><div class="avenue-underline"></div>',
@@ -145,42 +148,48 @@ function ares_hex2rgba( $color, $opacity = false ) {
 /**
  * Inject dynamic CSS rules with wp_head.
  */
-function ares_custom_css() { ?>
+function ares_custom_css() { 
+
+    $ares_options = ares_get_options(); ?>
 
     <style>
 
         body {
-            font-family: <?php echo esc_attr( get_theme_mod( 'ares_font_primary', 'Josefin Sans, sans-serif' ) ); ?>;
+            font-family: <?php echo esc_attr( $ares_options['ares_font_family'] ); ?>;
         }
 
+        /*
+        
         #site-toolbar .social-bar a:hover {
-            background-color: <?php echo esc_attr( get_theme_mod( 'ares_skin_color_primary', '#83CBDC' ) ); ?>;
-            border-color: <?php echo esc_attr( get_theme_mod( 'ares_skin_color_primary', '#83CBDC' ) ); ?>;
+            background-color: <?php echo esc_attr( $ares_options['ares_theme_color'] ); ?>;
+            border-color: <?php echo esc_attr( $ares_options['ares_theme_color'] ); ?>;
         }
 
         #site-branding .site-title a,
         #site-navigation.main-navigation li a:hover {
-            color: <?php echo esc_attr( get_theme_mod( 'ares_skin_color_primary', '#83CBDC' ) ); ?>;
+            color: <?php echo esc_attr( $ares_options['ares_theme_color'] ); ?>;
         }
 
+        */
+        
         /*
         ----- Header Heights ---------------------------------------------------------
         */
 
         @media (min-width:992px) {
             #site-branding {
-               height: <?php echo intval( get_theme_mod( 'ares_branding_bar_height', 80 ) ); ?>px;
+               height: <?php echo intval( $ares_options['ares_branding_bar_height'] ); ?>px;
             }
             #site-branding img {
-               max-height: <?php echo intval( get_theme_mod( 'ares_branding_bar_height', 80 ) ); ?>px;
+               max-height: <?php echo intval( $ares_options['ares_branding_bar_height'] ); ?>px;
             }
         }
 
         div#content {
-            margin-top: <?php echo esc_attr( get_theme_mod( 'ares_branding_bar_height', '80' ) + ( get_theme_mod( 'ares_toolbar_bool', 'show' ) == 'show' ? 40 : 0 ) ); ?>px;
+            margin-top: <?php echo esc_attr( $ares_options['ares_branding_bar_height'] + ( $ares_options['ares_headerbar_bool'] == 'show' ? 40 : 0 ) ); ?>px;
         }
 
-        <?php if ( get_theme_mod( 'ares_toolbar_bool', 'show' ) != 'show' ) : ?>
+        <?php if ( $ares_options['ares_headerbar_bool'] != 'show' ) : ?>
         
             div#content {
                 margin-top: 80px !important;
@@ -229,8 +238,10 @@ function ares_all_posts_array( $include_pages = false ) {
 /**
  * Render the toolbar in the header.
  */
-function ares_render_toolbar() { ?>
+function ares_render_toolbar() {
 
+    $ares_options = ares_get_options(); ?>
+    
     <div id="site-toolbar">
 
         <div class="container">
@@ -239,38 +250,38 @@ function ares_render_toolbar() { ?>
 
                 <div class="col-xs-<?php echo is_active_sidebar( 'sidebar-header-right' ) ? '6' : '12'; ?> social-bar">
 
-                    <?php if ( get_theme_mod( 'ares_facebook_url', '' ) ) : ?>
-                        <a href="<?php echo esc_url( get_theme_mod( 'ares_facebook_url', '' ) ); ?>" target="_blank" class="icon-facebook animated fadeInDown">
+                    <?php if ( $ares_options['ares_facebook_url'] ) : ?>
+                        <a href="<?php echo esc_url( $ares_options['ares_facebook_url'] ); ?>" target="_blank" class="icon-facebook animated fadeInDown">
                             <i class="fa fa-facebook"></i>
                         </a>
                     <?php endif; ?>
 
-                    <?php if ( get_theme_mod( 'ares_twitter_url', '' ) ) : ?>
-                    <a href="<?php echo esc_url( get_theme_mod( 'ares_twitter_url', '' ) ); ?>" target="_blank" class="icon-twitter animated fadeInDown">
+                    <?php if ( $ares_options['ares_twitter_url'] ) : ?>
+                    <a href="<?php echo esc_url( $ares_options['ares_twitter_url'] ); ?>" target="_blank" class="icon-twitter animated fadeInDown">
                             <i class="fa fa-twitter"></i>
                         </a>
                     <?php endif; ?>
 
-                    <?php if ( get_theme_mod( 'ares_linkedin_url', '' ) ) : ?>
-                        <a href="<?php echo esc_url( get_theme_mod( 'ares_linkedin_url', '' ) ); ?>" target="_blank" class="icon-linkedin animated fadeInDown">
+                    <?php if ( $ares_options['ares_linkedin_url'] ) : ?>
+                        <a href="<?php echo esc_url( $ares_options['ares_linkedin_url'] ); ?>" target="_blank" class="icon-linkedin animated fadeInDown">
                             <i class="fa fa-linkedin"></i>
                         </a>
                     <?php endif; ?>
 
-                    <?php if ( get_theme_mod( 'ares_gplus_url', '' ) ) : ?>
-                        <a href="<?php echo esc_url( get_theme_mod( 'ares_gplus_url', '' ) ); ?>" target="_blank" class="icon-gplus animated fadeInDown">
+                    <?php if ( $ares_options['ares_gplus_url'] ) : ?>
+                        <a href="<?php echo esc_url( $ares_options['ares_gplus_url'] ); ?>" target="_blank" class="icon-gplus animated fadeInDown">
                             <i class="fa fa-google-plus"></i>
                         </a>
                     <?php endif; ?>
 
-                    <?php if ( get_theme_mod( 'ares_instagram_url', '' ) ) : ?>
-                        <a href="<?php echo esc_url( get_theme_mod( 'ares_instagram_url', '' ) ); ?>" target="_blank" class="icon-instagram animated fadeInDown">
+                    <?php if ( $ares_options['ares_instagram_url'] ) : ?>
+                        <a href="<?php echo esc_url( $ares_options['ares_instagram_url'] ); ?>" target="_blank" class="icon-instagram animated fadeInDown">
                             <i class="fa fa-instagram"></i>
                         </a>
                     <?php endif; ?>
 
-                    <?php if ( get_theme_mod( 'ares_youtube_url', '' ) ) : ?>
-                        <a href="<?php echo esc_url( get_theme_mod( 'ares_youtube_url', '' ) ); ?>" target="_blank" class="icon-youtube animated fadeInDown">
+                    <?php if ( $ares_options['ares_youtube_url'] ) : ?>
+                        <a href="<?php echo esc_url( $ares_options['ares_youtube_url'] ); ?>" target="_blank" class="icon-youtube animated fadeInDown">
                             <i class="fa fa-youtube"></i>
                         </a>
                     <?php endif; ?>
@@ -299,67 +310,67 @@ add_action( 'ares_toolbar', 'ares_render_toolbar' );
 /**
  * Render the slider on the frontpage.
  */
-function ares_render_slider() { ?>
+function ares_render_slider() {
 
-	<?php if ( get_theme_mod( 'ares_slide1_image',  get_template_directory_uri() . '/inc/images/ares_demo.jpg' ) ||
-		get_theme_mod( 'ares_slide2_image',  get_template_directory_uri() . '/inc/images/ares_demo.jpg' ) ||
-		get_theme_mod( 'ares_slide3_image',  get_template_directory_uri() . '/inc/images/ares_demo.jpg' ) ) : ?>
+$ares_options = ares_get_options(); ?>
+    
+<?php if ( $ares_options['ares_slide1_image'] || $ares_options['ares_slide2_image'] || $ares_options['ares_slide3_image'] ) : ?>
 
-	    <div class="sc-slider-wrapper">
+    <div class="sc-slider-wrapper">
 
-			<div class="fluid_container">
+        <div class="fluid_container">
 
-				<div class="camera_wrap" id="ares_slider_wrap">
+            <div class="camera_wrap" id="ares_slider_wrap">
 
-					<?php if ( get_theme_mod( 'ares_slide1_image',  get_template_directory_uri() . '/inc/images/ares_demo.jpg' ) ) : ?>
+                <?php if ( $ares_options['ares_slide1_image'] ) : ?>
 
-	                    <div data-thumb="<?php echo esc_attr( get_theme_mod( 'ares_slide1_image', get_template_directory_uri() . '/inc/images/ares_demo.jpg' ) ); ?>" data-src="<?php echo esc_attr( get_theme_mod( 'ares_slide1_image', get_template_directory_uri() . '/inc/images/ares_demo.jpg' ) ); ?>">
+                    <div data-thumb="<?php echo esc_attr( $ares_options['ares_slide1_image'] ); ?>" data-src="<?php echo esc_attr( $ares_options['ares_slide1_image'] ); ?>">
 
-	                        <div class="camera_caption fadeFromBottom">
-	                            <span>
-									<?php echo esc_attr( get_theme_mod( 'ares_slide1_text', __( 'Ares: Responsive Multi-purpose WordPress Theme', 'ares' ) ) ); ?>
-								</span>
-	                        </div>
+                        <div class="camera_caption fadeFromBottom">
+                            <span>
+                                <?php echo esc_attr( $ares_options['ares_slide1_text'] ); ?>
+                            </span>
+                        </div>
 
-	                    </div>
+                    </div>
 
-	                <?php endif; ?>
+                <?php endif; ?>
 
-					<?php if ( get_theme_mod( 'ares_slide2_image',  get_template_directory_uri() . '/inc/images/ares_demo.jpg' ) ) : ?>
+                <?php if ( $ares_options['ares_slide2_image'] ) : ?>
 
-						<div data-thumb="<?php echo esc_attr( get_theme_mod( 'ares_slide2_image', get_template_directory_uri() . '/inc/images/ares_demo.jpg' ) ); ?>" data-src="<?php echo esc_attr( get_theme_mod( 'ares_slide2_image', get_template_directory_uri() . '/inc/images/ares_demo.jpg' ) ); ?>">
+                    <div data-thumb="<?php echo esc_attr( $ares_options['ares_slide2_image'] ); ?>" data-src="<?php echo esc_attr( $ares_options['ares_slide2_image'] ); ?>">
 
-							<div class="camera_caption fadeFromBottom">
-								<span>
-									<?php echo esc_attr( get_theme_mod( 'ares_slide2_text', __( 'Ares: Responsive Multi-purpose WordPress Theme', 'ares' ) ) ); ?>
-								</span>
-							</div>
+                        <div class="camera_caption fadeFromBottom">
+                            <span>
+                                <?php echo esc_attr( $ares_options['ares_slide2_text'] ); ?>
+                            </span>
+                        </div>
 
-						</div>
+                    </div>
 
-					<?php endif; ?>
+                <?php endif; ?>
 
-					<?php if ( get_theme_mod( 'ares_slide3_image',  get_template_directory_uri() . '/inc/images/ares_demo.jpg' ) ) : ?>
+                <?php if ( $ares_options['ares_slide3_image'] ) : ?>
 
-						<div data-thumb="<?php echo esc_attr( get_theme_mod( 'ares_slide3_image', get_template_directory_uri() . '/inc/images/ares_demo.jpg' ) ); ?>" data-src="<?php echo esc_attr( get_theme_mod( 'ares_slide3_image', get_template_directory_uri() . '/inc/images/ares_demo.jpg' ) ); ?>">
+                    <div data-thumb="<?php echo esc_attr( $ares_options['ares_slide3_image'] ); ?>" data-src="<?php echo esc_attr( $ares_options['ares_slide3_image'] ); ?>">
 
-							<div class="camera_caption fadeFromBottom">
-								<span>
-									<?php echo esc_attr( get_theme_mod( 'ares_slide3_text', __( 'Ares: Responsive Multi-purpose WordPress Theme', 'ares' ) ) ); ?>
-								</span>
-							</div>
+                        <div class="camera_caption fadeFromBottom">
+                            <span>
+                                <?php echo esc_attr( $ares_options['ares_slide3_text'] ); ?>
+                            </span>
+                        </div>
 
-						</div>
+                    </div>
 
-					<?php endif; ?>
+                <?php endif; ?>
 
-		        </div><!-- #camera_wrap_1 -->
+            </div><!-- #camera_wrap_1 -->
 
-	        </div>
+    </div>
 
-		</div>
+    </div>
 
-	<?php endif; ?>
+    <?php endif; ?>
 
 <?php }
 add_action( 'ares_slider', 'ares_render_slider' );
@@ -421,33 +432,35 @@ if( !function_exists( 'ares_fonts' ) ) {
 /**
  * Render the CTA Trio on the frontpage.
  */
-function ares_render_cta_trio() { ?>
+function ares_render_cta_trio() {
 
+    $ares_options = ares_get_options(); ?>
+    
     <div id="site-cta-wrap">
     
-        <div id="site-cta" class="container <?php echo get_theme_mod( 'ares_slider_bool', 'show' ) == 'show' ? '' : 'no-slider'; ?>"><!-- #CTA boxes -->
+        <div id="site-cta" class="container <?php echo $ares_options['ares_slider_bool'] == 'show' ? '' : 'no-slider'; ?>"><!-- #CTA boxes -->
 
             <div class="row">
 
                 <div class="col-md-4 site-cta smartcat-animate fadeInUp">
 
                     <div class="icon-wrap center">
-                        <a href="<?php echo esc_url( get_theme_mod( 'ares_cta1_url', '' ) ) ?>">
-                            <i class="<?php echo esc_attr( get_theme_mod('ares_cta1_icon', 'fa fa-gears' ) ); ?> animated"></i>
+                        <a href="<?php echo esc_url( $ares_options['ares_cta1_url'] ) ?>">
+                            <i class="<?php echo esc_attr( $ares_options['ares_cta1_icon'] ); ?> animated"></i>
                         </a>
                     </div>
 
                     <h3>
-                        <?php echo esc_attr( get_theme_mod( 'ares_cta1_title', __( 'Theme Options', 'ares' ) ) ); ?>
+                        <?php echo esc_attr( $ares_options['ares_cta1_title'] ); ?>
                     </h3>
 
                     <p class="tagline">
-                        <?php echo get_theme_mod( 'ares_cta1_text', __( 'Change typography, colors, layouts...', 'ares' ) ); ?>
+                        <?php echo $ares_options['ares_cta1_text']; ?>
                     </p>
 
                     <p class="">
-                        <a href="<?php echo esc_url( get_theme_mod( 'ares_cta1_url', '' ) ) ?>">
-                            <?php echo get_theme_mod( 'ares_cta1_button_text', __( 'Click Here', 'ares' ) );  ?>
+                        <a href="<?php echo esc_url( $ares_options['ares_cta1_url'] ) ?>">
+                            <?php echo $ares_options['ares_cta1_button_text'];  ?>
                         </a>
                     </p>                                
 
@@ -456,22 +469,22 @@ function ares_render_cta_trio() { ?>
                 <div class="col-md-4 site-cta smartcat-animate fadeInUp">
 
                     <div class="icon-wrap center">
-                        <a href="<?php echo esc_url( get_theme_mod( 'ares_cta2_url', '') ) ?>">
-                            <i class="<?php echo esc_attr( get_theme_mod( 'ares_cta2_icon', 'fa fa-mobile' ) ); ?> animated"></i>
+                        <a href="<?php echo esc_url( $ares_options['ares_cta2_url'] ) ?>">
+                            <i class="<?php echo esc_attr( $ares_options['ares_cta2_icon'] ); ?> animated"></i>
                         </a>
                     </div>
 
                     <h3>
-                        <?php echo esc_attr( get_theme_mod( 'ares_cta2_title', __( 'Responsive Layout', 'ares' ) ) ); ?>
+                        <?php echo esc_attr( $ares_options['ares_cta2_title'] ); ?>
                     </h3>
 
                     <p class="tagline">
-                        <?php echo get_theme_mod( 'ares_cta2_text', __( 'Looks great on different devices', 'ares' ) ); ?>
+                        <?php echo $ares_options['ares_cta2_text']; ?>
                     </p>
 
                     <p class="">
-                        <a href="<?php echo esc_url( get_theme_mod( 'ares_cta2_url', '') ) ?>">
-                            <?php echo get_theme_mod( 'ares_cta2_button_text', __( 'Click Here', 'ares' ) );  ?>
+                        <a href="<?php echo esc_url( $ares_options['ares_cta2_url'] ) ?>">
+                            <?php echo $ares_options['ares_cta2_button_text'];  ?>
                         </a>
                     </p>                                
 
@@ -480,22 +493,22 @@ function ares_render_cta_trio() { ?>
                 <div class="col-md-4 site-cta smartcat-animate fadeInUp">
 
                     <div class="icon-wrap center">
-                        <a href="<?php echo esc_url( get_theme_mod( 'ares_cta3_url', '') ) ?>">
-                            <i class="<?php echo esc_attr( get_theme_mod( 'ares_cta3_icon', 'fa fa-leaf' ) ); ?> animated"></i>
+                        <a href="<?php echo esc_url( $ares_options['ares_cta3_url'] ) ?>">
+                            <i class="<?php echo esc_attr( $ares_options['ares_cta3_icon'] ); ?> animated"></i>
                         </a>
                     </div>
 
                     <h3>
-                        <?php echo esc_attr( get_theme_mod( 'ares_cta3_title', __( 'Elegant Design', 'ares' ) ) ); ?>
+                        <?php echo esc_attr( $ares_options['ares_cta3_title'] ); ?>
                     </h3>
 
                     <p class="tagline">
-                        <?php echo get_theme_mod( 'ares_cta3_text', __( 'Beautiful design to give your site an elegant look', 'ares' ) ); ?>
+                        <?php echo $ares_options['ares_cta3_text']; ?>
                     </p>
 
                     <p class="">
-                        <a href="<?php echo esc_url( get_theme_mod( 'ares_cta3_url', '') ) ?>">
-                            <?php echo get_theme_mod( 'ares_cta3_button_text', __( 'Click Here', 'ares' ) );  ?>
+                        <a href="<?php echo esc_url( $ares_options['ares_cta3_url'] ) ?>">
+                            <?php echo $ares_options['ares_cta3_button_text'];  ?>
                         </a>
                     </p>                                
 
@@ -516,27 +529,27 @@ add_action( 'ares_cta_trio', 'ares_render_cta_trio' );
 /**
  * Render the footer.
  */
-function ares_render_footer() { ?>
+function ares_render_footer() {
+    
+    $ares_options = ares_get_options(); ?>
     
     <i class="scroll-top fa fa-chevron-up"></i>
     
- 
-    
     <footer id="colophon" class="site-footer " role="contentinfo">
         
-        <?php if(get_theme_mod( 'ares_footer_cta', 'show' ) == 'show' ) : ?>
+        <?php if( $ares_options['ares_footer_cta'] == 'show' ) : ?>
     
         <div id="footer-callout" class="container-fluid">
             
             <div class="row">
                 
                 <div class="col-sm-8 center">
-                    <h3 class="smartcat-animate fadeInUp"><?php echo get_theme_mod( 'ares_footer_cta_text', __( 'GET A NO RISK, FREE CONSULTATION TODAY' ) ); ?></h3>
+                    <h3 class="smartcat-animate fadeInUp"><?php echo $ares_options['ares_footer_cta_text']; ?></h3>
                 </div>
                 
                 <div class="col-sm-4 center">
-                    <a class="button button-cta smartcat-animate fadeInUp" href="<?php echo get_theme_mod( 'ares_footer_button_url', '' ); ?>">
-                        <?php echo get_theme_mod('ares_footer_button_text', __( 'CONTACT OUR OFFICE', 'ares' ) ); ?>
+                    <a class="button button-cta smartcat-animate fadeInUp" href="<?php echo $ares_options['ares_footer_button_url']; ?>">
+                        <?php echo $ares_options['ares_footer_button_text']; ?>
                     </a>
                 </div>
                 
@@ -572,7 +585,7 @@ function ares_render_footer() { ?>
                 <div class="row ">
 
                     <div class="col-xs-6 text-left">
-                        <?php echo get_theme_mod( 'ares_footer_text', __( '&#169; 2015 Your company name' ) ); ?>
+                        <?php echo $ares_options['ares_footer_text']; ?>
                     </div>
 
                     <div class="col-xs-6 text-right">

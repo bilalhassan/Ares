@@ -4,29 +4,30 @@
  * @author bilal hassan <info@smartcatdesign.net>
  *
  */
+$ares_options = ares_get_options();
 get_header(); ?>
 
 <div id="primary" class="content-area">
 
     <main id="main" class="site-main">
 
-        <?php if ( get_theme_mod( 'ares_slider_bool', 'show' ) == 'show' ) : ?>
+        <?php if ( $ares_options['ares_slider_bool'] == 'show' ) : ?>
             <?php do_action( 'ares_slider' ); ?>
         <?php endif; ?>
 
-        <?php if ( get_theme_mod( 'ares_cta_header_bool', 'show' ) == 'show' ) : ?>
+        <?php if ( $ares_options['ares_post_slider_cta_bool'] == 'show' ) : ?>
 
             <div id="post-slider-cta">
 
-                <?php if ( get_theme_mod( 'ares_cta_heading', __( 'Modern design with a responsive layout', 'ares' ) ) ) : ?>
+                <?php if ( $ares_options['ares_cta_header_one'] ) : ?>
                     <h3 class="main-heading animated fadeInLeft">
-                        <?php esc_html_e( get_theme_mod( 'ares_cta_heading', __( 'Modern design with a responsive layout', 'ares' ) ) ); ?>
+                        <?php esc_html_e( $ares_options['ares_cta_header_one'] ); ?>
                     </h3>
                 <?php endif; ?>
 
-                <?php if ( get_theme_mod( 'ares_cta_subheading', __( 'User-friendly & Easily Customizable', 'ares' ) ) ) : ?>
+                <?php if ( $ares_options['ares_cta_header_two'] ) : ?>
                     <h4 class="secondary-heading animated fadeInRight">
-                        <?php esc_html_e( get_theme_mod( 'ares_cta_subheading', __( 'User-friendly & Easily Customizable', 'ares' ) ) ); ?>
+                        <?php esc_html_e( $ares_options['ares_cta_header_two'] ); ?>
                     </h4>
                 <?php endif; ?>
 
@@ -34,7 +35,7 @@ get_header(); ?>
 
         <?php endif; ?>
         
-        <?php if ( get_theme_mod( 'ares_cta_trio_bool', 'show' ) == 'show' ) : ?>
+        <?php if ( $ares_options['ares_cta_bool'] == 'show' ) : ?>
             <?php do_action( 'ares_cta_trio' ); ?>
         <?php endif; ?>
         
@@ -46,7 +47,7 @@ get_header(); ?>
             <?php // echo ares_homepage_widget(); ?>
         <?php endif; ?>
         
-        <?php if ( get_theme_mod( 'ares_frontpage_content_bool', 'show' ) == 'show' ) : ?> 
+        <?php if ( $ares_options['ares_frontpage_content_bool'] == 'show' ) : ?>
         
             <div class="container">
 

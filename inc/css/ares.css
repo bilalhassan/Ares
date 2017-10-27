@@ -112,6 +112,11 @@ header.site-header{
    width: 75%;
 }
 
+#site-branding img {
+    max-height: 80px;
+    width: auto;
+}
+
 @media (max-width:991px) {
     #site-branding div.branding {
         width: 100%;

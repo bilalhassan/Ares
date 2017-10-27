@@ -86,9 +86,9 @@ if ( ! function_exists( 'ares_setup' ) ) :
                 'flex-height' => true,
         ) );
         
-        if ( get_option( 'ares_migration_completed' ) != 'completed' ) : 
+        if( ! get_option( 'ares' ) ) :
             
-            ares_migration();
+            add_option( 'ares', ares_get_options() );
             
         endif;
         
@@ -133,7 +133,7 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 if ( defined( 'JETPACK__VERSION' ) ) {
-	require get_template_directory() . '/inc/jetpack.php';
+    require get_template_directory() . '/inc/jetpack.php';
 }
 
 /**
@@ -146,7 +146,7 @@ if ( defined( 'JETPACK__VERSION' ) ) {
  */
 require get_template_directory() . '/inc/ares/ares.php';
 
-function ares_migration() {
+function ares_get_options() {
     
     return get_option( 'ares', array(
         
@@ -181,7 +181,7 @@ function ares_migration() {
         'ares_cta1_button_text'         => __( 'Click Here', 'ares' ),
         'ares_cta2_title'               => __( 'Responsive Layout', 'ares' ),
         'ares_cta2_icon'                => 'fa fa-mobile',
-        'ares_cta2_text'                => __( '', 'ares' ),
+        'ares_cta2_text'                => __( 'Fully responsive and mobile-ready', 'ares' ),
         'ares_cta2_url'                 => '',
         'ares_cta2_button_text'         => __( 'Click Here', 'ares' ),
         'ares_cta3_title'               => __( 'Elegant Design', 'ares' ),
@@ -204,6 +204,9 @@ function ares_migration() {
         'ares_footer_button_url'        => '',
         'ares_footer_columns'           => 'col-md-4',
         'ares_footer_text'              => __( '&#169; 2015 Your company name', 'ares' ),
+    
+        'ares_post_slider_cta_bool'     => 'show',
+        'ares_branding_bar_height'      => 80
         
     ) );
     
