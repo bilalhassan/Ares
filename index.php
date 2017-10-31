@@ -12,45 +12,88 @@
  * @package Ares
  */
 
+$ares_options = ares_get_options();
+
 get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+<div id="primary" class="content-area">
 
-		<?php
-		if ( have_posts() ) :
+    <main id="main" class="site-main index">
+  
+        <div class="container">
 
-			if ( is_home() && ! is_front_page() ) : ?>
-				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-				</header>
+            <div class="page-content row">
 
-			<?php
-			endif;
+                <div class="col-md-<?php echo $ares_options['ares_blog_layout'] == 'col2r' && is_active_sidebar(1) ? '9' : '12'; ?> site-content item-page">
 
-			/* Start the Loop */
-			while ( have_posts() ) : the_post();
+                    <?php if ( have_posts() ) : ?>
+                    
+                        <?php while ( have_posts() ) : the_post(); ?>
 
-				/*
-				 * Include the Post-Format-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_format() );
+                            <div class="item-post">
+                        
+                                <?php if ( $ares_options['ares_blog_featured'] == 'on' && has_post_thumbnail() ) : ?>
+                                
+                                    <div class="post-thumb col-sm-4">
+                                        
+                                        <a href="<?php the_permalink(); ?>">
+                                            <?php the_post_thumbnail('large'); ?>
+                                        </a>
+                                        
+                                    </div>
+                                
+                                <?php endif; ?>
 
-			endwhile;
+                                <div class="col-sm-<?php echo $ares_options['ares_blog_featured'] == 'on' && has_post_thumbnail() ? '8' : '12'; ?> <?php echo has_post_thumbnail() ? '' : 'text-left'; ?>">
+                                    
+                                    <h2 class="post-title">
+                                        <a href="<?php the_permalink(); ?>">
+                                            <?php the_title(); ?>
+                                        </a>
+                                    </h2>
+                                    
+                                    <div class="post-content">
+                                        <?php the_excerpt(); ?>
+                                    </div>
+                                    
+                                    <div class="text-right">
+                                        <a class="button button-primary" href="<?php the_permalink(); ?>">
+                                            <?php _e( 'Read More', 'ares' ); ?>
+                                        </a>
+                                    </div>  
+                                    
+                                </div>
+                                
+                            </div>
 
-			the_posts_navigation();
+                        <?php endwhile; // end of the loop.   ?>
 
-		else :
+                    <?php else : ?>
+                    
+                        <?php get_template_part('template-parts/content', 'none'); ?>
+                    
+                    <?php endif; ?>
+                    
+                    <?php ares_paging_nav(); ?>
+                    
+                </div>
+                
+                <?php if ( $ares_options['ares_blog_layout'] == 'col2r' && is_active_sidebar(1) ) : ?>
 
-			get_template_part( 'template-parts/content', 'none' );
+                    <div class="col-md-3 avenue-sidebar">
+                        <?php get_sidebar(); ?>
+                    </div>
 
-		endif; ?>
+                <?php endif; ?>
+                
+            </div>
+            
+            <div class="clear"></div>
+            
+        </div>
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
+    </main>
+    
+</div>
 
-<?php
-get_sidebar();
-get_footer();
+<?php get_footer();

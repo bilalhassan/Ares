@@ -1,50 +1,28 @@
 <?php
 /**
- * Template part for displaying a message that posts cannot be found
+ * The template part for displaying a message that posts cannot be found.
  *
- * @link https://codex.wordpress.org/Template_Hierarchy
+ * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
- * @package Ares
+ * @package ares
  */
-
 ?>
 
-<section class="no-results not-found">
-	<header class="page-header">
-		<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'ares' ); ?></h1>
-	</header><!-- .page-header -->
+<div class="page-content nothing-found-index">
 
-	<div class="page-content">
-		<?php
-		if ( is_home() && current_user_can( 'publish_posts' ) ) : ?>
+    <article>
 
-			<p><?php
-				printf(
-					wp_kses(
-						/* translators: 1: link to WP admin new post page. */
-						__( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'ares' ),
-						array(
-							'a' => array(
-								'href' => array(),
-							),
-						)
-					),
-					esc_url( admin_url( 'post-new.php' ) )
-				);
-			?></p>
+        <div class="widget widget_categories">
 
-		<?php elseif ( is_search() ) : ?>
+            <h2 class="widgettitle center">
+                <h3 class="center"><?php _e( 'Nothing Found', 'ares' ); ?></h3>
+                <div class="center mt20">
+                    <?php get_search_form(); ?>
+                </div>
+            </h2>
 
-			<p><?php esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'ares' ); ?></p>
-			<?php
-				get_search_form();
+        </div><!-- .widget -->
 
-		else : ?>
+    </article>
 
-			<p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'ares' ); ?></p>
-			<?php
-				get_search_form();
-
-		endif; ?>
-	</div><!-- .page-content -->
-</section><!-- .no-results -->
+</div><!-- .page-content -->

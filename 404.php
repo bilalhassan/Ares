@@ -9,52 +9,67 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+<div id="primary" class="content-area">
 
-			<section class="error-404 not-found">
-				<header class="page-header">
-					<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'ares' ); ?></h1>
-				</header><!-- .page-header -->
+    <main id="main" class="site-main">
 
-				<div class="page-content">
-					<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'ares' ); ?></p>
+        <section class="error-404 not-found">
+        
+            <header class="page-header">
 
-					<?php
-						get_search_form();
+                <div class="container">
 
-						the_widget( 'WP_Widget_Recent_Posts' );
-					?>
+                    <div class="row">
 
-					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'ares' ); ?></h2>
-						<ul>
-						<?php
-							wp_list_categories( array(
-								'orderby'    => 'count',
-								'order'      => 'DESC',
-								'show_count' => 1,
-								'title_li'   => '',
-								'number'     => 10,
-							) );
-						?>
-						</ul>
-					</div><!-- .widget -->
+                        <div class="col-sm-12">
 
-					<?php
+                            <h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'ares' ); ?></h1>
 
-						/* translators: %1$s: smiley */
-						$archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'ares' ), convert_smilies( ':)' ) ) . '</p>';
-						the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$archive_content" );
+                        </div>
 
-						the_widget( 'WP_Widget_Tag_Cloud' );
-					?>
+                    </div>
 
-				</div><!-- .page-content -->
-			</section><!-- .error-404 -->
+                </div>
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
+            </header><!-- .page-header -->
+
+            <div class="container">
+
+                <div class="frontpage row">
+
+                    <div class="col-sm-12">
+                        
+                        <div class="page-content">
+                            
+                            <article>
+                                
+                                <div class="widget widget_categories">
+                                    
+                                    <h2 class="widgettitle center">
+                                        <i class="fa fa-exclamation-triangle icon404"></i>
+                                        <h3 class="center"><?php _e("Sorry the page you're looking for is not available", "ares"); ?></h3>
+                                        <div class="center mt20">
+                                            <?php get_search_form(); ?>
+                                        </div>
+                                    </h2>
+
+                                </div><!-- .widget -->
+                                
+                            </article>
+                            
+                        </div><!-- .page-content -->
+                        
+                    </div>
+                    
+                </div>
+                
+            </div>
+            
+        </section><!-- .error-404 -->
+
+    </main><!-- #main -->
+    
+</div><!-- #primary -->
 
 <?php
 get_footer();
