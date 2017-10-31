@@ -789,3 +789,13 @@ main#main.index .nothing-found-index {
     margin: 0;
     padding: 0;
 }
+
+.site-footer .site-info .col-xs-9 a {
+    transition: .3s all ease-in-out;
+    -moz-transition: .3s all ease-in-out;
+    -webkit-transition: .3s all ease-in-out;
+}
+
+.site-footer .site-info .col-xs-9 a img {
+    max-height: 24px;
+}

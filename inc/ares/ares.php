@@ -759,10 +759,10 @@ function ares_render_footer() {
                             <?php echo $ares_options['ares_footer_text']; ?>
                         </span>
                         
-                        <a href="http://smartcatdesign.net/" rel="designer" class="smartcat-animate fadeInUpBig">
-                            <img src="<?php echo get_template_directory_uri() . '/inc/images/cat_logo.png'?>" width="20px"/>
-                            <?php _e('Design by SmartCat', 'ares'); ?>
-                        </a>   
+                        <a href="https://smartcatdesign.net/" rel="designer" style="display: inline-block !important" class="rel smartcat-animate fadeInUpBig">
+                            <?php printf( esc_html__( 'Designed by %s', 'ares' ), 'Smartcat' ); ?> 
+                            <img src="<?php echo get_template_directory_uri() . '/inc/images/cat_logo_mini.png'?>" alt="<?php printf( esc_attr__( '%s Logo', 'ares'), 'Smartcat' ); ?>" />
+                        </a>
                         
                     </div>
 
