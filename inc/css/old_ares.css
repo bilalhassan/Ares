@@ -174,10 +174,14 @@ a.button-primary{
 
     
 }
-#top-banner .top-banner-text h2{
+#top-banner .top-banner-text h2,
+#homepage-widget h2 {
     font-weight: 600;
     margin-bottom: 20px;
     text-align: center;
+}
+#homepage-widget #top-banner-text h2 {
+    text-align: left;
 }
 .site-cta{
     position: relative;
@@ -227,12 +231,12 @@ a.button-primary{
 
 }
 /*-- Top Banner --*/
-#top-banner{
+#top-banner {
     background: #fff;
     min-height: 100px;
     color: rgb(82, 82, 82);
-    border: 1px solid rgb(234, 234, 234);
-    padding: 50px 0 30px 0;    
+    padding: 50px 0 30px 0;
+    border-bottom: thin solid #eaeaea;
 }
 #top-banner .textwidget{
     font-weight: 400;
@@ -384,7 +388,7 @@ article.sidebar-off{
 }
 /*#top-banner #sc_avenue_recent_posts*/
 /*-- Site Footer --*/
-#footer-callout > .row{
+#footer-callout .row{
     padding: 40px 0 40px 0;
 }
 #footer-callout h3{
@@ -542,9 +546,6 @@ input[type="search"].search-field:focus{ outline: none;}
 }
 .single .post-title,
 .item-page .post-title{
-    margin-top: 0;
-    font-weight: 400;
-    margin-top: 5px;
     text-transform: uppercase;
     padding: 0;
 }
@@ -696,18 +697,18 @@ ul.social-icons li a:hover{
 }
 @media(max-width: 1169px){
 
-    #comments{
+/*    #comments{
         padding: 0 15px;
-    }
+    }*/
 
 }
 @media( max-width: 991px ){
-    .item-page{
+/*    .item-page{
         margin-left: 15px;
         margin-right: 15px;
         margin-bottom: 15px;
         
-    }
+    }*/
 }
 @media( min-width: 801px ) and ( max-width: 1169px ){
     #site-navigation.main-navigation li a{

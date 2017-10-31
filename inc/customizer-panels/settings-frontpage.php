@@ -36,26 +36,26 @@ $wp_customize->add_panel( 'ares_frontpage_panel', array(
         ));
     
         // Main Heading 
-        $wp_customize->add_setting( 'ares[ares_cta_heading]', array(
+        $wp_customize->add_setting( 'ares[ares_cta_header_one]', array(
             'default'               => __( 'Modern design with a responsive layout', 'ares' ),
             'transport'             => 'refresh',
             'sanitize_callback'     => 'sanitize_text_field',
             'type'                  => 'option'
         ) );
-        $wp_customize->add_control( 'ares[ares_cta_heading]', array(
+        $wp_customize->add_control( 'ares[ares_cta_header_one]', array(
             'type'                  => 'text',
             'section'               => 'ares_cta_header_section',
             'label'                 => __( 'Main Heading', 'ares' ),
         ) );
         
         // Secondary Heading 
-        $wp_customize->add_setting( 'ares[ares_cta_subheading]', array(
+        $wp_customize->add_setting( 'ares[ares_cta_header_two]', array(
             'default'               => __( 'User-friendly & Easily Customizable', 'ares' ),
             'transport'             => 'refresh',
             'sanitize_callback'     => 'sanitize_text_field',
             'type'                  => 'option'
         ) );
-        $wp_customize->add_control( 'ares[ares_cta_subheading]', array(
+        $wp_customize->add_control( 'ares[ares_cta_header_two]', array(
             'type'                  => 'text',
             'section'               => 'ares_cta_header_section',
             'label'                 => __( 'Secondary Heading', 'ares' ),

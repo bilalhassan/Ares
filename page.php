@@ -20,7 +20,7 @@ get_header(); ?>
 
         <div class="container">
 
-            <div class="frontpage row">
+            <div class="frontpage">
 
                 <?php while ( have_posts() ) : the_post(); ?>
 

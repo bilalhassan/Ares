@@ -1,9 +1,12 @@
 <?php
-/*
- * Theme homepage
- * @author bilal hassan <info@smartcatdesign.net>
+/**
+ * The template for displaying the home pages
  *
+ * @link https://codex.wordpress.org/Template_Hierarchy
+ *
+ * @package Ares
  */
+
 $ares_options = ares_get_options();
 
 get_header(); ?>
@@ -41,11 +44,53 @@ get_header(); ?>
         <?php endif; ?>
         
         <?php if( is_active_sidebar('sidebar-banner' ) ) : ?>
-            <?php // echo ares_banner(); ?>
+            
+            <div id="top-banner" class="full-banner">
+                
+                <div class="container">
+        
+                    <div class="row">
+
+                        <div class="col-md-12">
+
+                            <div class="top-banner-text">
+                                <?php dynamic_sidebar( 'sidebar-banner' ); ?>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    
+                </div>
+ 
+            </div>
+        
+            <div class="clear"></div>
+
         <?php endif; ?>
         
         <?php if( is_active_sidebar('sidebar-homepage-widget' ) ) :?>
-            <?php // echo ares_homepage_widget(); ?>
+            
+            <div id="homepage-widget" class="">
+                
+                <div class="container">
+                
+                    <div class="row">
+
+                        <div class="col-md-12">
+                        
+                            <div class="top-banner-text">
+                                <?php dynamic_sidebar( 'sidebar-homepage-widget' ); ?>
+                            </div>            
+
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                
+            </div>
+            
         <?php endif; ?>
         
         <?php if ( $ares_options['ares_frontpage_content_bool'] == 'yes' ) : ?>

@@ -18,7 +18,7 @@ get_header(); ?>
 
 <div id="primary" class="content-area">
 
-    <main id="main" class="site-main">
+    <main id="main" class="site-main index">
   
         <div class="container">
 
@@ -70,7 +70,7 @@ get_header(); ?>
 
                     <?php else : ?>
                     
-                        <?php get_template_part('content', 'none'); ?>
+                        <?php get_template_part('template-parts/content', 'none'); ?>
                     
                     <?php endif; ?>
                     

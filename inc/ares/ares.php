@@ -9,13 +9,33 @@ function ares_scripts() {
 
     // Load Fonts from array
     $fonts = ares_fonts();
+    $non_google_fonts = ares_non_google_fonts();
     $ares_options = ares_get_options();
     
-    // Primary Font Enqueue
-    if( array_key_exists ( $ares_options['ares_font_family'], $fonts ) ) :
-        wp_enqueue_style('google-font-primary', '//fonts.googleapis.com/css?family=' . esc_attr( $fonts[ $ares_options['ares_font_family'] ] ), array(), ARES_VERSION );
+    // Are both fonts Google Fonts?
+    if ( array_key_exists ( $ares_options['ares_font_family'], $fonts ) && !array_key_exists ( $ares_options['ares_font_family'], $non_google_fonts ) &&
+        array_key_exists ( $ares_options['ares_font_family_secondary'], $fonts ) && !array_key_exists ( $ares_options['ares_font_family_secondary'], $non_google_fonts ) ) :
+        
+        if ( $ares_options['ares_font_family'] == $ares_options['ares_font_family_secondary'] ) :
+            // Both fonts are Google Fonts and are the same, enqueue once
+            wp_enqueue_style('google-fonts', '//fonts.googleapis.com/css?family=' . esc_attr( $fonts[ $ares_options['ares_font_family'] ] ), array(), ARES_VERSION ); 
+        else :
+            // Both fonts are Google Fonts but are different, enqueue together
+            wp_enqueue_style('google-fonts', '//fonts.googleapis.com/css?family=' . esc_attr( $fonts[ $ares_options['ares_font_family'] ] . '|' . $fonts[ $ares_options['ares_font_family_secondary'] ] ), array(), ARES_VERSION ); 
+        endif;
+        
+    elseif ( array_key_exists ( $ares_options['ares_font_family'], $fonts ) && !array_key_exists ( $ares_options['ares_font_family'], $non_google_fonts ) ) :
+    
+        // Only Primary is a Google Font. Enqueue it.
+        wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=' . esc_attr( $fonts[ $ares_options['ares_font_family'] ] ), array(), ARES_VERSION ); 
+        
+    elseif ( array_key_exists ( $ares_options['ares_font_family_secondary'], $fonts ) && !array_key_exists ( $ares_options['ares_font_family_secondary'], $non_google_fonts ) ) :
+        
+        // Only Secondary is a Google Font. Enqueue it.
+        wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=' . esc_attr( $fonts[ $ares_options['ares_font_family_secondary'] ] ), array(), ARES_VERSION ); 
+        
     endif;
-
+    
     wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/inc/css/bootstrap.min.css', array(), ARES_VERSION );
     wp_enqueue_style( 'animate', get_template_directory_uri() . '/inc/css/animate.css', array(), ARES_VERSION );
     wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/inc/css/font-awesome.min.css', array(), ARES_VERSION );
@@ -153,9 +173,24 @@ function ares_custom_css() {
 
     <style>
 
-        body {
+        h1,h2,h3,h4,h5,h6,
+        .sc-slider-wrapper .camera_caption > div span,
+        #site-branding div.navigation ul#primary-menu,
+        .button,
+        p.comment-form-comment label,
+        input#submit {
             font-family: <?php echo esc_attr( $ares_options['ares_font_family'] ); ?>;
         }
+        
+        body {
+            font-size: <?php echo esc_attr( $ares_options['ares_font_size'] ); ?>px;
+            font-family: <?php echo esc_attr( $ares_options['ares_font_family_secondary'] ); ?>;
+        }
+        
+        blockquote {
+            font-size: <?php echo esc_attr( $ares_options['ares_font_size'] + 4 ); ?>px;
+        }
+       
 
         /*
         
@@ -256,8 +291,12 @@ function ares_custom_css() {
         #site-toolbar .row .social-bar a:hover,
         #footer-callout,
         #site-cta .site-cta .fa:hover,
-        #post-slider-cta {
-            background-color: <?php esc_attr_e( $primary_theme_color ); ?>;
+        #post-slider-cta,
+        header.page-header .page-title,
+        nav.navigation.posts-navigation,
+        input#submit,
+        input[type="submit"] {
+            background: <?php esc_attr_e( $primary_theme_color ); ?>;
         }
         #site-cta .site-cta .fa {
             border: 2px solid <?php esc_attr_e( $primary_theme_color ); ?>;
@@ -279,7 +318,9 @@ function ares_custom_css() {
         .button-primary:focus,
         .button-primary:active,
         .button-primary.active,
-        .open .dropdown-toggle.button-primary {
+        .open .dropdown-toggle.button-primary,
+        input#submit:hover,
+        input[type="submit"]:hover {
             background-color: <?php esc_attr_e( $secondary_theme_color ); ?>;
         }
         
@@ -413,7 +454,7 @@ $ares_options = ares_get_options(); ?>
                     <div data-thumb="<?php echo esc_attr( $ares_options['ares_slide1_image'] ); ?>" data-src="<?php echo esc_attr( $ares_options['ares_slide1_image'] ); ?>">
 
                         <div class="camera_caption fadeFromBottom">
-                            <span>
+                            <span class="smartcat-animate fadeInUp">
                                 <?php echo esc_attr( $ares_options['ares_slide1_text'] ); ?>
                             </span>
                         </div>
@@ -427,7 +468,7 @@ $ares_options = ares_get_options(); ?>
                     <div data-thumb="<?php echo esc_attr( $ares_options['ares_slide2_image'] ); ?>" data-src="<?php echo esc_attr( $ares_options['ares_slide2_image'] ); ?>">
 
                         <div class="camera_caption fadeFromBottom">
-                            <span>
+                            <span class="smartcat-animate fadeInUp">
                                 <?php echo esc_attr( $ares_options['ares_slide2_text'] ); ?>
                             </span>
                         </div>
@@ -441,7 +482,7 @@ $ares_options = ares_get_options(); ?>
                     <div data-thumb="<?php echo esc_attr( $ares_options['ares_slide3_image'] ); ?>" data-src="<?php echo esc_attr( $ares_options['ares_slide3_image'] ); ?>">
 
                         <div class="camera_caption fadeFromBottom">
-                            <span>
+                            <span class="smartcat-animate fadeInUp">
                                 <?php echo esc_attr( $ares_options['ares_slide3_text'] ); ?>
                             </span>
                         </div>
@@ -471,6 +512,24 @@ if( !function_exists( 'ares_fonts' ) ) {
     function ares_fonts() {
 
         $font_family_array = array(
+            
+            // Web Fonts
+            'Arial, Helvetica, sans-serif'                      => 'Arial',
+            'Arial Black, Gadget, sans-serif'                   => 'Arial Black',
+            'Courier New, monospace'                            => 'Courier New',
+            'Georgia, serif'                                    => 'Georgia',
+            'Impact, Charcoal, sans-serif'                      => 'Impact',
+            'Lucida Console, Monaco, monospace'                 => 'Lucida Console',
+            'Lucida Sans Unicode, Lucida Grande, sans-serif'    => 'Lucida Sans Unicode',
+            'MS Sans Serif, Tahoma, sans-serif'                 => 'MS Sans Serif',
+            'MS Serif, New York, serif'                         => 'MS Serif',
+            'Palatino Linotype, Book Antiqua, Palatino, serif'  => 'Palatino Linotype',
+            'Tahoma, Geneva, sans-serif'                        => 'Tahoma',
+            'Times New Roman, Times, serif'                     => 'Times New Roman',
+            'Trebuchet MS, sans-serif'                          => 'Trebuchet MS',
+            'Verdana, Geneva, sans-serif'                       => 'Verdana',
+            
+            // Google Fonts
             'Abel, sans-serif'                                  => 'Abel',
             'Arvo, serif'                                       => 'Arvo:400,400i,700',
             'Bangers, cursive'                                  => 'Bangers',
@@ -507,12 +566,40 @@ if( !function_exists( 'ares_fonts' ) ) {
             'Ubuntu, sans-serif'                                => 'Ubuntu',
             'Vollkorn, serif'                                   => 'Vollkorn:400,400i,700',
             'Voltaire, sans-serif'                              => 'Voltaire',
+            
         );
 
         return apply_filters( 'ares_fonts', $font_family_array );
 
     }
 
+}
+
+/**
+ * Retrieve non-Google based fonts.
+ */
+function ares_non_google_fonts() {
+    
+    return array(
+            
+        // Web Fonts
+        'Arial, Helvetica, sans-serif'                      => 'Arial',
+        'Arial Black, Gadget, sans-serif'                   => 'Arial Black',
+        'Courier New, monospace'                            => 'Courier New',
+        'Georgia, serif'                                    => 'Georgia',
+        'Impact, Charcoal, sans-serif'                      => 'Impact',
+        'Lucida Console, Monaco, monospace'                 => 'Lucida Console',
+        'Lucida Sans Unicode, Lucida Grande, sans-serif'    => 'Lucida Sans Unicode',
+        'MS Sans Serif, Tahoma, sans-serif'                 => 'MS Sans Serif',
+        'MS Serif, New York, serif'                         => 'MS Serif',
+        'Palatino Linotype, Book Antiqua, Palatino, serif'  => 'Palatino Linotype',
+        'Tahoma, Geneva, sans-serif'                        => 'Tahoma',
+        'Times New Roman, Times, serif'                     => 'Times New Roman',
+        'Trebuchet MS, sans-serif'                          => 'Trebuchet MS',
+        'Verdana, Geneva, sans-serif'                       => 'Verdana',
+
+    );
+    
 }
 
 /**
@@ -528,7 +615,7 @@ function ares_render_cta_trio() {
 
             <div class="row">
 
-                <div class="col-md-4 site-cta smartcat-animate fadeInUp">
+                <div class="col-md-4 site-cta smartcat-animate fadeInUp" data-wow-delay=".2s">
 
                     <div class="icon-wrap center">
                         <a href="<?php echo esc_url( $ares_options['ares_cta1_url'] ) ?>">
@@ -576,7 +663,7 @@ function ares_render_cta_trio() {
 
                 </div>
 
-                <div class="col-md-4 site-cta smartcat-animate fadeInUp">
+                <div class="col-md-4 site-cta smartcat-animate fadeInUp" data-wow-delay=".3s">
 
                     <div class="icon-wrap center">
                         <a href="<?php echo esc_url( $ares_options['ares_cta3_url'] ) ?>">
@@ -619,28 +706,30 @@ function ares_render_footer() {
     
     $ares_options = ares_get_options(); ?>
     
-    <i class="scroll-top fa fa-chevron-up"></i>
-    
     <footer id="colophon" class="site-footer <?php echo $ares_options['ares_frontpage_content_bool'] == 'no' ? 'no-top-margin' : ''; ?>" role="contentinfo">
         
         <?php if( $ares_options['ares_footer_cta'] == 'yes' ) : ?>
     
-        <div id="footer-callout" class="container-fluid">
+        <div id="footer-callout">
             
-            <div class="row">
-                
-                <div class="col-sm-8 center">
-                    <h3 class="smartcat-animate fadeInUp"><?php echo $ares_options['ares_footer_cta_text']; ?></h3>
-                </div>
-                
-                <div class="col-sm-4 center">
-                    <a class="button button-cta smartcat-animate fadeInUp" href="<?php echo $ares_options['ares_footer_button_url']; ?>">
-                        <?php echo $ares_options['ares_footer_button_text']; ?>
-                    </a>
+            <div class="container">
+            
+                <div class="row">
+
+                    <div class="col-sm-8 tex-left">
+                        <h3 class="smartcat-animate fadeInUp"><?php echo $ares_options['ares_footer_cta_text']; ?></h3>
+                    </div>
+
+                    <div class="col-sm-4 text-right">
+                        <a class="button button-cta smartcat-animate fadeInUp" href="<?php echo $ares_options['ares_footer_button_url']; ?>">
+                            <?php echo $ares_options['ares_footer_button_text']; ?>
+                        </a>
+                    </div>
+
                 </div>
                 
             </div>
-            
+
         </div>
     
         <?php endif; ?>
@@ -670,16 +759,22 @@ function ares_render_footer() {
             
                 <div class="row ">
 
-                    <div class="col-xs-6 text-left">
-                        <?php echo $ares_options['ares_footer_text']; ?>
-                    </div>
-
-                    <div class="col-xs-6 text-right">
-
+                    <div class="col-xs-9 text-left">
+                        
+                        <span class="ares-copyright">
+                            <?php echo $ares_options['ares_footer_text']; ?>
+                        </span>
+                        
                         <a href="http://smartcatdesign.net/" rel="designer">
                             <img src="<?php echo get_template_directory_uri() . '/inc/images/cat_logo.png'?>" width="20px"/>
                             <?php _e('Design by SmartCat', 'ares'); ?>
-                        </a>                     
+                        </a>   
+                        
+                    </div>
+
+                    <div class="col-xs-3 text-right">
+
+                        <i class="scroll-top fa fa-chevron-up"></i>
 
                     </div>              
                     

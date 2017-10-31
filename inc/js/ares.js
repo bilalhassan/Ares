@@ -1,5 +1,29 @@
 jQuery(document).ready( function( $ ) {
 
+
+    //¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+    //  Wow.js Init
+    //__________________________________________________________________________
+    
+    function delayedWow() {
+        wowTimeoutID = window.setTimeout( callWow, 200);
+    }
+
+    function callWow() {
+        smartcat_animate = new WOW({
+            boxClass        :   'smartcat-animate',
+            offset          :   '100'
+        });
+        smartcat_animate.init();
+        clearWowTimeout();
+    }
+
+    function clearWowTimeout() {
+        window.clearTimeout(wowTimeoutID);
+    }
+    
+    delayedWow();
+
     //¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
     //  Mobile Menu - bigSlide.js
     //__________________________________________________________________________
@@ -45,6 +69,31 @@ jQuery(document).ready( function( $ ) {
     $( 'div#mobile-menu-wrap ul#mobile-menu > li.menu-item-has-children span' ).on( 'click', function() {
         $(this).parent().stop().toggleClass('submenu-rotated').find('span').toggleClass('fa-plus fa-minus');
         $(this).parent().parent().find( '> ul.sub-menu' ).stop().slideToggle( 400 );
+    });
+
+    //¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+    //  Match CTA Heights
+    //__________________________________________________________________________
+
+    matchColHeights('.site-cta');
+    function matchColHeights(selector) {
+        var maxHeight = 0;
+        $(selector).each(function() {
+            var height = $(this).height();
+            if (height > maxHeight) {
+                maxHeight = height;
+            }
+        });
+        $(selector).height(maxHeight);
+    }
+
+    //¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+    //  Scroll to Top Button
+    //__________________________________________________________________________
+
+    $('.scroll-top').click(function() {
+        $("html, body").animate({scrollTop: 0}, "slow");
+        return false;
     });
 
 });

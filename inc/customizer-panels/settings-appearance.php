@@ -76,28 +76,45 @@ $wp_customize->add_section( 'ares_fonts_section', array(
 
     // Primary Font Family
     $wp_customize->add_setting( 'ares[ares_font_family]', array(
-        'default'               => 'Josefin Sans, sans-serif',
+        'default'               => 'Rajdhani, sans-serif',
         'transport'             => 'refresh',
         'sanitize_callback'     => 'sanitize_text_field',
         'type'                  => 'option'
     ) );
     $wp_customize->add_control( 'ares[ares_font_family]', array(
-        'label'   => __( 'Select the primary font family', 'ares' ),
+        'label'   => __( 'Select the primary font family (Headings)', 'ares' ),
         'section' => 'ares_fonts_section',
         'type'    => 'select',
         'choices' => ares_fonts()
     ));
 
-    //  Secondary Font Family
-    //    $wp_customize->add_setting( 'ares[ares_font_family_secondary]', array(
-    //        'default'               => 'Josefin Sans, sans-serif',
-    //        'transport'             => 'refresh',
-    //        'sanitize_callback'     => 'sanitize_text_field',
-    //        'type'                  => 'option'
-    //    ) );
-    //    $wp_customize->add_control( 'ares[ares_font_family_secondary]', array(
-    //        'label'   => __( 'Select the secondary font family', 'ares' ),
-    //        'section' => 'ares_fonts_section',
-    //        'type'    => 'select',
-    //        'choices' => ares_fonts()
-    //    ));
+    // Secondary Font Family
+    $wp_customize->add_setting( 'ares[ares_font_family_secondary]', array(
+        'default'               => 'Roboto, sans-serif',
+        'transport'             => 'refresh',
+        'sanitize_callback'     => 'sanitize_text_field',
+        'type'                  => 'option'
+    ) );
+    $wp_customize->add_control( 'ares[ares_font_family_secondary]', array(
+        'label'   => __( 'Select the secondary font family (Body)', 'ares' ),
+        'section' => 'ares_fonts_section',
+        'type'    => 'select',
+        'choices' => ares_fonts()
+    ));
+    
+    // Main Font Size
+    $wp_customize->add_setting( 'ares[ares_font_size]', array (
+        'default'               => 14,
+        'transport'             => 'refresh',
+        'sanitize_callback'     => 'ares_sanitize_integer',
+        'type'                  => 'option'
+    ) );
+    $wp_customize->add_control( 'ares[ares_font_size]', array(
+        'type'                  => 'number',
+        'section'               => 'ares_fonts_section',
+        'label'                 => __( 'Body Font Size', 'ares' ),
+        'input_attrs'           => array(
+            'min' => 10,
+            'max' => 40,
+            'step' => 1,
+    ) ) );

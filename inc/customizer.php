@@ -23,6 +23,9 @@ function ares_customize_register( $wp_customize ) {
 
     // Blog
     require_once( 'customizer-panels/settings-blog.php' );
+
+    // Single
+    require_once( 'customizer-panels/settings-single-post.php' );
     
     // Appearance
     require_once( 'customizer-panels/settings-appearance.php' );

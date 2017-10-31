@@ -82,7 +82,29 @@ if ( ! function_exists( 'ares_setup' ) ) :
         
         if( ! get_option( 'ares' ) ) :
             
+            // Options array does not exist from a previous version
+            
             add_option( 'ares', ares_get_options() );
+        
+        else :
+            
+            // Options array exists from a previous version, set defaults on newer Customizer options
+            
+            $existing_ares_options = ares_get_options();
+            
+            if ( ! array_key_exists( 'ares_font_family_secondary', $existing_ares_options ) ) :
+                $existing_ares_options['ares_font_family_secondary'] = 'Roboto, sans-serif';
+            endif; 
+            
+            if ( ! array_key_exists( 'ares_post_slider_cta_bool', $existing_ares_options ) ) :
+                $existing_ares_options['ares_post_slider_cta_bool'] = 'yes';
+            endif; 
+
+            if ( ! array_key_exists( 'ares_branding_bar_height', $existing_ares_options ) ) :
+                $existing_ares_options['ares_branding_bar_height'] = 80;
+            endif; 
+            
+            update_option( 'ares', $existing_ares_options );
            
         endif;
         
@@ -149,7 +171,8 @@ function ares_get_options() {
         'ares_theme_color'              => 'aqua',                          
         'ares_theme_background_pattern' => 'crossword',                     
         'ares_font_size'                => 14,                              // No CSTMZR YET
-        'ares_font_family'              => 'Josefin Sans, sans-serif',      
+        'ares_font_family'              => 'Rajdhani, sans-serif',      
+        'ares_font_family_secondary'    => 'Roboto, sans-serif',      
         'ares_frontpage_content_bool'   => 'yes',
         
         'ares_slider_bool'              => 'yes',
@@ -161,8 +184,6 @@ function ares_get_options() {
         'ares_slide3_text'              => __( 'Ares: Responsive Multi-purpose WordPress Theme', 'ares' ),
         
         'ares_cta_bool'                 => 'yes',
-        'ares_cta_header_one'           => __( 'Modern design with a responsive layout', 'ares' ),
-        'ares_cta_header_two'           => __( 'User-friendly & Easily Customizable', 'ares' ),
         'ares_cta1_title'               => __( 'Theme Options', 'ares' ),
         'ares_cta1_icon'                => 'fa fa-gears',
         'ares_cta1_text'                => __( 'Change typography, colors, layouts...', 'ares' ),
@@ -195,7 +216,9 @@ function ares_get_options() {
         'ares_footer_text'              => __( '&#169; 2015 Your company name', 'ares' ),
     
         'ares_post_slider_cta_bool'     => 'yes',
-        'ares_branding_bar_height'      => 80
+        'ares_cta_header_one'           => __( 'Modern design with a responsive layout', 'ares' ),
+        'ares_cta_header_two'           => __( 'User-friendly & Easily Customizable', 'ares' ),
+        'ares_branding_bar_height'      => 80,
         
     ) );
     

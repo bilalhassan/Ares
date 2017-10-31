@@ -132,8 +132,8 @@ $wp_customize->add_section( 'ares_header_height_section', array(
     $wp_customize->add_control( 'ares[ares_branding_bar_height]', array(
         'type'                  => 'number',
         'section'               => 'ares_header_height_section',
-        'label'                 => __( 'Branding Bar Height', 'kenza' ),
-        'description'           => __( 'Adjust the height of the branding bar in the Header', 'kenza' ),
+        'label'                 => __( 'Branding Bar Height', 'ares' ),
+        'description'           => __( 'Adjust the height of the branding bar in the Header', 'ares' ),
         'input_attrs'           => array(
             'min' => 80,
             'max' => 400,
