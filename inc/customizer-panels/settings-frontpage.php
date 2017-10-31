@@ -319,7 +319,7 @@ $wp_customize->add_panel( 'ares_frontpage_panel', array(
             'type'                  => 'option'
         ) );
         $wp_customize->add_control( 'ares[ares_homepage_sidebar]', array(
-            'label'   => __( 'Include the right sidebar on the static front page?', 'ares' ),
+            'label'   => __( 'Include the right sidebar ( only when using Static Front Page)?', 'ares' ),
             'section' => 'ares_frontpage_content_section',
             'type'    => 'radio',
             'choices'    => array(

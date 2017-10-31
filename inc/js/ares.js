@@ -10,9 +10,10 @@ jQuery(document).ready( function( $ ) {
     }
 
     function callWow() {
+        $('div#mobile-menu-wrap nav#menu').fadeIn();
         smartcat_animate = new WOW({
             boxClass        :   'smartcat-animate',
-            offset          :   '100'
+            
         });
         smartcat_animate.init();
         clearWowTimeout();

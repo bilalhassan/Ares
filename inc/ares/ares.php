@@ -262,11 +262,11 @@ function ares_custom_css() {
         #site-cta .site-cta .fa,
         .sc_team_single_member .sc_single_main .sc_personal_quote span.sc_team_icon-quote-left 
         {
-            color: <?php esc_attr_e( $primary_theme_color ); ?>;
+            color: <?php echo esc_attr( $primary_theme_color ); ?>;
         }
         @media (max-width: 600px) {
             .nav-menu > li.current_page_item a {
-                color: <?php esc_attr_e( $primary_theme_color ); ?>;
+                color: <?php echo esc_attr( $primary_theme_color ); ?>;
             }      
         }
         a.button-primary,
@@ -285,23 +285,23 @@ function ares_custom_css() {
         input[type="submit"],
         .sc_team_single_member .sc_team_single_skills .progress,
         .sc-tags .sc-single-tag {
-            background: <?php esc_attr_e( $primary_theme_color ); ?>;
+            background: <?php echo esc_attr( $primary_theme_color ); ?>;
         }
         #site-cta .site-cta .fa {
-            border: 2px solid <?php esc_attr_e( $primary_theme_color ); ?>;
+            border: 2px solid <?php echo esc_attr( $primary_theme_color ); ?>;
         }
         .sc-primary-border,
         .scroll-top:hover {
-            border-color: <?php esc_attr_e( $primary_theme_color ); ?>;
+            border-color: <?php echo esc_attr( $primary_theme_color ); ?>;
         }
         .site-branding .search-bar .search-field:focus {
-            border-bottom: 1px solid <?php esc_attr_e( $primary_theme_color ); ?>;
+            border-bottom: 1px solid <?php echo esc_attr( $primary_theme_color ); ?>;
         }
                
         /* --- Secondary --- */
         
         a:hover {
-            color: <?php esc_attr_e( $secondary_theme_color ); ?>;
+            color: <?php echo esc_attr( $secondary_theme_color ); ?>;
         }
         .button-primary:hover,
         .button-primary:focus,
@@ -310,7 +310,7 @@ function ares_custom_css() {
         .open .dropdown-toggle.button-primary,
         input#submit:hover,
         input[type="submit"]:hover {
-            background-color: <?php esc_attr_e( $secondary_theme_color ); ?>;
+            background-color: <?php echo esc_attr( $secondary_theme_color ); ?>;
         }
         
     </style>
@@ -705,7 +705,7 @@ function ares_render_footer() {
             
                 <div class="row">
 
-                    <div class="col-sm-8 tex-left">
+                    <div class="col-sm-8 text-left">
                         <h3 class="smartcat-animate fadeInUp"><?php echo $ares_options['ares_footer_cta_text']; ?></h3>
                     </div>
 
@@ -723,24 +723,29 @@ function ares_render_footer() {
     
         <?php endif; ?>
         
-        <div class="footer-boxes container">
-            
-            <div class="row ">
-                
-                <div class="col-md-12">
-                    
-                    <div id="secondary" class="widget-area" role="complementary">
-                        <?php if ( is_active_sidebar( 'sidebar-footer' ) ) : ?>
+        <?php if ( is_active_sidebar( 'sidebar-footer' ) ) : ?>
+        
+            <div class="footer-boxes container">
+
+                <div class="row ">
+
+                    <div class="col-md-12">
+
+                        <div id="secondary" class="widget-area" role="complementary">
+
                             <?php dynamic_sidebar( 'sidebar-footer' ); ?>
-                        <?php endif; ?>
-                        <div class="clear"></div>
-                    </div>
-                    
-                </div>            
-                
-            </div>        
             
-        </div>
+                            <div class="clear"></div>
+                            
+                        </div>
+
+                    </div>            
+
+                </div>        
+
+            </div>
+        
+        <?php endif; ?>
         
         <div class="site-info">
             
@@ -750,11 +755,11 @@ function ares_render_footer() {
 
                     <div class="col-xs-9 text-left">
                         
-                        <span class="ares-copyright">
+                        <span class="ares-copyright smartcat-animate fadeInUp">
                             <?php echo $ares_options['ares_footer_text']; ?>
                         </span>
                         
-                        <a href="http://smartcatdesign.net/" rel="designer">
+                        <a href="http://smartcatdesign.net/" rel="designer" class="smartcat-animate fadeInUpBig">
                             <img src="<?php echo get_template_directory_uri() . '/inc/images/cat_logo.png'?>" width="20px"/>
                             <?php _e('Design by SmartCat', 'ares'); ?>
                         </a>   
@@ -763,7 +768,7 @@ function ares_render_footer() {
 
                     <div class="col-xs-3 text-right">
 
-                        <i class="scroll-top fa fa-chevron-up"></i>
+                        <i class="scroll-top fa fa-chevron-up smartcat-animate fadeIn"></i>
 
                     </div>              
                     

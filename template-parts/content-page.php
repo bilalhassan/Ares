@@ -15,7 +15,7 @@ $ares_options = ares_get_options();
         
         <div class="col-md-<?php echo $ares_options['ares_single_layout'] == 'col2r' && is_active_sidebar(1) ? '9' : '12'; ?>">
         
-            <article id="post-<?php the_ID(); ?>" <?php //post_class();  ?>>
+            <article id="post-<?php the_ID(); ?>" class="smartcat-animate fadeInUp">
 
                 <header class="entry-header">
                     <?php the_title( '<h2 class="post-title">', '</h2>' ); ?>
@@ -41,7 +41,7 @@ $ares_options = ares_get_options();
         
         <?php if ( $ares_options['ares_single_layout'] == 'col2r' && is_active_sidebar(1) ) : ?>
             
-            <div class="col-md-3 avenue-sidebar">
+            <div class="col-md-3 avenue-sidebar smartcat-animate fadeInUp" data-wow-delay=".2s">
                 <?php get_sidebar(); ?>
             </div>
         

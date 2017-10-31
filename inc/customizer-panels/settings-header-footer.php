@@ -240,7 +240,7 @@ $wp_customize->add_section( 'ares_footer_section', array(
     
     // Footer Copyright Text
     $wp_customize->add_setting( 'ares[ares_footer_text]', array(
-        'default'               => __( '&#169; 2015 Your company name', 'ares' ),
+        'default'               => __( '© 2017 Your Company Name', 'ares' ),
         'transport'             => 'refresh',
         'sanitize_callback'     => 'sanitize_text_field',
         'type'                  => 'option'

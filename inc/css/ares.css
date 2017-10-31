@@ -262,6 +262,7 @@ div#mobile-menu-wrap {
 div#mobile-menu-wrap nav#menu {
     padding: 30px;
     height: 100%;
+    display: none;
 }
 div#mobile-menu-wrap ul#mobile-menu {
     margin: 0;
@@ -553,7 +554,7 @@ div#post-slider-cta .secondary-heading {
 /*-- Header --*/
 .site-description{
     font-size: 14px;
-    display: none;
+    margin: 5px 0 0 0;
 }
 
 /* --- Footer --- */

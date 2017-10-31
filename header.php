@@ -59,7 +59,7 @@ $ares_options = ares_get_options();
                         <?php if ( get_bloginfo( 'description' ) ) : ?>
 
                             <h5 class="site-description">
-                                <?php bloginfo( 'description' ); ?>
+                                <?php echo get_bloginfo( 'description' ); ?>
                             </h5>
 
                         <?php endif; ?>
@@ -93,11 +93,33 @@ $ares_options = ares_get_options();
 
                         <img id="mobile-menu-close" src="<?php echo esc_url( get_template_directory_uri() . '/inc/images/close-mobile.png' ); ?>" alt="<?php _e( 'Close Menu', 'ares' ); ?>">
 
-                        <?php wp_nav_menu( array(
-                             'theme_location' => 'primary',
-                             'menu_id'        => 'mobile-menu',
-                        ) ); ?>
+                        <?php if ( has_nav_menu( 'primary' ) ) : ?>
 
+                            <?php wp_nav_menu( array(
+                                'theme_location' => 'primary',
+                                'menu_id'        => 'mobile-menu',
+                            ) ); ?>
+
+                        <?php else : ?>
+
+                            <?php if ( current_user_can( 'edit_theme_options' ) ) : ?>
+
+                                <ul id="mobile-menu" class="menu">
+
+                                    <li class="menu-item menu-item-type-custom menu-item-object-custom">
+
+                                        <a href="<?php echo esc_url( admin_url( 'nav-menus.php' ) ); ?>">
+                                           <?php _e( 'Add a Primary Menu?', 'ares' ); ?>
+                                        </a>
+
+                                    </li>
+
+                                </ul>
+                        
+                            <?php endif; ?>
+                        
+                        <?php endif; ?>
+                        
                     </nav>
 
                 </div>

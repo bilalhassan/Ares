@@ -25,7 +25,7 @@ $ares_options = ares_get_options();
                     
                     <div class="col-md-<?php echo $ares_options['ares_single_layout'] == 'col1' ? '12' : '9'; ?>">
                         
-                        <article>
+                        <article class="smartcat-animate fadeInUp">
                             
                             <div class="sc_team_single_member row">
 
@@ -62,7 +62,7 @@ $ares_options = ares_get_options();
 
                                             <div class="sc_personal_quote">
                                                 <span class="sc_team_icon-quote-left"></span>
-                                                <span class="sc_personal_quote_content"><?php esc_html_e( $quote ); ?></span>
+                                                <span class="sc_personal_quote_content"><?php echo esc_html( $quote ); ?></span>
                                             </div>
 
                                         <?php endif; ?>
@@ -77,7 +77,7 @@ $ares_options = ares_get_options();
 
                                             <div class="articles">
 
-                                                <h2><?php esc_html_e( get_post_meta( get_the_ID(), 'team_member_article_title', true ) ); ?></h2>
+                                                <h2><?php echo esc_html( get_post_meta( get_the_ID(), 'team_member_article_title', true ) ); ?></h2>
 
                                                 <div class="sc_member_articles">
 
@@ -115,7 +115,7 @@ $ares_options = ares_get_options();
 
                                         <div class="inner">
 
-                                            <h2 class="skills-title"><?php esc_html_e( get_post_meta( get_the_ID(), 'team_member_skill_title', true ) ); ?></h2>
+                                            <h2 class="skills-title"><?php echo esc_html( get_post_meta( get_the_ID(), 'team_member_skill_title', true ) ); ?></h2>
 
                                             <?php do_member_skills(); ?>
 
@@ -129,13 +129,13 @@ $ares_options = ares_get_options();
 
                                             <div class="sc-tags">
 
-                                                <h2 class="skills-title"><?php esc_html_e( get_post_meta( get_the_ID(), 'team_member_tags_title', true ) ); ?></h2>
+                                                <h2 class="skills-title"><?php echo esc_html( get_post_meta( get_the_ID(), 'team_member_tags_title', true ) ); ?></h2>
 
                                                 <?php $tags = explode( ',', get_post_meta( get_the_ID(), 'team_member_tags', true ) ); ?>
 
                                                 <?php foreach( $tags as $tag ) : ?>
 
-                                                    <span class="sc-single-tag"><?php esc_html_e( $tag ); ?></span>
+                                                    <span class="sc-single-tag"><?php echo esc_html( $tag ); ?></span>
 
                                                 <?php endforeach; ?>
 
@@ -155,7 +155,7 @@ $ares_options = ares_get_options();
                     
                     <?php if ( $ares_options['ares_single_layout'] == 'col2r' ) : ?>
 
-                        <div class="col-md-3 avenue-sidebar">
+                        <div class="col-md-3 avenue-sidebar smartcat-animate fadeInUp" data-wow-delay=".2s">
                             <?php get_sidebar(); ?>
                         </div>
 

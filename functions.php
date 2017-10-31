@@ -213,7 +213,7 @@ function ares_get_options() {
         'ares_footer_button_text'       => __( 'CONTACT US', 'ares' ),
         'ares_footer_button_url'        => '',
         'ares_footer_columns'           => 'col-md-4',
-        'ares_footer_text'              => __( '&#169; 2015 Your company name', 'ares' ),
+        'ares_footer_text'              => __( '© 2017 Your Company Name', 'ares' ),
     
         'ares_post_slider_cta_bool'     => 'yes',
         'ares_cta_header_one'           => __( 'Modern design with a responsive layout', 'ares' ),

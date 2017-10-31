@@ -35,7 +35,7 @@ $wp_customize->add_section( 'ares_blog_section', array(
      ) );
      $wp_customize->add_control( 'ares[ares_blog_featured]', array(
         'label'   => __( 'Show or Hide the Post images on the blog page?', 'ares' ),
-        'section' => 'ares_cta_header_section',
+        'section' => 'ares_blog_section',
         'type'    => 'radio',
         'choices'    => array(
             'on'    => __( 'Show', 'ares' ),
