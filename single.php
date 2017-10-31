@@ -18,7 +18,7 @@ get_header(); ?>
             <?php while ( have_posts() ) : the_post(); ?>
     
                 <div class="page-content row ">
-
+                    
                     <div class="col-md-<?php echo $ares_options['ares_single_layout'] == 'col1' ? '12' : '9'; ?>">
                     
                         <article class="item-page">

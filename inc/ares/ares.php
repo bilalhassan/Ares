@@ -178,7 +178,8 @@ function ares_custom_css() {
         #site-branding div.navigation ul#primary-menu,
         .button,
         p.comment-form-comment label,
-        input#submit {
+        input#submit,
+        .sc_team_single_member .sc_team_single_skills .progress {
             font-family: <?php echo esc_attr( $ares_options['ares_font_family'] ); ?>;
         }
         
@@ -190,21 +191,6 @@ function ares_custom_css() {
         blockquote {
             font-size: <?php echo esc_attr( $ares_options['ares_font_size'] + 4 ); ?>px;
         }
-       
-
-        /*
-        
-        #site-toolbar .social-bar a:hover {
-            background-color: <?php echo esc_attr( $ares_options['ares_theme_color'] ); ?>;
-            border-color: <?php echo esc_attr( $ares_options['ares_theme_color'] ); ?>;
-        }
-
-        #site-branding .site-title a,
-        #site-navigation.main-navigation li a:hover {
-            color: <?php echo esc_attr( $ares_options['ares_theme_color'] ); ?>;
-        }
-
-        */
         
         /*
         ----- Header Heights ---------------------------------------------------------
@@ -273,7 +259,8 @@ function ares_custom_css() {
         .smartcat_team_member:hover h4,
         #site-navigation.main-navigation li a:hover,
         #site-navigation.main-navigation li.current_page_item a,
-        #site-cta .site-cta .fa
+        #site-cta .site-cta .fa,
+        .sc_team_single_member .sc_single_main .sc_personal_quote span.sc_team_icon-quote-left 
         {
             color: <?php esc_attr_e( $primary_theme_color ); ?>;
         }
@@ -295,7 +282,9 @@ function ares_custom_css() {
         header.page-header .page-title,
         nav.navigation.posts-navigation,
         input#submit,
-        input[type="submit"] {
+        input[type="submit"],
+        .sc_team_single_member .sc_team_single_skills .progress,
+        .sc-tags .sc-single-tag {
             background: <?php esc_attr_e( $primary_theme_color ); ?>;
         }
         #site-cta .site-cta .fa {
