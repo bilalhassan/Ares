@@ -30,7 +30,7 @@ get_header(); ?>
                     
                         <?php while ( have_posts() ) : the_post(); ?>
 
-                            <div class="item-post">
+                            <div class="item-post smartcat-animate fadeInUp">
                         
                                 <?php if ( $ares_options['ares_blog_featured'] == 'on' && has_post_thumbnail() ) : ?>
                                 
@@ -80,7 +80,7 @@ get_header(); ?>
                 
                 <?php if ( $ares_options['ares_blog_layout'] == 'col2r' && is_active_sidebar(1) ) : ?>
 
-                    <div class="col-md-3 avenue-sidebar">
+                    <div class="col-md-3 avenue-sidebar smartcat-animate fadeInUp">
                         <?php get_sidebar(); ?>
                     </div>
 

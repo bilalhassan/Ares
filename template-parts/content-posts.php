@@ -6,7 +6,7 @@
  */
 ?>
 
-<div class="item-post <?php echo has_post_thumbnail() ? '' : 'text-left'; ?>">
+<div class="item-post <?php echo has_post_thumbnail() ? '' : 'text-left'; ?> smartcat-animate fadeInUp">
     
     <?php if ( has_post_thumbnail() ) : ?>
     

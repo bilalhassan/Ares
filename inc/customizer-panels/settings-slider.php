@@ -44,8 +44,8 @@ for ( $ctr = 1; $ctr < 4; $ctr++ ) :
     // Slide Section
     // ---------------------------------------------
     $wp_customize->add_section( 'ares_slide_' . $ctr . '_section', array(
-        'title'                 => __( 'Slide #' . $ctr, 'ares'),
-        'description'           => __( 'Customize slide #' . $ctr, 'ares' ),
+        'title'                 => __( 'Slide #', 'ares') . $ctr,
+        'description'           => __( 'Customize slide #', 'ares' ) . $ctr,
         'panel'                 => 'ares_slider_panel'
     ) );
 

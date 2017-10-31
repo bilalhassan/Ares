@@ -24,14 +24,14 @@ get_header(); ?>
             <div id="post-slider-cta">
 
                 <?php if ( $ares_options['ares_cta_header_one'] ) : ?>
-                    <h3 class="main-heading animated fadeInLeft">
-                        <?php esc_html_e( $ares_options['ares_cta_header_one'] ); ?>
+                    <h3 class="main-heading smartcat-animate fadeInLeft">
+                        <?php echo esc_html( $ares_options['ares_cta_header_one'] ); ?>
                     </h3>
                 <?php endif; ?>
 
                 <?php if ( $ares_options['ares_cta_header_two'] ) : ?>
-                    <h4 class="secondary-heading animated fadeInRight">
-                        <?php esc_html_e( $ares_options['ares_cta_header_two'] ); ?>
+                    <h4 class="secondary-heading smartcat-animate fadeInRight">
+                        <?php echo esc_html( $ares_options['ares_cta_header_two'] ); ?>
                     </h4>
                 <?php endif; ?>
 

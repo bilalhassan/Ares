@@ -151,9 +151,9 @@ $wp_customize->add_section( 'ares_footer_section', array(
 
     // Show / Hide the Footer CTA?
     $wp_customize->add_setting( 'ares[ares_footer_cta]', array(
-        'default'               => 'yes',
+        'default'               => 'on',
         'transport'             => 'refresh',
-        'sanitize_callback'     => 'ares_sanitize_show_hide',
+        'sanitize_callback'     => 'ares_sanitize_on_off',
         'type'                  => 'option'
     ) );
     $wp_customize->add_control( 'ares[ares_footer_cta]', array(
@@ -161,8 +161,8 @@ $wp_customize->add_section( 'ares_footer_section', array(
         'section' => 'ares_footer_section',
         'type'    => 'radio',
         'choices'    => array(
-            'yes'   => __( 'Show', 'ares' ),
-            'no'    => __( 'Hide', 'ares' ),
+            'on'    => __( 'Show', 'ares' ),
+            'off'   => __( 'Hide', 'ares' ),
         )
     ));
     
@@ -240,7 +240,7 @@ $wp_customize->add_section( 'ares_footer_section', array(
     
     // Footer Copyright Text
     $wp_customize->add_setting( 'ares[ares_footer_text]', array(
-        'default'               => __( '&#169; 2015 Your company name', 'ares' ),
+        'default'               => __( '© 2017 Your Company Name', 'ares' ),
         'transport'             => 'refresh',
         'sanitize_callback'     => 'sanitize_text_field',
         'type'                  => 'option'
