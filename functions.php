@@ -88,24 +88,12 @@ if ( ! function_exists( 'ares_setup' ) ) :
         
         else :
             
-            // Options array exists from a previous version, set defaults on newer Customizer options
+            if ( !get_option( 'ares_migration_process' ) || get_option( 'ares_migration_process' ) != 'completed' ) : 
             
-            $existing_ares_options = ares_get_options();
+                ares_migration_process();
+                
+            endif;
             
-            if ( ! array_key_exists( 'ares_font_family_secondary', $existing_ares_options ) ) :
-                $existing_ares_options['ares_font_family_secondary'] = 'Roboto, sans-serif';
-            endif; 
-            
-            if ( ! array_key_exists( 'ares_post_slider_cta_bool', $existing_ares_options ) ) :
-                $existing_ares_options['ares_post_slider_cta_bool'] = 'yes';
-            endif; 
-
-            if ( ! array_key_exists( 'ares_branding_bar_height', $existing_ares_options ) ) :
-                $existing_ares_options['ares_branding_bar_height'] = 80;
-            endif; 
-            
-            update_option( 'ares', $existing_ares_options );
-           
         endif;
         
     }
@@ -208,7 +196,7 @@ function ares_get_options() {
         'ares_single_date'              => 'on',                              // No CSTMZR YET
         'ares_single_author'            => 'on',                              // No CSTMZR YET
 
-        'ares_footer_cta'               => 'yes',                          
+        'ares_footer_cta'               => 'on',                          
         'ares_footer_cta_text'          => __( 'GET A NO RISK, FREE CONSULTATION TODAY', 'ares' ),
         'ares_footer_button_text'       => __( 'CONTACT US', 'ares' ),
         'ares_footer_button_url'        => '',
@@ -221,5 +209,78 @@ function ares_get_options() {
         'ares_branding_bar_height'      => 80,
         
     ) );
+    
+}
+
+function ares_migration_process() {
+    
+    // Options array exists from a previous version, set defaults on newer Customizer options
+
+    $existing_ares_options = ares_get_options();
+
+    if ( ! array_key_exists( 'ares_font_family_secondary', $existing_ares_options ) ) :
+        $existing_ares_options['ares_font_family_secondary'] = 'Roboto, sans-serif';
+    endif; 
+
+    if ( ! array_key_exists( 'ares_post_slider_cta_bool', $existing_ares_options ) ) :
+        $existing_ares_options['ares_post_slider_cta_bool'] = 'yes';
+    endif; 
+
+    if ( ! array_key_exists( 'ares_branding_bar_height', $existing_ares_options ) ) :
+        $existing_ares_options['ares_branding_bar_height'] = 80;
+    endif; 
+
+    if ( array_key_exists( 'ares_font_size', $existing_ares_options ) ) : 
+
+        switch ( $existing_ares_options['ares_font_size'] ):
+
+            case '10px' :
+                $existing_ares_options['ares_font_size'] = 10;
+                break;
+
+            case '12px' :
+                $existing_ares_options['ares_font_size'] = 12;
+                break;
+
+            case '14px' :
+                $existing_ares_options['ares_font_size'] = 14;
+                break;
+
+            case '16px' :
+                $existing_ares_options['ares_font_size'] = 16;
+                break;
+
+            case '18px' :
+                $existing_ares_options['ares_font_size'] = 18;
+                break;
+
+            default :
+                $existing_ares_options['ares_font_size'] = 14;
+
+        endswitch;
+
+    endif;
+
+    if ( array_key_exists( 'ares_font_family', $existing_ares_options ) ) : 
+
+        switch ( $existing_ares_options['ares_font_family'] ):
+
+            case 'MS Sans Serif, Geneva, sans-serif' :
+                $existing_ares_options['ares_font_family'] = 'MS Sans Serif, Tahoma, sans-serif';
+                break;
+
+            case 'Lobster, cursive' :
+                $existing_ares_options['ares_font_family'] = 'Lobster Two, cursive';
+                break;
+
+            default :
+                break;
+
+        endswitch;
+
+    endif;
+
+    update_option( 'ares', $existing_ares_options );
+    update_option( 'ares_migration_process', 'completed' );
     
 }

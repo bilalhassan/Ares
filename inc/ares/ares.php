@@ -697,7 +697,7 @@ function ares_render_footer() {
     
     <footer id="colophon" class="site-footer <?php echo $ares_options['ares_frontpage_content_bool'] == 'no' ? 'no-top-margin' : ''; ?>" role="contentinfo">
         
-        <?php if( $ares_options['ares_footer_cta'] == 'yes' ) : ?>
+        <?php if( $ares_options['ares_footer_cta'] == 'on' ) : ?>
     
         <div id="footer-callout">
             
