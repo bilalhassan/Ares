@@ -755,11 +755,11 @@ function ares_render_footer() {
 
                     <div class="col-xs-9 text-left">
                         
-                        <span class="ares-copyright smartcat-animate fadeInUp">
+                        <span class="ares-copyright">
                             <?php echo $ares_options['ares_footer_text']; ?>
                         </span>
                         
-                        <a href="https://smartcatdesign.net/" rel="designer" style="display: inline-block !important" class="rel smartcat-animate fadeInUpBig">
+                        <a href="https://smartcatdesign.net/" rel="designer" style="display: inline-block !important" class="rel">
                             <?php printf( esc_html__( 'Designed by %s', 'ares' ), 'Smartcat' ); ?> 
                             <img src="<?php echo get_template_directory_uri() . '/inc/images/cat_logo_mini.png'?>" alt="<?php printf( esc_attr__( '%s Logo', 'ares'), 'Smartcat' ); ?>" />
                         </a>
@@ -768,7 +768,7 @@ function ares_render_footer() {
 
                     <div class="col-xs-3 text-right">
 
-                        <i class="scroll-top fa fa-chevron-up smartcat-animate fadeIn"></i>
+                        <i class="scroll-top fa fa-chevron-up"></i>
 
                     </div>              
                     

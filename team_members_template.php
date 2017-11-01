@@ -25,7 +25,7 @@ $ares_options = ares_get_options();
                     
                     <div class="col-md-<?php echo $ares_options['ares_single_layout'] == 'col1' ? '12' : '9'; ?>">
                         
-                        <article class="smartcat-animate fadeInUp">
+                        <article>
                             
                             <div class="sc_team_single_member row">
 
@@ -155,7 +155,7 @@ $ares_options = ares_get_options();
                     
                     <?php if ( $ares_options['ares_single_layout'] == 'col2r' ) : ?>
 
-                        <div class="col-md-3 avenue-sidebar smartcat-animate fadeInUp" data-wow-delay=".2s">
+                        <div class="col-md-3 avenue-sidebar">
                             <?php get_sidebar(); ?>
                         </div>
 
