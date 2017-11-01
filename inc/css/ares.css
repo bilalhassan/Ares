@@ -632,7 +632,7 @@ body.single.single-team_member #single-post-container article {
     padding: 0 15px;
 }
 
-.single .wp-post-image {
+.single-team_member .wp-post-image {
     width: 100%;
     margin: 0 auto 15px auto;
     display: block;

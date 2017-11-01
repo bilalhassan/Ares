@@ -9,6 +9,12 @@ $wp_customize->add_panel( 'ares_frontpage_panel', array(
     'priority'              => 10
 ) );
 
+// Move Static Front Page
+$wp_customize->add_section( 'static_front_page', array(
+    'title'                 => __( 'Static Front Page', 'ares' ),
+    'panel'                 => 'ares_frontpage_panel'
+) );
+
     // ---------------------------------------------
     // CTA Header Section
     // ---------------------------------------------

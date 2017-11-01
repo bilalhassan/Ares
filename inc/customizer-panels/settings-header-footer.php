@@ -9,6 +9,13 @@ $wp_customize->add_panel( 'ares_header_panel', array(
     'priority'              => 10
 ) );
 
+// Move Site Identity
+$wp_customize->add_section( 'title_tagline', array(
+    'title'                 => __( 'Site Title & Tagline', 'ares' ),
+    'panel'                 => 'ares_header_panel'
+) );
+
+
 // ---------------------------------------------
 // Toolbar Section
 // ---------------------------------------------
