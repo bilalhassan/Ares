@@ -85,10 +85,10 @@ Ares uses various open source libraries, fonts, and icons as listed blow:
     - License URL           http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL
 
 7. Slider Image & Screenshot Image
-    - URL                   http://pixabay.com/en/macbook-apple-imac-computer-screen-606763/
+    - URL                   https://pixabay.com/en/laptop-mac-computer-browser-2557572/
     - License               CC0
     - License URL           http://creativecommons.org/publicdomain/zero/1.0/deed.en
-    - Photographer          FirmBeee                 
+    - Photographer          StockSnap                 
 
 8. Animate
     - URL                   https://github.com/daneden/animate.css#license
