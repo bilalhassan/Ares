@@ -5,7 +5,7 @@ Tags: one-column, two-columns, right-sidebar, grid-layout, custom-colors, custom
 
 Requires at least: 4.4
 Tested up to: 4.8.2
-Stable tag: 2.0.0
+Stable tag: 2.0.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
 
@@ -45,6 +45,9 @@ This theme supports Our Team Showcase plugin.
 
 = 2.0.0 - Oct 31st 2017 =
 - Major overhaul of code-base to migrate theme options to Customizer mods
+
+= 2.0.1 - Nov 2nd 2017 =
+Updated screenshot
 
 == Credits ==
 

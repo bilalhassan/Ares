@@ -10,7 +10,7 @@
 if ( ! function_exists( 'ares_setup' ) ) :
 
     if( !defined( 'ARES_VERSION' ) ) :
-        define( 'ARES_VERSION', '2.0.0' );
+        define( 'ARES_VERSION', '2.0.1' );
     endif;
 
     /**
