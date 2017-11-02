@@ -351,6 +351,9 @@ span#mobile-menu-trigger span {
     overflow: hidden;
     /*max-height: 600px;*/
 }
+div#ares_slider_wrap {
+    margin-bottom: 0 !important;
+}
 .sc-slider-wrapper .camera_caption{
     width: 100%;
     text-transform: uppercase;

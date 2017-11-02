@@ -140,6 +140,21 @@ function ares_sanitize_on_off( $input ) {
 
 }
 
+function ares_sanitize_yes_no( $input ) {
+
+    $valid_keys = array(
+        'on'    => __( 'Yes', 'ares' ),
+        'off'   => __( 'No', 'ares' ),
+    );
+
+    if ( array_key_exists( $input, $valid_keys ) ) {
+        return $input;
+    } else {
+        return '';
+    }
+
+}
+
 function ares_sanitize_icon( $input ) {
 
     $valid_keys = ares_icons();

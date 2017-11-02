@@ -49,14 +49,17 @@ jQuery(document).ready( function( $ ) {
     if ( $('#ares_slider_wrap').length > 0 ) {
 
         $('#ares_slider_wrap').camera({
-            height: '40%',
-            loader: 'pie',
-            pagination: false,
+            height: aresSlider.desktop_height + '%',
+            pagination: ( aresSlider.pagination == 'on' ) ? true : false,
+            navigation: ( aresSlider.navigation == 'on' ) ? true : false,
+            fx: aresSlider.animation.toString(),
+            time: parseInt(aresSlider.slide_timer),
+            transPeriod: parseInt(aresSlider.animation_speed),
+            hover: ( aresSlider.hover == 'on' ) ? true : false,
             thumbnails: false,
-            fx: 'simpleFade',
-            time: 4000,
             overlayer: true,
-            playPause : false
+            playPause : false,
+            loader: 'pie',
         });
 
     }

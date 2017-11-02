@@ -38,7 +38,8 @@ $wp_customize->add_section( 'ares_slider_settings_section', array(
 // ---------------------------------------------
 // Slides Loop
 // ---------------------------------------------
-for ( $ctr = 1; $ctr < 4; $ctr++ ) :
+
+for ( $ctr = 1; $ctr < apply_filters( 'ares_capacity', 1 ); $ctr++ ) :
 
     // ---------------------------------------------
     // Slide Section
