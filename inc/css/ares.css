@@ -79,6 +79,9 @@ input[type="submit"] {
     font-size: 16px;
     text-shadow: none;
     border: none;
+    transition: .3s all ease-in-out;
+    -moz-transition: .3s all ease-in-out;
+    -webkit-transition: .3s all ease-in-out;
 }
 
 form.search-form input.search-field {
@@ -208,6 +211,7 @@ ul#primary-menu > li {
     -moz-transition: .3s all ease-in-out;
     -webkit-transition: .3s all ease-in-out;
     text-align: left;
+    padding: 15px 0;
 }
 
 #site-branding ul#primary-menu li:hover ul.sub-menu {
@@ -356,12 +360,14 @@ div#ares_slider_wrap {
 }
 .sc-slider-wrapper .camera_caption{
     width: 100%;
-    text-transform: uppercase;
     margin: 0 auto;
     top: 0;
-    font-size: 45px;
     display: table;
     height: 100%;
+}
+.sc-slider-wrapper .camera_caption span {
+    font-size: 45px;
+    text-transform: uppercase;
 }
 .sc-slider-wrapper .camera_caption > div{
     background: transparent;
@@ -376,19 +382,25 @@ div#ares_slider_wrap {
     -webkit-text-shadow: 1px 1px 10px rgba(0,0,0,0.5);
     -moz-text-shadow: 1px 1px 10px rgba(0,0,0,0.5);
     font-size: 50px;
-    line-height: 55px;
+    line-height: normal;
+    display: block;
 }
 @media (max-width:991px) {
-    .sc-slider-wrapper .camera_caption > div span{
+    .sc-slider-wrapper .camera_caption > div span,
+    .parallax h2 {
         font-size: 32px;
-        line-height: 36px;
     }
 }
-@media (max-width:767px) {
-    .sc-slider-wrapper .camera_caption > div span{
-        font-size: 22px;
-        line-height: 26px;
+@media (max-width:599px) {
+    .sc-slider-wrapper .camera_caption > div span,
+    .parallax h2 {
+        font-size: 24px !important;
     }
+}
+
+.sc-slider-wrapper .camera_caption > div span, 
+.parallax h2 {
+    line-height: 1em;
 }
 
 /* --- Post Slider CTA Bar --- */
@@ -544,7 +556,7 @@ div#post-slider-cta .secondary-heading {
     -webkit-transition: .2s all ease-in-out;
     font-size: 15px;
     padding: 0 0 0 20px;
-    font-weight: 700;
+    font-weight: 500;
     text-transform: uppercase;
     color: #000;
 }
@@ -801,4 +813,8 @@ main#main.index .nothing-found-index {
 
 .site-footer .site-info .col-xs-9 a img {
     max-height: 24px;
+}
+
+.sc-slider-wrapper .fluid_container {
+    background: #000;
 }

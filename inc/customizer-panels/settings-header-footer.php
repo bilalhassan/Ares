@@ -124,8 +124,8 @@ $wp_customize->add_section( 'ares_toolbar_section', array(
 // Header Height Section
 // ---------------------------------------------
 $wp_customize->add_section( 'ares_header_height_section', array(
-    'title'                 => __( 'Branding Bar', 'ares'),
-    'description'           => __( 'Customize the Branding Bar in the Header', 'ares' ),
+    'title'                 => __( 'Branding & Nav Bar', 'ares'),
+    'description'           => __( 'Customize the Branding & Navigation bar in the Header', 'ares' ),
     'panel'                 => 'ares_header_panel'
 ) );
 
@@ -139,8 +139,8 @@ $wp_customize->add_section( 'ares_header_height_section', array(
     $wp_customize->add_control( 'ares[ares_branding_bar_height]', array(
         'type'                  => 'number',
         'section'               => 'ares_header_height_section',
-        'label'                 => __( 'Branding Bar Height', 'ares' ),
-        'description'           => __( 'Adjust the height of the branding bar in the Header', 'ares' ),
+        'label'                 => __( 'Branding & Nav Bar Height', 'ares' ),
+        'description'           => __( 'Adjust the height of the branding & navigation bar in the Header', 'ares' ),
         'input_attrs'           => array(
             'min' => 80,
             'max' => 400,

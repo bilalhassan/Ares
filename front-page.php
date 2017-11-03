@@ -16,7 +16,9 @@ get_header(); ?>
     <main id="main" class="site-main">
 
         <?php if ( $ares_options['ares_slider_bool'] == 'yes' ) : ?>
+
             <?php do_action( 'ares_slider' ); ?>
+        
         <?php endif; ?>
 
         <?php if ( $ares_options['ares_post_slider_cta_bool'] == 'yes' ) : ?>

@@ -78,16 +78,13 @@ a.button-primary{
 }
 .sc-slider-wrapper .camera_caption{
     width: 100%;
-    text-transform: uppercase;
     margin: 0 auto;
     top: 30%;
-    font-size: 45px;
 }
 .sc-slider-wrapper .camera_caption > div{
     min-height: 100px;
     background: transparent;
     text-align: center;
-    line-height: 100px;
 }
 .sc-slider-wrapper .camera_caption > div span{
     display: inline-block;

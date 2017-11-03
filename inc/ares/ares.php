@@ -196,7 +196,11 @@ function ares_custom_css() {
         .button,
         p.comment-form-comment label,
         input#submit,
-        .sc_team_single_member .sc_team_single_skills .progress {
+        .sc_team_single_member .sc_team_single_skills .progress,
+        .parallax h2,
+        input#submit, input[type="submit"],
+        a.button.slider-button,
+        #site-navigation.main-navigation div#primary-menu ul > li a {
             font-family: <?php echo esc_attr( $ares_options['ares_font_family'] ); ?>;
         }
         
@@ -238,30 +242,38 @@ function ares_custom_css() {
         ----- Theme Colors -----------------------------------------------------
         */
        
-        <?php 
-        switch ( $ares_options['ares_theme_color'] ) :
-            
-            case 'aqua' :
-                $primary_theme_color = '#83CBDC';
-                $secondary_theme_color = '#57A9BD';
-                break;
-            
-            case 'green' :
-                $primary_theme_color = '#ACBD5D';
-                $secondary_theme_color = '#8F9E4A';
-                break;
-            
-            case 'red' :
-                $primary_theme_color = '#DC838D';
-                $secondary_theme_color = '#E05867';
-                break;
-            
-            default :
-                $primary_theme_color = '#83CBDC';
-                $secondary_theme_color = '#57A9BD';
-                break;
-            
-        endswitch; ?>
+        <?php if ( isset( $ares_options['ares_use_custom_colors'] ) && $ares_options['ares_use_custom_colors'] == 'custom' ) :
+        
+            $primary_theme_color = isset( $ares_options['ares_custom_primary'] ) ? $ares_options['ares_custom_primary'] : '#83CBDC';
+            $secondary_theme_color = isset( $ares_options['ares_custom_accent'] ) ? $ares_options['ares_custom_accent'] : '#57A9BD';
+        
+        else : ?>
+        
+            <?php switch ( $ares_options['ares_theme_color'] ) :
+
+                case 'aqua' :
+                    $primary_theme_color = '#83CBDC';
+                    $secondary_theme_color = '#57A9BD';
+                    break;
+
+                case 'green' :
+                    $primary_theme_color = '#ACBD5D';
+                    $secondary_theme_color = '#8F9E4A';
+                    break;
+
+                case 'red' :
+                    $primary_theme_color = '#DC838D';
+                    $secondary_theme_color = '#E05867';
+                    break;
+
+                default :
+                    $primary_theme_color = '#83CBDC';
+                    $secondary_theme_color = '#57A9BD';
+                    break;
+
+            endswitch; ?>
+        
+        <?php endif; ?>
        
         /* --- Primary --- */
         
@@ -443,46 +455,13 @@ add_action( 'ares_toolbar', 'ares_render_toolbar' );
 /**
  * Render the slider on the frontpage.
  */
-function ares_render_slider() {
+add_action( 'ares_slider', 'ares_render_slider', 10 );
+function ares_render_slider() { ?>
 
-$ares_options = ares_get_options(); ?>
+    <?php get_template_part('template-parts/content', 'slider' ); ?>
     
-<?php if ( $ares_options['ares_slide1_image'] || $ares_options['ares_slide2_image'] || $ares_options['ares_slide3_image'] ) : ?>
-
-    <div class="sc-slider-wrapper">
-
-        <div class="fluid_container">
-
-            <div class="camera_wrap" id="ares_slider_wrap">
-
-                <?php for ( $ctr = 1; $ctr < apply_filters( 'ares_capacity', 1 ); $ctr++ ) : ?>
-                
-                    <?php if ( $ares_options['ares_slide' . $ctr . '_image'] ) : ?>
-
-                        <div data-thumb="<?php echo esc_attr( $ares_options['ares_slide' . $ctr . '_image'] ); ?>" data-src="<?php echo esc_attr( $ares_options['ares_slide' . $ctr . '_image'] ); ?>">
-
-                            <div class="camera_caption fadeFromBottom">
-                                <span class="smartcat-animate fadeInUp">
-                                    <?php echo esc_attr( $ares_options['ares_slide' . $ctr . '_text'] ); ?>
-                                </span>
-                            </div>
-
-                        </div>
-
-                    <?php endif; ?>
-                
-                <?php endfor; ?>
-                
-            </div><!-- #camera_wrap_1 -->
-
-        </div>
-
-    </div>
-
-    <?php endif; ?>
-
-<?php }
-add_action( 'ares_slider', 'ares_render_slider' );
+<?php
+}
 
 /**
  * Returns all available fonts as an array
