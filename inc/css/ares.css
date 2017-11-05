@@ -387,19 +387,19 @@ div#ares_slider_wrap {
 }
 @media (max-width:991px) {
     .sc-slider-wrapper .camera_caption > div span,
-    .parallax h2 {
+    .sc-slider-wrapper .parallax h2 {
         font-size: 32px;
     }
 }
 @media (max-width:599px) {
     .sc-slider-wrapper .camera_caption > div span,
-    .parallax h2 {
+    .sc-slider-wrapper .parallax h2 {
         font-size: 24px !important;
     }
 }
 
 .sc-slider-wrapper .camera_caption > div span, 
-.parallax h2 {
+.sc-slider-wrapper .parallax h2 {
     line-height: 1em;
 }
 
@@ -795,6 +795,8 @@ ol.comment-list ol.children {
     list-style: none;
 }
 
+#homepage-area-a
+#homepage-area-b,
 #homepage-widget {
     border-bottom: thin solid #eaeaea;
     padding: 30px 0 0 0;

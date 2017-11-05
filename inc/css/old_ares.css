@@ -172,9 +172,9 @@ a.button-primary{
     
 }
 #top-banner .top-banner-text h2,
-#homepage-widget h2 {
-    font-weight: 600;
-    margin-bottom: 20px;
+#homepage-widget h2,
+#homepage-area-a h2,
+#homepage-area-b h2 {
     text-align: center;
 }
 #homepage-widget #top-banner-text h2 {
@@ -239,16 +239,12 @@ a.button-primary{
     font-weight: 400;
 }
 #top-banner .top-banner-text{
-    font-size: 20px;
-    line-height: 26px;
     margin-bottom: 20px;
-    font-weight: 200;
 }
 #top-banner .date,
 #top-banner .author{
     font-size: 16px;
 }
-
 
 #top-banner #sc_avenue_recent_posts > div {
     margin-bottom: 30px;
@@ -299,11 +295,11 @@ a.button-primary{
     background: rgba(0,0,0,0);
 }
 #top-banner .widget{
-    margin-bottom: 50px;
+/*    margin-bottom: 50px;*/
 }
 #homepage-widget{
 /*    background: url('../images/light_grey.png');*/
-    background: #F2F2F2;
+    background: #f8f8f8;
     padding: 50px 0 30px 0;
 }
 /*-- site content --*/
@@ -437,7 +433,7 @@ article.sidebar-off{
 }
 .site-footer .widget-title{
     color: #fff;
-    margin-bottom: 30px;
+    font-weight: 500;
 }
 input[type="search"].search-field{ border: 0;}
 input[type="search"].search-field:focus{ outline: none;}
@@ -582,7 +578,6 @@ input[type="search"].search-field:focus{ outline: none;}
 }
 .avenue-sidebar .widget .widget-title{
     padding: 10px 0 0px 0;
-    margin-bottom: 20px;
 }
 .avenue-sidebar .widget_search{
     padding: 20px;
@@ -592,7 +587,7 @@ input[type="search"].search-field:focus{ outline: none;}
     padding-left: 5px;
 }
 .widget-title{
-    margin-bottom: 0;
+    margin-bottom: 15px;
     font-weight: 400;
     margin-top: 5px;
     text-transform: uppercase;

@@ -45,6 +45,8 @@ get_header(); ?>
             <?php do_action( 'ares_cta_trio' ); ?>
         <?php endif; ?>
         
+        <?php do_action( 'ares_pro_widget_areas' ); ?>
+        
         <?php if( is_active_sidebar('sidebar-banner' ) ) : ?>
             
             <div id="top-banner" class="full-banner">

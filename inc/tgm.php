@@ -64,7 +64,12 @@ function ares_register_required_plugins() {
             'name'          => __( 'Our Team Showcase', 'ares' ),
             'slug'          => 'our-team-enhanced',
             'required'      => false,
-        )
+        ),
+        array (
+            'name'          => __( 'uCare - Support Ticket System', 'ares' ),
+            'slug'          => 'ucare-support-system',
+            'required'      => false,
+        ),
 
     );
 

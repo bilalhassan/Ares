@@ -97,22 +97,22 @@ function ares_widgets_init() {
     ));
 
     register_sidebar(array(
-        'name' => __('Homepage Full-width Widget', 'ares'),
+        'name' => __('Homepage C - Full-width', 'ares'),
         'id' => 'sidebar-banner',
         'description' => '',
         'before_widget' => '<aside id="%1$s" class="widget %2$s smartcat-animate fadeIn">',
         'after_widget' => '</aside>',
-        'before_title' => '<h2>',
+        'before_title' => '<h2 class="widget-title">',
         'after_title' => '</h2>',
     ));
 
     register_sidebar(array(
-        'name' => __('Homepage Half-width Widget', 'ares'),
+        'name' => __('Homepage D - Half-width', 'ares'),
         'id' => 'sidebar-homepage-widget',
         'description' => '',
         'before_widget' => '<aside id="%1$s" class="widget %2$s col-sm-6 smartcat-animate fadeIn">',
         'after_widget' => '</aside>',
-        'before_title' => '<h2>',
+        'before_title' => '<h2 class="widget-title">',
         'after_title' => '</h2>',
     ));
 
@@ -200,12 +200,18 @@ function ares_custom_css() {
         .parallax h2,
         input#submit, input[type="submit"],
         a.button.slider-button,
-        #site-navigation.main-navigation div#primary-menu ul > li a {
+        #site-navigation.main-navigation div#primary-menu ul > li a,
+        form#scmod-contact-form  .group > label,
+        .ares-contact-info .contact-row .detail {
             font-family: <?php echo esc_attr( $ares_options['ares_font_family'] ); ?>;
         }
         
         body {
             font-size: <?php echo esc_attr( $ares_options['ares_font_size'] ); ?>px;
+            font-family: <?php echo esc_attr( $ares_options['ares_font_family_secondary'] ); ?>;
+        }
+        
+        .ares-callout .detail {
             font-family: <?php echo esc_attr( $ares_options['ares_font_family_secondary'] ); ?>;
         }
         
@@ -242,38 +248,14 @@ function ares_custom_css() {
         ----- Theme Colors -----------------------------------------------------
         */
        
-        <?php if ( isset( $ares_options['ares_use_custom_colors'] ) && $ares_options['ares_use_custom_colors'] == 'custom' ) :
+        <?php 
         
-            $primary_theme_color = isset( $ares_options['ares_custom_primary'] ) ? $ares_options['ares_custom_primary'] : '#83CBDC';
-            $secondary_theme_color = isset( $ares_options['ares_custom_accent'] ) ? $ares_options['ares_custom_accent'] : '#57A9BD';
+        $colors_array = ares_get_theme_skin_colors();
         
-        else : ?>
+        $primary_theme_color = $colors_array['primary'];
+        $secondary_theme_color = $colors_array['accent']; 
         
-            <?php switch ( $ares_options['ares_theme_color'] ) :
-
-                case 'aqua' :
-                    $primary_theme_color = '#83CBDC';
-                    $secondary_theme_color = '#57A9BD';
-                    break;
-
-                case 'green' :
-                    $primary_theme_color = '#ACBD5D';
-                    $secondary_theme_color = '#8F9E4A';
-                    break;
-
-                case 'red' :
-                    $primary_theme_color = '#DC838D';
-                    $secondary_theme_color = '#E05867';
-                    break;
-
-                default :
-                    $primary_theme_color = '#83CBDC';
-                    $secondary_theme_color = '#57A9BD';
-                    break;
-
-            endswitch; ?>
-        
-        <?php endif; ?>
+        ?>
        
         /* --- Primary --- */
         
@@ -289,7 +271,9 @@ function ares_custom_css() {
         #site-navigation.main-navigation li a:hover,
         #site-navigation.main-navigation li.current_page_item a,
         #site-cta .site-cta .fa,
-        .sc_team_single_member .sc_single_main .sc_personal_quote span.sc_team_icon-quote-left 
+        .sc_team_single_member .sc_single_main .sc_personal_quote span.sc_team_icon-quote-left,
+        .ares-contact-info .contact-row .detail a:hover,
+        footer#colophon.site-footer .ares-contact-info .contact-row .detail a:hover
         {
             color: <?php echo esc_attr( $primary_theme_color ); ?>;
         }
@@ -777,4 +761,53 @@ function ares_check_capacity( $base_value = 1 ) {
         return $base_value + 3;
     endif;
     
+}
+
+/**
+ * 
+ * Get an array containing the primary and accent colors in use by the theme.
+ * 
+ * @return String Array
+ */
+function ares_get_theme_skin_colors() {
+    
+    $ares_options = ares_get_options();
+    
+    $colors_array = array();
+    
+    if ( isset( $ares_options['ares_use_custom_colors'] ) && $ares_options['ares_use_custom_colors'] == 'custom' ) :
+        
+        $colors_array['primary'] = isset( $ares_options['ares_custom_primary'] ) ? $ares_options['ares_custom_primary'] : '#83CBDC';
+        $colors_array['accent'] = isset( $ares_options['ares_custom_accent'] ) ? $ares_options['ares_custom_accent'] : '#57A9BD';
+
+    else : ?>
+
+        <?php switch ( $ares_options['ares_theme_color'] ) :
+
+            case 'aqua' :
+                $colors_array['primary'] = '#83CBDC';
+                $colors_array['accent'] = '#57A9BD';
+                break;
+
+            case 'green' :
+                $colors_array['primary'] = '#ACBD5D';
+                $colors_array['accent'] = '#8F9E4A';
+                break;
+
+            case 'red' :
+                $colors_array['primary'] = '#DC838D';
+                $colors_array['accent'] = '#E05867';
+                break;
+
+            default :
+                $colors_array['primary'] = '#83CBDC';
+                $colors_array['accent'] = '#57A9BD';
+                break;
+
+        endswitch; ?>
+
+    <?php endif;
+    
+    return $colors_array;
+
 }
