@@ -780,9 +780,9 @@ function ares_get_theme_skin_colors() {
         $colors_array['primary'] = isset( $ares_options['ares_custom_primary'] ) ? $ares_options['ares_custom_primary'] : '#83CBDC';
         $colors_array['accent'] = isset( $ares_options['ares_custom_accent'] ) ? $ares_options['ares_custom_accent'] : '#57A9BD';
 
-    else : ?>
+    else :
 
-        <?php switch ( $ares_options['ares_theme_color'] ) :
+        switch ( $ares_options['ares_theme_color'] ) :
 
             case 'aqua' :
                 $colors_array['primary'] = '#83CBDC';
@@ -804,9 +804,9 @@ function ares_get_theme_skin_colors() {
                 $colors_array['accent'] = '#57A9BD';
                 break;
 
-        endswitch; ?>
+        endswitch;
 
-    <?php endif;
+    endif;
     
     return $colors_array;
 
