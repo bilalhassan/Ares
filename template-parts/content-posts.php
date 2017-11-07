@@ -28,7 +28,7 @@
             <?php echo wp_trim_words( $post->post_content, 50); ?>
         </div>
         <div class="text-right">
-            <a class="button button-primary" href="<?php the_permalink(); ?>">Read More</a>
+            <a class="ares-button button-primary" href="<?php the_permalink(); ?>">Read More</a>
         </div>                        
     </div>
     

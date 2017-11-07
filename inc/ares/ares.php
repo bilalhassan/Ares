@@ -193,16 +193,25 @@ function ares_custom_css() {
         h1,h2,h3,h4,h5,h6,
         .sc-slider-wrapper .camera_caption > div span,
         #site-branding div.navigation ul#primary-menu,
-        .button,
+        .ares-button,
         p.comment-form-comment label,
         input#submit,
         .sc_team_single_member .sc_team_single_skills .progress,
         .parallax h2,
         input#submit, input[type="submit"],
-        a.button.slider-button,
+        a.ares-button.slider-button,
         #site-navigation.main-navigation div#primary-menu ul > li a,
         form#scmod-contact-form  .group > label,
-        .ares-contact-info .contact-row .detail {
+        .ares-contact-info .contact-row .detail,
+        header.woocommerce-products-header.page-header .woocommerce-breadcrumb,
+        .woocommerce ul.products li.product .price,
+        .woocommerce a.button.add_to_cart_button,
+        .woocommerce div.product p.price, 
+        .woocommerce div.product span.price,
+        .woocommerce span.onsale,
+        .woocommerce button.single_add_to_cart_button,
+        .woocommerce div.product .woocommerce-tabs ul.tabs li a,
+        .woocommerce input[type="submit"].button {
             font-family: <?php echo esc_attr( $ares_options['ares_font_family'] ); ?>;
         }
         
@@ -297,8 +306,17 @@ function ares_custom_css() {
         input#submit,
         input[type="submit"],
         .sc_team_single_member .sc_team_single_skills .progress,
-        .sc-tags .sc-single-tag {
+        .sc-tags .sc-single-tag,
+        .woocommerce-breadcrumb,
+        .pagination-links .page-numbers.current,
+        .wc-pagination ul span.page-numbers.current,
+        .woocommerce a.button.add_to_cart_button,
+        .woocommerce input[type="submit"].button {
             background: <?php echo esc_attr( $primary_theme_color ); ?>;
+        }
+        .woocommerce button.single_add_to_cart_button,
+        .woocommerce a.checkout-button.button {
+            background: <?php echo esc_attr( $primary_theme_color ); ?> !important;
         }
         #site-cta .site-cta .fa {
             border: 2px solid <?php echo esc_attr( $primary_theme_color ); ?>;
@@ -322,8 +340,15 @@ function ares_custom_css() {
         .button-primary.active,
         .open .dropdown-toggle.button-primary,
         input#submit:hover,
-        input[type="submit"]:hover {
+        input[type="submit"]:hover,
+        .woocommerce a.button.add_to_cart_button:hover {
             background-color: <?php echo esc_attr( $secondary_theme_color ); ?>;
+        }
+        
+        .woocommerce button.single_add_to_cart_button:hover,
+        .woocommerce input[type="submit"].button:hover,
+        .woocommerce a.checkout-button.button:hover {
+            background-color: <?php echo esc_attr( $secondary_theme_color ); ?> !important;
         }
         
     </style>
@@ -666,7 +691,7 @@ function ares_render_footer() {
                         </div>
 
                         <div class="col-sm-4 text-right">
-                            <a class="button button-cta smartcat-animate fadeInUp" href="<?php echo $ares_options['ares_footer_button_url']; ?>">
+                            <a class="ares-button button-cta smartcat-animate fadeInUp" href="<?php echo $ares_options['ares_footer_button_url']; ?>">
                                 <?php echo $ares_options['ares_footer_button_text']; ?>
                             </a>
                         </div>

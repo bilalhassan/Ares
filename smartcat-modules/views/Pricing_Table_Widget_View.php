@@ -27,7 +27,7 @@
             </div>
 
             <?php if ( !empty( $instance['scmod_pricing_table_url'] ) && !empty( $instance['scmod_pricing_table_button_label'] ) ) : ?>
-                <a class="button button-primary" href="<?php echo esc_url( $instance['scmod_pricing_table_url'] ); ?>">
+                <a class="ares-button button-primary" href="<?php echo esc_url( $instance['scmod_pricing_table_url'] ); ?>">
                     <?php echo esc_html( $instance['scmod_pricing_table_button_label'] ); ?>
                 </a>
             <?php endif;?>

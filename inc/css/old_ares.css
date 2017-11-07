@@ -53,7 +53,7 @@ a.button-primary{
 
     color: #fff;
 }
-.button{
+.ares-button{
     display: inline-block;
     height: 30px;
     line-height: 30px;
@@ -510,7 +510,7 @@ input[type="search"].search-field:focus{ outline: none;}
 .post-title{
     text-transform: uppercase;
 }
-.item-post a.button {
+.item-post a.ares-button {
     margin-top: 15px;
 }
 .item-post .post-title{

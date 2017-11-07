@@ -57,7 +57,7 @@ get_header(); ?>
                                     </div>
                                     
                                     <div class="text-right">
-                                        <a class="button button-primary" href="<?php the_permalink(); ?>">
+                                        <a class="ares-button button-primary" href="<?php the_permalink(); ?>">
                                             <?php _e( 'Read More', 'ares' ); ?>
                                         </a>
                                     </div>  
@@ -68,13 +68,15 @@ get_header(); ?>
 
                         <?php endwhile; // end of the loop.   ?>
 
+                        <div class="pagination-links">
+                            <?php echo the_posts_pagination( array( 'mid_size' => 1 ) ); ?>
+                        </div>
+                    
                     <?php else : ?>
                     
                         <?php get_template_part('template-parts/content', 'none'); ?>
                     
                     <?php endif; ?>
-                    
-                    <?php ares_paging_nav(); ?>
                     
                 </div>
                 
