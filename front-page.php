@@ -47,55 +47,7 @@ get_header(); ?>
         
         <?php do_action( 'ares_pro_widget_areas' ); ?>
         
-        <?php if( is_active_sidebar('sidebar-banner' ) ) : ?>
-            
-            <div id="top-banner" class="full-banner">
-                
-                <div class="container">
-        
-                    <div class="row">
-
-                        <div class="col-md-12">
-
-                            <div class="top-banner-text">
-                                <?php dynamic_sidebar( 'sidebar-banner' ); ?>
-                            </div>
-
-                        </div>
-
-                    </div>
-                    
-                </div>
- 
-            </div>
-        
-            <div class="clear"></div>
-
-        <?php endif; ?>
-        
-        <?php if( is_active_sidebar('sidebar-homepage-widget' ) ) :?>
-            
-            <div id="homepage-widget" class="">
-                
-                <div class="container">
-                
-                    <div class="row">
-
-                        <div class="col-md-12">
-                        
-                            <div class="top-banner-text">
-                                <?php dynamic_sidebar( 'sidebar-homepage-widget' ); ?>
-                            </div>            
-
-                        </div>
-                        
-                    </div>
-                    
-                </div>
-                
-            </div>
-            
-        <?php endif; ?>
+        <?php do_action( 'ares_free_widget_areas' ); ?>
         
         <?php if ( $ares_options['ares_frontpage_content_bool'] == 'yes' ) : ?>
         

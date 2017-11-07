@@ -811,3 +811,58 @@ function ares_get_theme_skin_colors() {
     return $colors_array;
 
 }
+
+add_action( 'ares_free_widget_areas', 'ares_render_free_widget_areas', 10 );
+function ares_render_free_widget_areas() {
+    
+    if( is_active_sidebar( 'sidebar-banner' ) ) : ?>
+            
+        <div id="homepage-area-c" class="full-banner">
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <div class="top-banner-text">
+                            <?php dynamic_sidebar( 'sidebar-banner' ); ?>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="clear"></div>
+
+    <?php endif;
+        
+    if( is_active_sidebar( 'sidebar-homepage-widget' ) ) :?>
+
+        <div id="homepage-area-d" class="">
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <div class="top-banner-text">
+                            <?php dynamic_sidebar( 'sidebar-homepage-widget' ); ?>
+                        </div>            
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    <?php endif; ?>
+    
+<?php }
