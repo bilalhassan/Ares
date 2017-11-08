@@ -10,7 +10,7 @@
 if ( ! function_exists( 'ares_setup' ) ) :
 
     if( !defined( 'ARES_VERSION' ) ) :
-        define( 'ARES_VERSION', '2.0.1' );
+        define( 'ARES_VERSION', '2.0.2' );
     endif;
 
     /**
@@ -132,13 +132,6 @@ require get_template_directory() . '/inc/template-tags.php';
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';
-
-/**
- * Load Jetpack compatibility file.
- */
-if ( defined( 'JETPACK__VERSION' ) ) {
-    require get_template_directory() . '/inc/jetpack.php';
-}
 
 /**
  * Load TGM

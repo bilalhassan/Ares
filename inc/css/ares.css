@@ -39,6 +39,11 @@ a.button-primary {
     color: #fff !important;
 }
 
+h4.none-to-display {
+    margin: 50px 0;
+    text-align: center;
+}
+
 header.site-header{
     width: 100%;
     position: fixed;

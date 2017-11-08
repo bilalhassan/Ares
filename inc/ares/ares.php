@@ -211,7 +211,10 @@ function ares_custom_css() {
         .woocommerce span.onsale,
         .woocommerce button.single_add_to_cart_button,
         .woocommerce div.product .woocommerce-tabs ul.tabs li a,
-        .woocommerce input[type="submit"].button {
+        .woocommerce input[type="submit"].button,
+        .ares-pricing-table .price,
+        .ares-pricing-table .subtitle,
+        .faq-item .faq-content {
             font-family: <?php echo esc_attr( $ares_options['ares_font_family'] ); ?>;
         }
         
@@ -220,8 +223,13 @@ function ares_custom_css() {
             font-family: <?php echo esc_attr( $ares_options['ares_font_family_secondary'] ); ?>;
         }
         
-        .ares-callout .detail {
+        .ares-callout .detail,
+        .ares-faq .faq-item .faq-answer {
             font-family: <?php echo esc_attr( $ares_options['ares_font_family_secondary'] ); ?>;
+        }
+        
+        .ares-faq .faq-item .faq-answer {
+            font-size: <?php echo esc_attr( $ares_options['ares_font_size'] ); ?>px;
         }
         
         blockquote {
@@ -327,6 +335,10 @@ function ares_custom_css() {
         }
         .site-branding .search-bar .search-field:focus {
             border-bottom: 1px solid <?php echo esc_attr( $primary_theme_color ); ?>;
+        }
+        .news-item .post-content .title a:hover,
+        .post-content.no-image .title a:hover {
+            color: <?php echo esc_attr( $primary_theme_color ); ?> !important;
         }
                
         /* --- Secondary --- */
