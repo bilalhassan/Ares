@@ -16,7 +16,10 @@ $testimonials = wp_get_recent_posts($args); ?>
             slideSpeed : 1000,
             paginationSpeed : 1000,
             singleItem: true,
-            autoPlay : true
+            autoPlay : 10000,
+            navigation: true,
+            pagination: false,
+            navigationText: ['<span class="fa fa-chevron-left"></span><span class="fa fa-chevron-left"></span>','<span class="fa fa-chevron-right"></span><span class="fa fa-chevron-right"></span>']
 
         });    
         $('.parallax #testimonials').css('max-width', $(window).width() - 60 + 'px' );
@@ -79,15 +82,17 @@ $testimonials = wp_get_recent_posts($args); ?>
 
                                         <div class="inner">
 
-                                            <div class="testimonial-content">
+                                            <?php if ( isset( $testimonial['post_content'] ) ) : ?>
+                                                <div class="testimonial-content">
 
-                                                &ldquo; 
+                                                    &ldquo; 
 
-                                                    <?php echo esc_html( $testimonial['post_content'] ); ?>
+                                                        <?php echo esc_html( $testimonial['post_content'] ); ?>
 
-                                                &rdquo;
+                                                    &rdquo;
 
-                                            </div>
+                                                </div>
+                                            <?php endif; ?>
 
                                         </div>
 

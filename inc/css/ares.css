@@ -1065,3 +1065,13 @@ h2.woocommerce-Reviews-title {
     -moz-transition: .3s all ease-in-out;
     -webkit-transition: .3s all ease-in-out;
 }
+
+.camera_prev, 
+.camera_next {
+    background: none;
+}
+
+.camera_prev > span, 
+.camera_next > span {
+    background-position-y: -80px;
+}

@@ -7,9 +7,12 @@
  * @package Ares
  */
 
-$ares_options = ares_get_options();
+get_header(); 
 
-get_header(); ?>
+$ares_options = ares_get_options();
+$alternate_blog = isset( $ares_options['blog_layout_style'] ) && $ares_options['blog_layout_style'] == 'masonry' ? true : false;
+
+?>
 
 <div id="primary" class="content-area">
 
@@ -55,12 +58,31 @@ get_header(); ?>
 
                 <div class="frontpage row">
 
+                    <?php if ( $alternate_blog ) : ?>
+                    
+                        <div class="col-sm-12">
+
+                            <div id="ares-alt-blog-wrap">
+                                
+                                <div id="masonry-blog-wrapper">
+
+                                    <div class="grid-sizer"></div>
+                                    <div class="gutter-sizer"></div>
+                    
+                    <?php endif; ?>
+                    
                     <?php while ( have_posts() ) : the_post(); ?>
 
                         <?php
 
                         if ( 'posts' == get_option( 'show_on_front' ) ) {
-                            get_template_part('template-parts/content', 'posts');
+                            
+                            if ( $alternate_blog ) { 
+                                get_template_part('template-parts/content', 'posts-alt' );
+                            } else {
+                                get_template_part('template-parts/content', 'posts' );
+                            }
+                            
                         } else {
                             get_template_part('template-parts/content', 'home');
                         }                
@@ -74,6 +96,16 @@ get_header(); ?>
 
                     <?php endwhile; // end of the loop.   ?>
                     
+                    <?php if ( $alternate_blog ) : ?>
+                    
+                                </div>
+                                
+                            </div>
+                            
+                        </div>
+                    
+                    <?php endif; ?>
+                                
                     <div class="pagination-links">
                         <?php echo the_posts_pagination( array( 'mid_size' => 1 ) ); ?>
                     </div>

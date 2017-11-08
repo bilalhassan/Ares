@@ -323,7 +323,8 @@ function ares_custom_css() {
             background: <?php echo esc_attr( $primary_theme_color ); ?>;
         }
         .woocommerce button.single_add_to_cart_button,
-        .woocommerce a.checkout-button.button {
+        .woocommerce a.checkout-button.button,
+        .footer-boxes .ares-pricing-table .widget .inner.special .pricing-table-header {
             background: <?php echo esc_attr( $primary_theme_color ); ?> !important;
         }
         #site-cta .site-cta .fa {
@@ -337,7 +338,8 @@ function ares_custom_css() {
             border-bottom: 1px solid <?php echo esc_attr( $primary_theme_color ); ?>;
         }
         .news-item .post-content .title a:hover,
-        .post-content.no-image .title a:hover {
+        .post-content.no-image .title a:hover,
+        #masonry-blog-wrapper .blog-roll-item .inner h3.post-title a:hover {
             color: <?php echo esc_attr( $primary_theme_color ); ?> !important;
         }
                

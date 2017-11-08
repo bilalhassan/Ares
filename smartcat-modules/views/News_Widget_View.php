@@ -82,33 +82,6 @@ if ( $news->have_posts() ) : ?>
             
                 <?php endif; ?>
             
-<!--            
-                <div class="col-sm-4">
-
-                    <div class="news-item">
-
-                        <?php if ( has_post_thumbnail() ) : ?>
-                            <div class="image">
-                                <a href="<?php echo esc_url( get_the_permalink() ); ?>">
-                                    <?php the_post_thumbnail( 'large' ); ?>
-                                </a>
-                            </div>
-                        <?php endif; ?>
-
-                        <div class="inner">
-
-                            <h3 class="title">
-                                <a href="<?php echo esc_url( get_the_permalink() ); ?>"><?php the_title(); ?></a>
-                            </h3>
-
-                            <div class="date"><?php echo get_the_date( 'd M, Y'); ?></div>
-
-                        </div>
-
-                    </div>     
-
-                </div>-->
-
             <?php endwhile; ?>
 
             <div class="clear"></div>
