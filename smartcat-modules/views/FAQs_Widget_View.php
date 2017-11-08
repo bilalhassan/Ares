@@ -59,5 +59,3 @@ if ( $faqs->have_posts() ) : ?>
 <?php endif; ?>
     
 <?php wp_reset_postdata(); ?>
-
-<div class="clear"></div>

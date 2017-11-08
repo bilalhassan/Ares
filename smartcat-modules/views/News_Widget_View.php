@@ -40,7 +40,10 @@ if ( $news->have_posts() ) : ?>
                             <!-- Thumbnail-->
                             <div class="news-image">
                                 <a href="<?php echo esc_url( get_the_permalink() ); ?>">
-                                    <img src="<?php echo esc_url( get_the_post_thumbnail_url( get_the_ID(), 'large' ) ); ?>" />
+                                    <div class="image" style="background-image: url(<?php echo esc_url( get_the_post_thumbnail_url( get_the_ID(), 'large' ) ); ?>);">
+                                        
+                                    </div>
+<!--                                    <img src="<?php echo esc_url( get_the_post_thumbnail_url( get_the_ID(), 'large' ) ); ?>" />-->
                                 </a>
                             </div>
 
