@@ -874,6 +874,11 @@ aside.widget ul {
 }
 
 /* WooCommerce */
+.single-product .wp-post-image {
+    max-width: 100%;
+    margin: 0;
+}
+
 .woocommerce-breadcrumb {
     color: #fff !important;
     padding: 10px 35px !important;
