@@ -58,7 +58,7 @@ $alternate_blog = isset( $ares_options['blog_layout_style'] ) && $ares_options['
 
                 <div class="frontpage row">
 
-                    <?php if ( $alternate_blog ) : ?>
+                    <?php if ( get_option( 'show_on_front' ) == 'posts' && $alternate_blog ) : ?>
                     
                         <div class="col-sm-12">
 
@@ -96,7 +96,7 @@ $alternate_blog = isset( $ares_options['blog_layout_style'] ) && $ares_options['
 
                     <?php endwhile; // end of the loop.   ?>
                     
-                    <?php if ( $alternate_blog ) : ?>
+                    <?php if ( get_option( 'show_on_front' ) == 'posts' && $alternate_blog ) : ?>
                     
                                 </div>
                                 

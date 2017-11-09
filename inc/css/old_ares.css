@@ -489,7 +489,7 @@ input[type="search"].search-field:focus{ outline: none;}
 .item-page.col1{
     width: 100%;
 }
-.page-content .col-md-9{
+.page-content .col-md-8{
     overflow: hidden;
 }
 /*-- Blog --*/

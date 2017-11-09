@@ -27,7 +27,7 @@ $alternate_blog = isset( $ares_options['blog_layout_style'] ) && $ares_options['
 
             <div class="page-content row">
 
-                <div class="col-md-<?php echo $ares_options['ares_blog_layout'] == 'col2r' && is_active_sidebar(1) ? '9' : '12'; ?> site-content item-page">
+                <div class="col-md-<?php echo $ares_options['ares_blog_layout'] == 'col2r' && is_active_sidebar(1) ? '8' : '12'; ?> site-content item-page">
 
                     <?php if ( have_posts() ) :
                     
@@ -112,7 +112,7 @@ $alternate_blog = isset( $ares_options['blog_layout_style'] ) && $ares_options['
                 
                 <?php if ( $ares_options['ares_blog_layout'] == 'col2r' && is_active_sidebar(1) ) : ?>
 
-                    <div class="col-md-3 avenue-sidebar">
+                    <div class="col-md-4 avenue-sidebar">
                         <?php get_sidebar(); ?>
                     </div>
 
