@@ -905,3 +905,14 @@ function ares_render_free_widget_areas() {
     <?php endif; ?>
     
 <?php }
+
+function ares_get_background_patterns() {
+    $patterns = array(
+        'witewall_3'    => __( 'White Wall', 'ares' ),
+        'brickwall'     => __( 'White Brick', 'ares' ),
+        'skulls'        => __( 'Illustrations', 'ares' ),
+        'crossword'     => __( 'Crossword', 'ares' ),
+        'food'          => __( 'Food', 'ares' ),
+    );
+    return $patterns;
+}

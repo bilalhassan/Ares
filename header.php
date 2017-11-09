@@ -24,7 +24,29 @@ $ares_options = ares_get_options();
 
 </head>
 
-<body <?php body_class(); ?> style="background-image: url(<?php echo esc_url( get_template_directory_uri() . '/inc/images/' . esc_attr( $ares_options['ares_theme_background_pattern'] ) . '.png' ); ?>);">
+<?php 
+
+if ( $ares_options['ares_theme_background_pattern'] == 'witewall_3' || 
+    $ares_options['ares_theme_background_pattern'] == 'brickwall' || 
+    $ares_options['ares_theme_background_pattern'] == 'skulls' || 
+    $ares_options['ares_theme_background_pattern'] == 'crossword' || 
+    $ares_options['ares_theme_background_pattern'] == 'food' ) :
+
+    $bg_image_src = get_template_directory_uri() . '/inc/images/' . esc_attr( $ares_options['ares_theme_background_pattern'] ) . '.png';
+    
+elseif ( !defined( 'ARES_PRO_URL' ) ) : 
+    
+    $bg_image_src = get_template_directory_uri() . '/inc/images/crossword.png';
+    
+else :
+    
+    $bg_image_src = ARES_PRO_URL . 'assets/images/' . esc_attr( $ares_options['ares_theme_background_pattern'] ) . '.png';
+
+endif;
+
+?>
+
+<body <?php body_class(); ?> style="background-image: url(<?php echo esc_url( $bg_image_src ); ?>);">
 
     <div id="page" class="site">
 

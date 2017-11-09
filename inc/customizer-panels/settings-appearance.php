@@ -53,16 +53,10 @@ $wp_customize->add_section( 'ares_background_section', array(
         'type'                  => 'option'
     ) );
     $wp_customize->add_control( 'ares[ares_theme_background_pattern]', array(
-        'label'   => __( 'Select the background pattern', 'ares' ),
-        'section' => 'ares_background_section',
-        'type'    => 'radio',
-        'choices'    => array(
-            'witewall_3'    => __( 'White Wall', 'ares' ),
-            'brickwall'     => __( 'White Brick', 'ares' ),
-            'skulls'        => __( 'Illustrations', 'ares' ),
-            'crossword'     => __( 'Crossword', 'ares' ),
-            'food'          => __( 'Food', 'ares' ),
-        )
+        'label'     => __( 'Select the background pattern', 'ares' ),
+        'section'   => 'ares_background_section',
+        'type'      => 'radio',
+        'choices'   => has_filter('ares_get_background_patterns') ? apply_filters( 'ares_get_background_patterns', ares_get_background_patterns() ) : ares_get_background_patterns()
     ));
 
 // ---------------------------------------------
