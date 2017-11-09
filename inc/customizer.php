@@ -29,12 +29,7 @@ function ares_customize_register( $wp_customize ) {
     
     // Appearance
     require_once( 'customizer-panels/settings-appearance.php' );
-    
-    // WooCommerce / Shop
-    if ( class_exists( 'WooCommerce' ) ) :
-        require_once( 'customizer-panels/settings-shop.php' );
-    endif;
-    
+
     $wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
     $wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
     $wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
