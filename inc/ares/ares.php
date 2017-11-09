@@ -50,6 +50,7 @@ function ares_scripts() {
     wp_enqueue_script( 'bigSlide', get_template_directory_uri() . '/inc/js/bigSlide.min.js', array('jquery'), ARES_VERSION, true );
     wp_enqueue_script( 'camera-js', get_template_directory_uri() . '/inc/js/camera.min.js', array('jquery'), ARES_VERSION, true );
     wp_enqueue_script( 'wow', get_template_directory_uri() . '/inc/js/wow.min.js', array('jquery'), ARES_VERSION, true );
+    wp_enqueue_script( 'jquery-slimScroll', get_template_directory_uri() . '/inc/js/jquery.slimscroll.min.js', array('jquery'), ARES_VERSION, true );
     wp_enqueue_script( 'ares-main-script', get_template_directory_uri() . '/inc/js/ares.js', array('jquery', 'jquery-masonry'), ARES_VERSION, true );
 
     $slider_array = array(
@@ -214,7 +215,8 @@ function ares_custom_css() {
         .woocommerce input[type="submit"].button,
         .ares-pricing-table .price,
         .ares-pricing-table .subtitle,
-        .faq-item .faq-content {
+        .faq-item .faq-content,
+        #cart-slide-wrap .cart-product .cart-details {
             font-family: <?php echo esc_attr( $ares_options['ares_font_family'] ); ?>;
         }
         
@@ -319,7 +321,11 @@ function ares_custom_css() {
         .pagination-links .page-numbers.current,
         .wc-pagination ul span.page-numbers.current,
         .woocommerce a.button.add_to_cart_button,
-        .woocommerce input[type="submit"].button {
+        .woocommerce input[type="submit"].button,#cart-slide-wrap .cart-product .cart-details .price,
+        div#cart-slide-wrap .inner-wrap a.ares-button,
+        .woocommerce span.onsale,
+        div#header-cart .cart-count 
+        {
             background: <?php echo esc_attr( $primary_theme_color ); ?>;
         }
         .woocommerce button.single_add_to_cart_button,
@@ -355,7 +361,8 @@ function ares_custom_css() {
         .open .dropdown-toggle.button-primary,
         input#submit:hover,
         input[type="submit"]:hover,
-        .woocommerce a.button.add_to_cart_button:hover {
+        .woocommerce a.button.add_to_cart_button:hover,
+        div#cart-slide-wrap .inner-wrap a.ares-button:hover {
             background-color: <?php echo esc_attr( $secondary_theme_color ); ?>;
         }
         

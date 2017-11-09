@@ -11,6 +11,7 @@ jQuery(document).ready( function( $ ) {
 
     function callWow() {
         $('div#mobile-menu-wrap nav#menu').fadeIn();
+        $('div#cart-slide-wrap .inner-wrap').fadeIn();
         smartcat_animate = new WOW({
             boxClass        :   'smartcat-animate',
             
@@ -33,12 +34,12 @@ jQuery(document).ready( function( $ ) {
         menu: ( '#mobile-menu-wrap' ),
         side: 'left',
         afterOpen: function() {
-            $('#mobile-overlay').fadeIn();
-            $('#mobile-menu-close').fadeIn();
+            $('#mobile-overlay').stop().fadeIn();
+            $('#mobile-menu-close').stop().fadeIn();
         },
         beforeClose: function() {
-            $('#mobile-menu-close').fadeOut();
-            $('#mobile-overlay').fadeOut();
+            $('#mobile-menu-close').stop().fadeOut();
+            $('#mobile-overlay').stop().fadeOut();
         }
     });
 
@@ -98,6 +99,36 @@ jQuery(document).ready( function( $ ) {
     $('.scroll-top').click(function() {
         $("html, body").animate({scrollTop: 0}, "slow");
         return false;
+    });
+
+    //¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+    //  Header Cart Toggle and Animations
+    //__________________________________________________________________________
+    
+    $( '#header-cart span.fa,#header-cart span.cart-count, #cart-slide-close, #cart-overlay' ).bigSlide({
+        menu: ( '#cart-slide-wrap' ),
+        side: 'left',
+        afterOpen: function() {
+            $('#cart-overlay').stop().fadeIn();
+            $('#cart-slide-close').stop().fadeIn();
+        },
+        beforeClose: function() {
+            $('#cart-slide-close').stop().fadeOut();
+            $('#cart-overlay').stop().fadeOut();
+        }
+    });
+    
+    /*
+     * SlimScroll Cart
+     */
+    $('#cart-slide-wrap .inner-wrap').slimScroll({
+        height: 'auto',
+        size: '3px',
+        railVisible: true,
+        railColor: '#3c3c3c',
+        railOpacity: .75,
+        color: '#cacaca',
+        position: 'left'
     });
 
 });

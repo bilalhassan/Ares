@@ -98,16 +98,41 @@ endif;
                             'theme_location' => 'primary',
                             'menu_id'        => 'primary-menu',
                         ) ); ?>
-
+                        
                     </nav><!-- #site-navigation -->
-
+                    
                 </div>
 
+                <?php if ( class_exists( 'WooCommerce' ) && $ares_options['cart_icon_toggle'] == 'on' ) : ?>
+                
+                    <div id="header-cart" class="tablet-hidden">
+                        <span class="fa fa-shopping-cart"></span>
+                        <?php if ( WC()->cart->get_cart_contents_count() && WC()->cart->get_cart_contents_count() > 0 ) : ?>
+                            <span class="cart-count"><?php echo WC()->cart->get_cart_contents_count(); ?></span>
+                        <?php endif; ?>
+                    </div>
+                
+                <?php endif; ?>
+
                 <div class="mobile-trigger-wrap">
+                    
+                    <?php if ( class_exists( 'WooCommerce' ) && $ares_options['cart_icon_toggle'] == 'on' ) : ?>
+
+                        <div id="header-cart">
+                            <span class="fa fa-shopping-cart"></span>
+                            <?php if ( WC()->cart->get_cart_contents_count() && WC()->cart->get_cart_contents_count() > 0 ) : ?>
+                                <span class="cart-count"><?php echo WC()->cart->get_cart_contents_count(); ?></span>
+                            <?php endif; ?>
+                        </div>
+
+                    <?php endif; ?>
+                    
                     <span id="mobile-menu-trigger"><span class="fa fa-bars"></span></span>
+                    
                 </div>
 
                 <div id="mobile-overlay"></div>
+                <div id="cart-overlay"></div>
 
                 <div id="mobile-menu-wrap">
 
@@ -145,6 +170,70 @@ endif;
                     </nav>
 
                 </div>
+                
+                <?php if ( class_exists( 'WooCommerce' ) && $ares_options['cart_icon_toggle'] == 'on' ) : ?>
+                
+                    <div id="cart-slide-wrap">
+
+                        <img id="cart-slide-close" src="<?php echo esc_url( get_template_directory_uri() . '/inc/images/close-mobile.png' ); ?>" alt="<?php _e( 'Close Menu', 'ares' ); ?>">
+                        
+                        <div class="inner-wrap">
+
+                            <h3 class="cart-title">
+                                <?php echo isset( $ares_options['slide_in_cart_title'] ) && $ares_options['slide_in_cart_title'] != '' ? esc_html( $ares_options['slide_in_cart_title'] ) : __( 'My Cart', 'ares' ); ?>
+                            </h3>
+                            
+                            <?php
+                            
+                            global $woocommerce;
+                            $items = $woocommerce->cart->get_cart();
+
+                            foreach( $items as $item => $values ) :
+
+                                $cart_product =  wc_get_product( $values['data']->get_id() ); ?>
+
+                                <div class="cart-product">
+
+                                    <div class="cart-image">
+                                        <a href="<?php echo esc_url( $cart_product->get_permalink() ); ?>">
+                                            <?php echo $cart_product->get_image( 'large' ); ?>
+                                        </a>
+                                    </div>
+
+                                    <div class="cart-details">
+                                        <a href="<?php echo esc_url( $cart_product->get_permalink() ); ?>">
+                                            <span class="title">
+                                                <?php echo esc_html( $cart_product->get_title() ); ?>
+                                            </span>
+                                        </a>
+                                        <span class="price <?php echo $cart_product->get_sale_price() ? 'sale' : ''; ?>">
+                                            <?php echo $cart_product->get_sale_price() ? esc_html( get_woocommerce_currency_symbol() . number_format( $cart_product->get_sale_price(), 2, '.', ',' ) ) : esc_html( get_woocommerce_currency_symbol() . number_format( $cart_product->get_regular_price(), 2, '.', ',' ) ); ?>
+                                            <span style="text-transform: lowercase;">x</span> <?php echo intval( $values['quantity'] ); ?>
+                                        </span>
+                                    </div>
+
+                                </div>
+
+                            <?php endforeach; ?>
+                            
+                            <h3 class="subtotal">
+                                <span class="label"><?php _e( 'Subtotal: ', 'ares' ); ?></span>
+                                <?php echo WC()->cart->get_cart_subtotal(); ?>
+                            </h3>
+                            
+                            <a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="ares-button hollow-button">
+                                <?php echo esc_html_e( 'View Cart' ,'ares' ); ?>
+                            </a>
+                            
+                            <a href="<?php echo esc_url( wc_get_checkout_url() ); ?>" class="ares-button">
+                                <?php echo esc_html_e( 'Checkout' ,'ares' ); ?>
+                            </a>
+                            
+                        </div>
+
+                    </div>
+                
+                <?php endif; ?>
 
             </div>
 
