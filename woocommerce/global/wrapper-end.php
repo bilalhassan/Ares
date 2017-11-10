@@ -45,6 +45,6 @@ switch ( $template ) {
 		echo '</main></div>';
 		break;
 	default :
-		echo '</div></div></div>';
+		echo '</div></div>';
 		break;
 }

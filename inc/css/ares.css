@@ -26,7 +26,8 @@ a {
     text-decoration: none !important;
 }
 
-.ares-button {
+.ares-button,
+.widget.woocommerce a.button {
     transition: .3s all ease-in-out;
     -moz-transition: .3s all ease-in-out;
     -webkit-transition: .3s all ease-in-out;
@@ -914,6 +915,7 @@ nav.woocommerce-breadcrumb {
 
 header.woocommerce-products-header.page-header .woocommerce-breadcrumb {
     margin-top: 15px !important;
+    margin-bottom: 30px;
 }
 
 .woocommerce nav.woocommerce-pagination ul {
@@ -990,7 +992,8 @@ h2.woocommerce-loop-product__title {
 }
 
 .woocommerce a.button.add_to_cart_button,
-.woocommerce button.single_add_to_cart_button {
+.woocommerce button.single_add_to_cart_button,
+.widget.woocommerce a.button {
     display: inline-block;
     height: 30px;
     line-height: 30px;
@@ -1236,4 +1239,49 @@ div#cart-slide-wrap .inner-wrap a.ares-button.hollow-button:hover {
 
 .mobile-trigger-wrap #header-cart .cart-count {
     right: 5px;
+}
+
+.woocommerce.widget_shopping_cart ul li > a:nth-of-type(2) {
+    font-size: 16px !important;
+    padding: 0;
+}
+
+.woocommerce.widget_shopping_cart ul li {
+    padding: 10px 0 0 !important;
+    margin: 10px 0 !important;
+    border-top: thin solid #cacaca !important;
+    border-bottom: 0;
+    text-align: center !important;
+}
+
+.woocommerce.widget_shopping_cart ul li a.remove {
+    top: 20px !important;
+    text-align: center !important;
+    color: #333 !important;
+    transition: .3s all ease-in-out;
+    -moz-transition: .3s all ease-in-out;
+    -webkit-transition: .3s all ease-in-out;
+    line-height: 22px !important;
+    width: 22px;
+    height: 22px;
+    padding: 0 !important;
+}
+
+.woocommerce.widget_shopping_cart ul li a.remove:hover {
+    background-color: #333 !important;
+    color: #fff !important;
+}
+
+.woocommerce.widget_shopping_cart ul li > a:nth-of-type(2) img {
+    position: relative !important;
+    display: block !important;
+    float: none !important;
+    text-align: center !important;
+    margin: 0 auto !important;
+    height: 50px !important;
+    width: auto !important;
+}
+
+.widget.woocommerce.widget_products a {
+    padding: 0;
 }

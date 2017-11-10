@@ -128,6 +128,16 @@ function ares_widgets_init() {
     ));
     
     register_sidebar(array(
+        'name' => __('Shop', 'ares'),
+        'id' => 'sidebar-shop',
+        'description' => '',
+        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+        'after_widget' => '</aside>',
+        'before_title' => '<h2 class="widget-title">',
+        'after_title' => '</h2>',
+    ));
+    
+    register_sidebar(array(
         'name' => __('Footer', 'ares'),
         'id' => 'sidebar-footer',
         'description' => '',
@@ -216,7 +226,10 @@ function ares_custom_css() {
         .ares-pricing-table .price,
         .ares-pricing-table .subtitle,
         .faq-item .faq-content,
-        #cart-slide-wrap .cart-product .cart-details {
+        #cart-slide-wrap .cart-product .cart-details,
+        .woocommerce.widget_shopping_cart ul li > a:nth-of-type(2),
+        .widget.woocommerce a.button,
+        .widget.woocommerce.widget_products .product-title {
             font-family: <?php echo esc_attr( $ares_options['ares_font_family'] ); ?>;
         }
         
@@ -324,7 +337,8 @@ function ares_custom_css() {
         .woocommerce input[type="submit"].button,#cart-slide-wrap .cart-product .cart-details .price,
         div#cart-slide-wrap .inner-wrap a.ares-button,
         .woocommerce span.onsale,
-        div#header-cart .cart-count 
+        div#header-cart .cart-count,
+        .widget.woocommerce a.button 
         {
             background: <?php echo esc_attr( $primary_theme_color ); ?>;
         }
@@ -362,7 +376,8 @@ function ares_custom_css() {
         input#submit:hover,
         input[type="submit"]:hover,
         .woocommerce a.button.add_to_cart_button:hover,
-        div#cart-slide-wrap .inner-wrap a.ares-button:hover {
+        div#cart-slide-wrap .inner-wrap a.ares-button:hover,
+        .widget.woocommerce a.button:hover {
             background-color: <?php echo esc_attr( $secondary_theme_color ); ?>;
         }
         
