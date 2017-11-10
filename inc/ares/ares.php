@@ -229,7 +229,8 @@ function ares_custom_css() {
         #cart-slide-wrap .cart-product .cart-details,
         .woocommerce.widget_shopping_cart ul li > a:nth-of-type(2),
         .widget.woocommerce a.button,
-        .widget.woocommerce.widget_products .product-title {
+        .widget.woocommerce.widget_products .product-title,
+        div#alt-single-wrap .post-meta {
             font-family: <?php echo esc_attr( $ares_options['ares_font_family'] ); ?>;
         }
         

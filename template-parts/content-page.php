@@ -6,6 +6,7 @@
  */
 
 $ares_options = ares_get_options();
+$alternate_layout = isset( $ares_options['single_post_layout_style'] ) && $ares_options['single_post_layout_style'] == 'alternate' ? true : false;
 
 ?>
 
@@ -15,10 +16,20 @@ $ares_options = ares_get_options();
         
         <div class="col-md-<?php echo $ares_options['ares_single_layout'] == 'col2r' && is_active_sidebar(1) ? '8' : '12'; ?>">
         
+            <?php if ( has_post_thumbnail() && $ares_options['ares_single_featured'] == 'on' && $alternate_layout ) : ?>
+            
+                <div class="featured-image">
+
+                    <img class="feat-img" src="<?php echo esc_url( get_the_post_thumbnail_url( get_the_ID(), 'large' ) ); ?>" alt="<?php esc_html( get_the_title() ); ?>">
+
+                </div>
+            
+            <?php endif; ?>
+            
             <article id="post-<?php the_ID(); ?>">
 
                 <header class="entry-header">
-                    <?php the_title( '<h2 class="post-title">', '</h2>' ); ?>
+                    <?php the_title( '<h2 class="post-title ' . ( ( $alternate_layout ) ? 'alt-layout' : '' ) . '">', '</h2>' ); ?>
                     <div class="avenue-underline"></div>
                 </header><!-- .entry-header -->
 
