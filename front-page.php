@@ -7,16 +7,21 @@
  * @package Ares
  */
 
-$ares_options = ares_get_options();
+get_header(); 
 
-get_header(); ?>
+$ares_options = ares_get_options();
+$alternate_blog = isset( $ares_options['blog_layout_style'] ) && $ares_options['blog_layout_style'] == 'masonry' ? true : false;
+
+?>
 
 <div id="primary" class="content-area">
 
     <main id="main" class="site-main">
 
         <?php if ( $ares_options['ares_slider_bool'] == 'yes' ) : ?>
+
             <?php do_action( 'ares_slider' ); ?>
+        
         <?php endif; ?>
 
         <?php if ( $ares_options['ares_post_slider_cta_bool'] == 'yes' ) : ?>
@@ -43,55 +48,9 @@ get_header(); ?>
             <?php do_action( 'ares_cta_trio' ); ?>
         <?php endif; ?>
         
-        <?php if( is_active_sidebar('sidebar-banner' ) ) : ?>
-            
-            <div id="top-banner" class="full-banner">
-                
-                <div class="container">
+        <?php do_action( 'ares_pro_widget_areas' ); ?>
         
-                    <div class="row">
-
-                        <div class="col-md-12">
-
-                            <div class="top-banner-text">
-                                <?php dynamic_sidebar( 'sidebar-banner' ); ?>
-                            </div>
-
-                        </div>
-
-                    </div>
-                    
-                </div>
- 
-            </div>
-        
-            <div class="clear"></div>
-
-        <?php endif; ?>
-        
-        <?php if( is_active_sidebar('sidebar-homepage-widget' ) ) :?>
-            
-            <div id="homepage-widget" class="">
-                
-                <div class="container">
-                
-                    <div class="row">
-
-                        <div class="col-md-12">
-                        
-                            <div class="top-banner-text">
-                                <?php dynamic_sidebar( 'sidebar-homepage-widget' ); ?>
-                            </div>            
-
-                        </div>
-                        
-                    </div>
-                    
-                </div>
-                
-            </div>
-            
-        <?php endif; ?>
+        <?php do_action( 'ares_free_widget_areas' ); ?>
         
         <?php if ( $ares_options['ares_frontpage_content_bool'] == 'yes' ) : ?>
         
@@ -99,12 +58,31 @@ get_header(); ?>
 
                 <div class="frontpage row">
 
+                    <?php if ( get_option( 'show_on_front' ) == 'posts' && $alternate_blog ) : ?>
+                    
+                        <div class="col-sm-12">
+
+                            <div id="ares-alt-blog-wrap">
+                                
+                                <div id="masonry-blog-wrapper">
+
+                                    <div class="grid-sizer"></div>
+                                    <div class="gutter-sizer"></div>
+                    
+                    <?php endif; ?>
+                    
                     <?php while ( have_posts() ) : the_post(); ?>
 
                         <?php
 
                         if ( 'posts' == get_option( 'show_on_front' ) ) {
-                            get_template_part('template-parts/content', 'posts');
+                            
+                            if ( $alternate_blog ) { 
+                                get_template_part('template-parts/content', 'posts-alt' );
+                            } else {
+                                get_template_part('template-parts/content', 'posts' );
+                            }
+                            
                         } else {
                             get_template_part('template-parts/content', 'home');
                         }                
@@ -117,6 +95,20 @@ get_header(); ?>
                         ?>
 
                     <?php endwhile; // end of the loop.   ?>
+                    
+                    <?php if ( get_option( 'show_on_front' ) == 'posts' && $alternate_blog ) : ?>
+                    
+                                </div>
+                                
+                            </div>
+                            
+                        </div>
+                    
+                    <?php endif; ?>
+                                
+                    <div class="pagination-links">
+                        <?php echo the_posts_pagination( array( 'mid_size' => 1 ) ); ?>
+                    </div>
 
                 </div>
 

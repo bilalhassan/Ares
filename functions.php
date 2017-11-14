@@ -10,7 +10,7 @@
 if ( ! function_exists( 'ares_setup' ) ) :
 
     if( !defined( 'ARES_VERSION' ) ) :
-        define( 'ARES_VERSION', '2.0.1' );
+        define( 'ARES_VERSION', '2.0.2' );
     endif;
 
     /**
@@ -80,6 +80,11 @@ if ( ! function_exists( 'ares_setup' ) ) :
                 'flex-height' => true,
         ) );
         
+        add_theme_support( 'woocommerce' );
+        add_theme_support( 'wc-product-gallery-zoom' );
+        add_theme_support( 'wc-product-gallery-lightbox' );
+        add_theme_support( 'wc-product-gallery-slider' );
+        
         if( ! get_option( 'ares' ) ) :
             
             // Options array does not exist from a previous version
@@ -129,13 +134,6 @@ require get_template_directory() . '/inc/template-tags.php';
 require get_template_directory() . '/inc/customizer.php';
 
 /**
- * Load Jetpack compatibility file.
- */
-if ( defined( 'JETPACK__VERSION' ) ) {
-    require get_template_directory() . '/inc/jetpack.php';
-}
-
-/**
  * Load TGM
  */
 //  require_once dirname(__FILE__) . '/inc/engine/tgm.php';
@@ -158,7 +156,7 @@ function ares_get_options() {
         'ares_youtube_url'              => '',
         'ares_theme_color'              => 'aqua',                          
         'ares_theme_background_pattern' => 'crossword',                     
-        'ares_font_size'                => 14,                              // No CSTMZR YET
+        'ares_font_size'                => 14,                              
         'ares_font_family'              => 'Rajdhani, sans-serif',      
         'ares_font_family_secondary'    => 'Roboto, sans-serif',      
         'ares_frontpage_content_bool'   => 'yes',
@@ -191,10 +189,10 @@ function ares_get_options() {
         'ares_homepage_sidebar'         => 'sidebar-off',                     
         'ares_blog_layout'              => 'col2r',                           
         'ares_blog_featured'            => 'on',                              
-        'ares_single_layout'            => 'col2r',                           // No CSTMZR YET - TEMPLATES
-        'ares_single_featured'          => 'on',                              // No CSTMZR YET
-        'ares_single_date'              => 'on',                              // No CSTMZR YET
-        'ares_single_author'            => 'on',                              // No CSTMZR YET
+        'ares_single_layout'            => 'col2r',                         
+        'ares_single_featured'          => 'on',                            
+        'ares_single_date'              => 'on',                            
+        'ares_single_author'            => 'on',                            
 
         'ares_footer_cta'               => 'on',                          
         'ares_footer_cta_text'          => __( 'GET A NO RISK, FREE CONSULTATION TODAY', 'ares' ),
@@ -207,6 +205,8 @@ function ares_get_options() {
         'ares_cta_header_one'           => __( 'Modern design with a responsive layout', 'ares' ),
         'ares_cta_header_two'           => __( 'User-friendly & Easily Customizable', 'ares' ),
         'ares_branding_bar_height'      => 80,
+        
+        'cart_icon_toggle'              => 'on',
         
     ) );
     
@@ -228,6 +228,10 @@ function ares_migration_process() {
 
     if ( ! array_key_exists( 'ares_branding_bar_height', $existing_ares_options ) ) :
         $existing_ares_options['ares_branding_bar_height'] = 80;
+    endif; 
+
+    if ( ! array_key_exists( 'cart_icon_toggle', $existing_ares_options ) ) :
+        $existing_ares_options['cart_icon_toggle'] = 'on';
     endif; 
 
     if ( array_key_exists( 'ares_font_size', $existing_ares_options ) ) : 

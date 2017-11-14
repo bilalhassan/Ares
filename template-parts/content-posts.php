@@ -4,11 +4,14 @@
  * @author bilal hassan <info@smartcatdesign.net>
  * 
  */
+
+$ares_options = ares_get_options();
+
 ?>
 
-<div class="item-post <?php echo has_post_thumbnail() ? '' : 'text-left'; ?>">
+<div class="item-post <?php echo has_post_thumbnail() && $ares_options['ares_blog_featured'] == 'on' ? '' : 'text-left'; ?>">
     
-    <?php if ( has_post_thumbnail() ) : ?>
+    <?php if ( has_post_thumbnail() && $ares_options['ares_blog_featured'] == 'on' ) : ?>
     
         <div class="post-thumb col-md-4">
             <a href="<?php the_permalink(); ?>">
@@ -18,7 +21,7 @@
     
     <?php endif; ?>
     
-    <div class="col-md-<?php echo has_post_thumbnail() ? '8' : '12'; ?>">
+    <div class="col-md-<?php echo has_post_thumbnail() && $ares_options['ares_blog_featured'] == 'on' ? '8' : '12'; ?>">
         <h2 class="post-title">
             <a href="<?php the_permalink(); ?>">
                 <?php the_title(); ?>
@@ -28,7 +31,7 @@
             <?php echo wp_trim_words( $post->post_content, 50); ?>
         </div>
         <div class="text-right">
-            <a class="button button-primary" href="<?php the_permalink(); ?>">Read More</a>
+            <a class="ares-button button-primary" href="<?php the_permalink(); ?>"><?php echo esc_html_e( 'Read More', 'ares' ); ?></a>
         </div>                        
     </div>
     
