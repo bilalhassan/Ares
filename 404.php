@@ -7,7 +7,11 @@
  * @package Ares
  */
 
-get_header(); ?>
+get_header(); 
+
+$ares_options = ares_get_options();
+
+?>
 
 <div id="primary" class="content-area">
 
@@ -23,7 +27,13 @@ get_header(); ?>
 
                         <div class="col-sm-12">
 
-                            <h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'ares' ); ?></h1>
+                            <h1 class="page-title">
+                                <?php if ( isset( $ares_options['ares_error_page_heading'] ) && $ares_options['ares_error_page_heading'] != '' ) : ?>
+                                    <?php echo esc_html( $ares_options['ares_error_page_heading'] ); ?>
+                                <?php else : ?>
+                                    <?php esc_html_e( 'Oops! That page can\'t be found.', 'ares' ); ?>
+                                <?php endif; ?>
+                            </h1>
 
                         </div>
 
@@ -47,7 +57,13 @@ get_header(); ?>
                                     
                                     <h2 class="widgettitle center">
                                         <i class="fa fa-exclamation-triangle icon404"></i>
-                                        <h3 class="center"><?php _e("Sorry the page you're looking for is not available", "ares"); ?></h3>
+                                        <h3 class="center">
+                                            <?php if ( isset( $ares_options['ares_error_page_subheading'] ) && $ares_options['ares_error_page_subheading'] != '' ) : ?>
+                                                <?php echo esc_html( $ares_options['ares_error_page_subheading'] ); ?>
+                                            <?php else : ?>
+                                                <?php _e('Sorry the page you\'re looking for is not available', 'ares' ); ?>
+                                            <?php endif; ?>
+                                        </h3>
                                         <div class="center mt20">
                                             <?php get_search_form(); ?>
                                         </div>

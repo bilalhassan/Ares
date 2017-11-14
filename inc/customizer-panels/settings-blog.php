@@ -27,13 +27,13 @@ $wp_customize->add_section( 'ares_blog_section', array(
     ));
 
     // Show / Hide Post images on the Blog?
-     $wp_customize->add_setting( 'ares[ares_blog_featured]', array(
+    $wp_customize->add_setting( 'ares[ares_blog_featured]', array(
          'default'               => 'on',
          'transport'             => 'refresh',
          'sanitize_callback'     => 'ares_sanitize_on_off',
          'type'                  => 'option'
-     ) );
-     $wp_customize->add_control( 'ares[ares_blog_featured]', array(
+    ) );
+    $wp_customize->add_control( 'ares[ares_blog_featured]', array(
         'label'   => __( 'Show or Hide the Post images on the blog page?', 'ares' ),
         'section' => 'ares_blog_section',
         'type'    => 'radio',
@@ -41,7 +41,7 @@ $wp_customize->add_section( 'ares_blog_section', array(
             'on'    => __( 'Show', 'ares' ),
             'off'   => __( 'Hide', 'ares' ),
         )
-     ));
+    ));
 
     
     

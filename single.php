@@ -19,47 +19,56 @@ get_header(); ?>
     
                 <div class="page-content row ">
                     
-                    <div class="col-md-<?php echo $ares_options['ares_single_layout'] == 'col1' ? '12' : '9'; ?>">
+                    <div class="col-md-<?php echo is_active_sidebar(1) && $ares_options['ares_single_layout'] == 'col2r' ? '8' : '12'; ?>">
                     
-                        <article class="item-page">
+                        <?php if ( isset( $ares_options['single_post_layout_style'] ) && $ares_options['single_post_layout_style'] == 'alternate' ) : ?>
+                        
+                            <?php get_template_part( 'template-parts/content', 'single-alt' ); ?>
+                        
+                        <?php else : ?>
+                        
+                            <article class="item-page">
 
-                            <h2 class="post-title">
-                                <?php the_title(); ?>
-                            </h2>
+                                <h2 class="post-title">
+                                    <?php the_title(); ?>
+                                </h2>
 
-                            <div class="avenue-underline"></div>
-                            
-                            <div class="entry-content">
+                                <div class="avenue-underline"></div>
 
-                                <?php $ares_options['ares_single_featured'] == 'on' ? the_post_thumbnail( 'medium' ) : ''; ?>
+                                <div class="entry-content">
 
-                                <?php the_content(); ?>
+                                    <?php $ares_options['ares_single_featured'] == 'on' ? the_post_thumbnail( 'medium' ) : ''; ?>
 
-                                <?php echo $ares_options['ares_single_date'] == 'on' ? __( 'Posted on: ', 'ares' ) . esc_html( get_the_date() ) : ''; ?><?php echo $ares_options['ares_single_author'] == 'on' && $ares_options['ares_single_date'] == 'on' ? __( ', ', 'ares' ) : ''; ?>
+                                    <?php the_content(); ?>
 
-                                <?php echo $ares_options['ares_single_author'] == 'on' ? __( 'by : ', 'ares' ) . get_the_author_posts_link() : ''; ?>
+                                    <?php echo $ares_options['ares_single_date'] == 'on' ? __( 'Posted on: ', 'ares' ) . esc_html( get_the_date() ) : ''; ?><?php echo $ares_options['ares_single_author'] == 'on' && $ares_options['ares_single_date'] == 'on' ? __( ', ', 'ares' ) : ''; ?>
 
-                                <?php 
+                                    <?php echo $ares_options['ares_single_author'] == 'on' ? __( 'by : ', 'ares' ) . get_the_author_posts_link() : ''; ?>
 
-                                wp_link_pages(array(
-                                    'before' => '<div class="page-links">' . __( 'Pages:', 'ares' ),
-                                    'after' => '</div>',
-                                ));
+                                    <?php 
 
-                                if (comments_open() || '0' != get_comments_number()) :
-                                    comments_template();
-                                endif;
+                                    wp_link_pages(array(
+                                        'before' => '<div class="page-links">' . __( 'Pages:', 'ares' ),
+                                        'after' => '</div>',
+                                    ));
 
-                                ?>
+                                    if (comments_open() || '0' != get_comments_number()) :
+                                        comments_template();
+                                    endif;
+
+                                    ?>
+
+                                </div>
                                 
-                            </div>
-                        </article>
+                            </article>
+                        
+                        <?php endif; ?>
                         
                     </div>
 
-                    <?php if ( $ares_options['ares_single_layout'] == 'col2r' ) : ?>
+                    <?php if ( is_active_sidebar(1) && $ares_options['ares_single_layout'] == 'col2r' ) : ?>
 
-                        <div class="col-md-3 avenue-sidebar">
+                        <div class="col-md-4 avenue-sidebar">
                             <?php get_sidebar(); ?>
                         </div>
 

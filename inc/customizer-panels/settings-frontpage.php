@@ -292,13 +292,8 @@ $wp_customize->add_section( 'static_front_page', array(
         ) );
     
     // ---------------------------------------------
-    // Frontpage Content
+    // Frontpage Content - Adds to Static Front Page
     // ---------------------------------------------
-    $wp_customize->add_section( 'ares_frontpage_content_section', array(
-        'title'                 => __( 'Frontpage Content', 'ares'),
-        'description'           => __( 'Customize visibility of the content (latest posts/static page) for the frontpage', 'ares' ),
-        'panel'                 => 'ares_frontpage_panel'
-    ) );
     
         // Show / Hide the Homepage Content?
         $wp_customize->add_setting( 'ares[ares_frontpage_content_bool]', array(
@@ -309,7 +304,7 @@ $wp_customize->add_section( 'static_front_page', array(
         ) );
         $wp_customize->add_control( 'ares[ares_frontpage_content_bool]', array(
             'label'   => __( 'Show or hide the homepage content?', 'ares' ),
-            'section' => 'ares_frontpage_content_section',
+            'section' => 'static_front_page',
             'type'    => 'radio',
             'choices'    => array(
                 'yes'   => __( 'Show', 'ares' ),
@@ -326,7 +321,7 @@ $wp_customize->add_section( 'static_front_page', array(
         ) );
         $wp_customize->add_control( 'ares[ares_homepage_sidebar]', array(
             'label'   => __( 'Include the right sidebar ( only when using Static Front Page)?', 'ares' ),
-            'section' => 'ares_frontpage_content_section',
+            'section' => 'static_front_page',
             'type'    => 'radio',
             'choices'    => array(
                 'sidebar-off'   => __( 'No Sidebar', 'ares' ),

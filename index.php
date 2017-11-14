@@ -12,9 +12,12 @@
  * @package Ares
  */
 
-$ares_options = ares_get_options();
+get_header(); 
 
-get_header(); ?>
+$ares_options = ares_get_options();
+$alternate_blog = isset( $ares_options['blog_layout_style'] ) && $ares_options['blog_layout_style'] == 'masonry' ? true : false;
+
+?>
 
 <div id="primary" class="content-area">
 
@@ -24,63 +27,92 @@ get_header(); ?>
 
             <div class="page-content row">
 
-                <div class="col-md-<?php echo $ares_options['ares_blog_layout'] == 'col2r' && is_active_sidebar(1) ? '9' : '12'; ?> site-content item-page">
+                <div class="col-md-<?php echo $ares_options['ares_blog_layout'] == 'col2r' && is_active_sidebar(1) ? '8' : '12'; ?> site-content item-page">
 
-                    <?php if ( have_posts() ) : ?>
+                    <?php if ( have_posts() ) :
                     
-                        <?php while ( have_posts() ) : the_post(); ?>
+                        if ( $alternate_blog ) : ?>
 
-                            <div class="item-post">
-                        
-                                <?php if ( $ares_options['ares_blog_featured'] == 'on' && has_post_thumbnail() ) : ?>
-                                
-                                    <div class="post-thumb col-sm-4">
-                                        
-                                        <a href="<?php the_permalink(); ?>">
-                                            <?php the_post_thumbnail('large'); ?>
-                                        </a>
-                                        
-                                    </div>
-                                
-                                <?php endif; ?>
+                            <div id="ares-alt-blog-wrap">
 
-                                <div class="col-sm-<?php echo $ares_options['ares_blog_featured'] == 'on' && has_post_thumbnail() ? '8' : '12'; ?> <?php echo has_post_thumbnail() ? '' : 'text-left'; ?>">
+                                <div id="masonry-blog-wrapper">
+
+                                    <div class="grid-sizer"></div>
+                                    <div class="gutter-sizer"></div>
+
+                        <?php endif;
+                    
+                        while ( have_posts() ) : the_post();
+
+                            if ( $alternate_blog ) :
                                     
-                                    <h2 class="post-title">
-                                        <a href="<?php the_permalink(); ?>">
-                                            <?php the_title(); ?>
-                                        </a>
-                                    </h2>
+                                get_template_part('template-parts/content', 'posts-alt' );
                                     
-                                    <div class="post-content">
-                                        <?php the_excerpt(); ?>
+                            else : ?>
+                                    
+                                <div class="item-post">
+
+                                    <?php if ( $ares_options['ares_blog_featured'] == 'on' && has_post_thumbnail() ) : ?>
+
+                                        <div class="post-thumb col-sm-4">
+
+                                            <a href="<?php the_permalink(); ?>">
+                                                <?php the_post_thumbnail('large'); ?>
+                                            </a>
+
+                                        </div>
+
+                                    <?php endif; ?>
+
+                                    <div class="col-sm-<?php echo $ares_options['ares_blog_featured'] == 'on' && has_post_thumbnail() ? '8' : '12'; ?> <?php echo has_post_thumbnail() ? '' : 'text-left'; ?>">
+
+                                        <h2 class="post-title">
+                                            <a href="<?php the_permalink(); ?>">
+                                                <?php the_title(); ?>
+                                            </a>
+                                        </h2>
+
+                                        <div class="post-content">
+                                            <?php the_excerpt(); ?>
+                                        </div>
+
+                                        <div class="text-right">
+                                            <a class="ares-button button-primary" href="<?php the_permalink(); ?>">
+                                                <?php _e( 'Read More', 'ares' ); ?>
+                                            </a>
+                                        </div>  
+
                                     </div>
+
+                                </div>
                                     
-                                    <div class="text-right">
-                                        <a class="button button-primary" href="<?php the_permalink(); ?>">
-                                            <?php _e( 'Read More', 'ares' ); ?>
-                                        </a>
-                                    </div>  
+                            <?php endif;
+
+                        endwhile;
                                     
+                        if ( $alternate_blog ) : ?>
+
                                 </div>
                                 
                             </div>
 
-                        <?php endwhile; // end of the loop.   ?>
+                        <?php endif; ?>
 
+                        <div class="pagination-links">
+                            <?php echo the_posts_pagination( array( 'mid_size' => 1 ) ); ?>
+                        </div>
+                    
                     <?php else : ?>
                     
                         <?php get_template_part('template-parts/content', 'none'); ?>
                     
                     <?php endif; ?>
                     
-                    <?php ares_paging_nav(); ?>
-                    
                 </div>
                 
                 <?php if ( $ares_options['ares_blog_layout'] == 'col2r' && is_active_sidebar(1) ) : ?>
 
-                    <div class="col-md-3 avenue-sidebar">
+                    <div class="col-md-4 avenue-sidebar">
                         <?php get_sidebar(); ?>
                     </div>
 

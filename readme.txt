@@ -4,8 +4,8 @@ Contributors: smartcat
 Tags: one-column, two-columns, right-sidebar, grid-layout, custom-colors, custom-menu, custom-logo, featured-images, footer-widgets, threaded-comments, translation-ready, blog, news, portfolio
 
 Requires at least: 4.4
-Tested up to: 4.8.2
-Stable tag: 2.0.1
+Tested up to: 4.8.3
+Stable tag: 2.0.2
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
 
@@ -47,7 +47,13 @@ This theme supports Our Team Showcase plugin.
 - Major overhaul of code-base to migrate theme options to Customizer mods
 
 = 2.0.1 - Nov 2nd 2017 =
-Updated screenshot
+- Updated screenshot
+
+= 2.0.2 - Nov 7th 2017 =
+- Added hooks to facilitate incorporation of optional Pro extension
+- Added WooCommerce support and templates
+- Organized slider code
+- Added TGM to recommend useful plugins
 
 == Credits ==
 

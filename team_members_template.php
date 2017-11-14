@@ -23,7 +23,7 @@ $ares_options = ares_get_options();
 
                 <div class="page-content row">
                     
-                    <div class="col-md-<?php echo $ares_options['ares_single_layout'] == 'col1' ? '12' : '9'; ?>">
+                    <div class="col-md-<?php echo is_active_sidebar(1) && $ares_options['ares_single_layout'] == 'col2r' ? '8' : '12'; ?>">
                         
                         <article>
                             
@@ -153,9 +153,9 @@ $ares_options = ares_get_options();
                         
                     </div>
                     
-                    <?php if ( $ares_options['ares_single_layout'] == 'col2r' ) : ?>
+                    <?php if ( is_active_sidebar(1) && $ares_options['ares_single_layout'] == 'col2r' ) : ?>
 
-                        <div class="col-md-3 avenue-sidebar">
+                        <div class="col-md-4 avenue-sidebar">
                             <?php get_sidebar(); ?>
                         </div>
 

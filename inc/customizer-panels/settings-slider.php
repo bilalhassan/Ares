@@ -38,7 +38,8 @@ $wp_customize->add_section( 'ares_slider_settings_section', array(
 // ---------------------------------------------
 // Slides Loop
 // ---------------------------------------------
-for ( $ctr = 1; $ctr < 4; $ctr++ ) :
+
+for ( $ctr = 1; $ctr < apply_filters( 'ares_capacity', 1 ); $ctr++ ) :
 
     // ---------------------------------------------
     // Slide Section
@@ -51,7 +52,7 @@ for ( $ctr = 1; $ctr < 4; $ctr++ ) :
 
         // Slide - Image
         $wp_customize->add_setting( 'ares[ares_slide' . $ctr . '_image]', array(
-            'default'               => get_template_directory_uri() . '/inc/images/ares_demo.jpg',
+            'default'               => $ctr > 3 ? '' : get_template_directory_uri() . '/inc/images/ares_demo.jpg',
             'transport'             => 'refresh',
             'sanitize_callback'     => 'esc_url_raw',
             'type'                  => 'option'
