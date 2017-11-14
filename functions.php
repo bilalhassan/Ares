@@ -136,7 +136,7 @@ require get_template_directory() . '/inc/customizer.php';
 /**
  * Load TGM
  */
-//  require_once dirname(__FILE__) . '/inc/engine/tgm.php';
+  require_once dirname(__FILE__) . '/inc/tgm.php';
 
 /**
  * Load the main custom theme functions file.
