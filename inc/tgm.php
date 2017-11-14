@@ -66,8 +66,8 @@ function ares_register_required_plugins() {
             'required'      => false,
         ),
         array (
-            'name'          => __( 'uCare - Support Ticket System', 'ares' ),
-            'slug'          => 'ucare-support-system',
+            'name'          => __( 'Smartcat Video & Image Slider', 'ares' ),
+            'slug'          => 'smartcat-video-image-slider',
             'required'      => false,
         ),
 
