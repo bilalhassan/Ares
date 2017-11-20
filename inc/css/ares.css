@@ -272,6 +272,7 @@ ul#primary-menu > li {
 div#mobile-menu-wrap,
 div#cart-slide-wrap {
     z-index: 9999;
+    width: 220px !important;
 }
 .mobile-trigger-wrap {
     float: right;
