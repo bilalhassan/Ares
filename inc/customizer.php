@@ -172,6 +172,23 @@ function ares_sanitize_yes_no( $input ) {
 
 }
 
+function ares_sanitize_products_per_row( $input ) {
+
+    $valid_keys = array(
+        2   =>  __( 'Two', 'ares' ),
+        3   =>  __( 'Three', 'ares' ),
+        4   =>  __( 'Four', 'ares' ),
+        5   =>  __( 'Five', 'ares' ),
+    );
+
+    if ( array_key_exists( $input, $valid_keys ) ) {
+        return $input;
+    } else {
+        return '';
+    }
+
+}
+
 function ares_sanitize_icon( $input ) {
 
     $valid_keys = ares_icons();

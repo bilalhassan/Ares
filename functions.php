@@ -207,6 +207,7 @@ function ares_get_options() {
         'ares_branding_bar_height'      => 80,
         
         'cart_icon_toggle'              => 'on',
+        'woo_products_per_row'          => 4,
         
     ) );
     
@@ -217,6 +218,10 @@ function ares_migration_process() {
     // Options array exists from a previous version, set defaults on newer Customizer options
 
     $existing_ares_options = ares_get_options();
+
+    if ( ! array_key_exists( 'woo_products_per_row', $existing_ares_options ) ) :
+        $existing_ares_options['woo_products_per_row'] = 4;
+    endif; 
 
     if ( ! array_key_exists( 'ares_font_family_secondary', $existing_ares_options ) ) :
         $existing_ares_options['ares_font_family_secondary'] = 'Roboto, sans-serif';
