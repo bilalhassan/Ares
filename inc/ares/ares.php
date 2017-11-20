@@ -230,7 +230,9 @@ function ares_custom_css() {
         .woocommerce.widget_shopping_cart ul li > a:nth-of-type(2),
         .widget.woocommerce a.button,
         .widget.woocommerce.widget_products .product-title,
-        div#alt-single-wrap .post-meta {
+        div#alt-single-wrap .post-meta,
+        .widget.woocommerce .button,
+        .woocommerce-cart .woocommerce a.button {
             font-family: <?php echo esc_attr( $ares_options['ares_font_family'] ); ?>;
         }
         
@@ -306,7 +308,8 @@ function ares_custom_css() {
         #site-cta .site-cta .fa,
         .sc_team_single_member .sc_single_main .sc_personal_quote span.sc_team_icon-quote-left,
         .ares-contact-info .contact-row .detail a:hover,
-        footer#colophon.site-footer .ares-contact-info .contact-row .detail a:hover
+        footer#colophon.site-footer .ares-contact-info .contact-row .detail a:hover,
+        .woocommerce .star-rating span
         {
             color: <?php echo esc_attr( $primary_theme_color ); ?>;
         }
@@ -339,13 +342,17 @@ function ares_custom_css() {
         div#cart-slide-wrap .inner-wrap a.ares-button,
         .woocommerce span.onsale,
         div#header-cart .cart-count,
-        .widget.woocommerce a.button 
+        .widget.woocommerce a.button,
+        .widget.woocommerce button.button,
+        .woocommerce-cart .woocommerce a.button
         {
             background: <?php echo esc_attr( $primary_theme_color ); ?>;
         }
         .woocommerce button.single_add_to_cart_button,
         .woocommerce a.checkout-button.button,
-        .footer-boxes .ares-pricing-table .widget .inner.special .pricing-table-header {
+        .footer-boxes .ares-pricing-table .widget .inner.special .pricing-table-header,
+        .woocommerce .widget_price_filter .ui-slider .ui-slider-range,
+        .woocommerce .widget_price_filter .ui-slider .ui-slider-handle {
             background: <?php echo esc_attr( $primary_theme_color ); ?> !important;
         }
         #site-cta .site-cta .fa {
@@ -378,7 +385,9 @@ function ares_custom_css() {
         input[type="submit"]:hover,
         .woocommerce a.button.add_to_cart_button:hover,
         div#cart-slide-wrap .inner-wrap a.ares-button:hover,
-        .widget.woocommerce a.button:hover {
+        .widget.woocommerce a.button:hover,
+        .widget.woocommerce button.button:hover,
+        .woocommerce-cart .woocommerce a.button:hover {
             background-color: <?php echo esc_attr( $secondary_theme_color ); ?>;
         }
         
