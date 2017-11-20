@@ -103,7 +103,7 @@ endif;
                     
                 </div>
 
-                <?php if ( class_exists( 'WooCommerce' ) && $ares_options['cart_icon_toggle'] == 'on' ) : ?>
+                <?php if ( class_exists( 'WooCommerce' ) && isset( $ares_options['cart_icon_toggle'] ) &&$ares_options['cart_icon_toggle'] == 'on' ) : ?>
                 
                     <div id="header-cart" class="tablet-hidden">
                         <span class="fa fa-shopping-cart"></span>
@@ -116,7 +116,7 @@ endif;
 
                 <div class="mobile-trigger-wrap">
                     
-                    <?php if ( class_exists( 'WooCommerce' ) && $ares_options['cart_icon_toggle'] == 'on' ) : ?>
+                    <?php if ( class_exists( 'WooCommerce' ) && isset( $ares_options['cart_icon_toggle'] ) && $ares_options['cart_icon_toggle'] == 'on' ) : ?>
 
                         <div id="header-cart">
                             <span class="fa fa-shopping-cart"></span>
@@ -171,7 +171,7 @@ endif;
 
                 </div>
                 
-                <?php if ( class_exists( 'WooCommerce' ) && $ares_options['cart_icon_toggle'] == 'on' ) : ?>
+                <?php if ( class_exists( 'WooCommerce' ) && isset( $ares_options['cart_icon_toggle'] ) && $ares_options['cart_icon_toggle'] == 'on' ) : ?>
                 
                     <div id="cart-slide-wrap">
 
