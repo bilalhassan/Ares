@@ -27,7 +27,8 @@ a {
 }
 
 .ares-button,
-.widget.woocommerce a.button {
+.widget.woocommerce a.button
+.widget.woocommerce button.button {
     transition: .3s all ease-in-out;
     -moz-transition: .3s all ease-in-out;
     -webkit-transition: .3s all ease-in-out;
@@ -78,7 +79,8 @@ header.page-header .page-title {
 }
 
 input#submit,
-input[type="submit"] {
+input[type="submit"],
+.widget.woocommerce .button{
     display: inline-block;
     height: 30px;
     line-height: 30px;
@@ -272,6 +274,7 @@ ul#primary-menu > li {
 div#mobile-menu-wrap,
 div#cart-slide-wrap {
     z-index: 9999;
+    width: 220px !important;
 }
 .mobile-trigger-wrap {
     float: right;
@@ -993,7 +996,8 @@ h2.woocommerce-loop-product__title {
 
 .woocommerce a.button.add_to_cart_button,
 .woocommerce button.single_add_to_cart_button,
-.widget.woocommerce a.button {
+.widget.woocommerce a.button,
+.woocommerce-cart .woocommerce a.button {
     display: inline-block;
     height: 30px;
     line-height: 30px;
@@ -1284,4 +1288,21 @@ div#cart-slide-wrap .inner-wrap a.ares-button.hollow-button:hover {
 
 .widget.woocommerce.widget_products a {
     padding: 0;
+}
+
+.woocommerce .widget_price_filter .price_slider_wrapper .ui-widget-content {
+    background: #777;
+}
+
+.widget.woocommerce .button {
+    color: #fff !important;
+}
+
+/* ----- WooCommerce Updates ----- */
+ul.products mark.count {
+    display: none;
+}
+
+h2.woocommerce-loop-category__title {
+    font-size: 1.5em !important;
 }
