@@ -55,11 +55,12 @@ This theme supports Our Team Showcase plugin.
 - Organized slider code
 - Added TGM to recommend useful plugins
 
-= 2.0.3 - Nov 20th 2017 =
+= 2.0.3 - Feb 5th 2018 =
 - Added fixed width to Cart & Mobile Menu panels
 - Added Customizer option to set number of product columns in the Shop
 - Additional WooCommerce styling
 - Minor bug fixes
+- Updated WooCommerce category card styles for product loop
 
 
 == Credits ==

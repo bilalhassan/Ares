@@ -1297,3 +1297,12 @@ div#cart-slide-wrap .inner-wrap a.ares-button.hollow-button:hover {
 .widget.woocommerce .button {
     color: #fff !important;
 }
+
+/* ----- WooCommerce Updates ----- */
+ul.products mark.count {
+    display: none;
+}
+
+h2.woocommerce-loop-category__title {
+    font-size: 1.5em !important;
+}
