@@ -107,6 +107,7 @@ function ares_widgets_init() {
         'after_title' => '</h2>',
     ));
 
+
     register_sidebar(array(
         'name' => __('Homepage D - Half-width', 'ares'),
         'id' => 'sidebar-homepage-widget',
