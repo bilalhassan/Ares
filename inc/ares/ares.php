@@ -952,20 +952,23 @@ function ares_get_background_patterns() {
 
 add_filter( 'loop_shop_columns', 'loop_columns' );
 if ( !function_exists( 'loop_columns' ) ) {
-    
+
     function loop_columns() {
-        
+
         $ares_options = ares_get_options();
-        return $ares_options['woo_products_per_row'];
-        
+        if( isset($ares_options['woo_products_per_row']) )
+            return $ares_options['woo_products_per_row'];
+
+        return 4;
+
     }
-    
+
 }
 
 add_action( 'woocommerce_before_main_content', function() {
     
     $ares_options = ares_get_options();
-    echo '<div class="woocommerce columns-' . $ares_options['woo_products_per_row'] . '">';
+    echo '<div class="woocommerce columns-' . loop_columns() . '">';
     
 }, 20);
 

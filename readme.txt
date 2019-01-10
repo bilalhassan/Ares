@@ -4,12 +4,12 @@ Contributors: smartcat
 Tags: one-column, two-columns, right-sidebar, grid-layout, custom-colors, custom-menu, custom-logo, featured-images, footer-widgets, threaded-comments, translation-ready, blog, news, portfolio
 
 Requires at least: 4.4
-Tested up to: 4.9.0
-Stable tag: 2.0.3
+Tested up to: 5.0.1
+Stable tag: 2.1.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
 
-Copyright 2017 Smartcat
+Copyright 2019 Smartcat
 
 == Description ==
 
@@ -62,6 +62,9 @@ This theme supports Our Team Showcase plugin.
 - Minor bug fixes
 - Updated WooCommerce category card styles for product loop
 
+= 2.1.0 - Jan 10, 2019
+- WooCommerce updates
+- Child theme compatibility fixes
 
 == Credits ==
 
