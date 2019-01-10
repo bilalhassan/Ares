@@ -103,7 +103,7 @@ endif;
                     
                 </div>
 
-                <?php if ( class_exists( 'WooCommerce' ) && isset( $ares_options['cart_icon_toggle'] ) &&$ares_options['cart_icon_toggle'] == 'on' ) : ?>
+                <?php if ( class_exists( 'WooCommerce' ) && isset( $ares_options['cart_icon_toggle'] ) && $ares_options['cart_icon_toggle'] == 'on' ) : ?>
                 
                     <div id="header-cart" class="tablet-hidden">
                         <span class="fa fa-shopping-cart"></span>

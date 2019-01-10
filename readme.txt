@@ -4,8 +4,8 @@ Contributors: smartcat
 Tags: one-column, two-columns, right-sidebar, grid-layout, custom-colors, custom-menu, custom-logo, featured-images, footer-widgets, threaded-comments, translation-ready, blog, news, portfolio
 
 Requires at least: 4.4
-Tested up to: 4.8.3
-Stable tag: 2.0.2
+Tested up to: 4.9.0
+Stable tag: 2.0.3
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
 
@@ -54,6 +54,14 @@ This theme supports Our Team Showcase plugin.
 - Added WooCommerce support and templates
 - Organized slider code
 - Added TGM to recommend useful plugins
+
+= 2.0.3 - Feb 5th 2018 =
+- Added fixed width to Cart & Mobile Menu panels
+- Added Customizer option to set number of product columns in the Shop
+- Additional WooCommerce styling
+- Minor bug fixes
+- Updated WooCommerce category card styles for product loop
+
 
 == Credits ==
 

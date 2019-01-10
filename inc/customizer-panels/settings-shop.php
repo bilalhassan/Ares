@@ -60,3 +60,22 @@ $wp_customize->add_section( 'ares_shop_section', array(
         )
     ));
 
+    // Number of Products Per Shop Row?
+    $wp_customize->add_setting( 'ares[woo_products_per_row]', array(
+        'default'               => 4,
+        'transport'             => 'refresh',
+        'sanitize_callback'     => 'ares_sanitize_products_per_row',
+        'type'                  => 'option'
+    ) );
+    $wp_customize->add_control( 'ares[woo_products_per_row]', array(
+        'label'         => __( 'Set the number of products to appear per row in the Shop', 'ares' ),
+        'description'   => __( 'Useful for Shops with a sidebar - fewer items per row will increase overall item size', 'ares' ),
+        'section'       => 'ares_shop_section',
+        'type'          => 'select',
+        'choices'       => array(
+            2   =>  __( 'Two', 'ares' ),
+            3   =>  __( 'Three', 'ares' ),
+            4   =>  __( 'Four', 'ares' ),
+            5   =>  __( 'Five', 'ares' ),
+        )
+    ));
